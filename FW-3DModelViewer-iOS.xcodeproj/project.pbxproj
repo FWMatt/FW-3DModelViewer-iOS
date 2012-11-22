@@ -21,7 +21,6 @@
 		22600059165E960700F960C4 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 22600058165E960700F960C4 /* Shader.fsh */; };
 		2260005B165E960700F960C4 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2260005A165E960700F960C4 /* Shader.vsh */; };
 		2260005E165E960700F960C4 /* FWMVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260005D165E960700F960C4 /* FWMVViewController.m */; };
-		22600061165E960700F960C4 /* FWMVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2260005F165E960700F960C4 /* FWMVViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +43,6 @@
 		2260005A165E960700F960C4 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
 		2260005C165E960700F960C4 /* FWMVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWMVViewController.h; sourceTree = "<group>"; };
 		2260005D165E960700F960C4 /* FWMVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWMVViewController.m; sourceTree = "<group>"; };
-		22600060165E960700F960C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FWMVViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,13 +93,11 @@
 		22600046165E960700F960C4 /* FW-3DModelViewer-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				2260006F165E983400F960C4 /* ModelViewer */,
 				2260004F165E960700F960C4 /* FWMVAppDelegate.h */,
 				22600050165E960700F960C4 /* FWMVAppDelegate.m */,
 				22600058165E960700F960C4 /* Shader.fsh */,
 				2260005A165E960700F960C4 /* Shader.vsh */,
-				2260005C165E960700F960C4 /* FWMVViewController.h */,
-				2260005D165E960700F960C4 /* FWMVViewController.m */,
-				2260005F165E960700F960C4 /* FWMVViewController.xib */,
 				22600047165E960700F960C4 /* Supporting Files */,
 			);
 			path = "FW-3DModelViewer-iOS";
@@ -119,6 +115,15 @@
 				22600056165E960700F960C4 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2260006F165E983400F960C4 /* ModelViewer */ = {
+			isa = PBXGroup;
+			children = (
+				2260005C165E960700F960C4 /* FWMVViewController.h */,
+				2260005D165E960700F960C4 /* FWMVViewController.m */,
+			);
+			name = ModelViewer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,7 +184,6 @@
 				22600057165E960700F960C4 /* Default-568h@2x.png in Resources */,
 				22600059165E960700F960C4 /* Shader.fsh in Resources */,
 				2260005B165E960700F960C4 /* Shader.vsh in Resources */,
-				22600061165E960700F960C4 /* FWMVViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,14 +209,6 @@
 				2260004A165E960700F960C4 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		2260005F165E960700F960C4 /* FWMVViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				22600060165E960700F960C4 /* en */,
-			);
-			name = FWMVViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -310,6 +306,7 @@
 				22600066165E960700F960C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

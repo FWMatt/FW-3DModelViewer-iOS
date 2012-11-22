@@ -98,6 +98,10 @@ GLfloat gCubeVertexData[216] =
 
 @implementation FWMVViewController
 
+- (void)loadView {
+    self.view = [[GLKView alloc] init];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
