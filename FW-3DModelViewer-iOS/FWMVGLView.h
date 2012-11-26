@@ -1,17 +1,32 @@
 //
 //  FWMVGLView.h
-//  FW-3DModelViewer-iOS
+//  
 //
-//  Created by Tim Chilvers on 22/11/2012.
-//  Copyright (c) 2012 Future Workshops. All rights reserved.
+//  Created by Tim Chilvers on 26/11/2012.
+//
 //
 
 #import <GLKit/GLKit.h>
 
-@class GLModel;
+@interface FWMVGLView : GLKView
 
-@interface FWMVGLView : GLKView <UIGestureRecognizerDelegate>
+@property (nonatomic, assign) CGFloat fov;
+@property (nonatomic, assign) CGFloat near;
+@property (nonatomic, assign) CGFloat far;
 
-@property (nonatomic,retain) GLModel *model;
+- (void)setUp;
+- (void)display;
+- (void)bindFramebuffer;
+- (BOOL)presentRenderbuffer;
+
+@property (nonatomic, assign) NSTimeInterval frameInterval;
+@property (nonatomic, assign) NSTimeInterval elapsedTime;
+
+- (void)startAnimating;
+- (void)stopAnimating;
+- (BOOL)isAnimating;
+- (void)step:(NSTimeInterval)dt;
+
+- (UIImage *)snapshot;
 
 @end

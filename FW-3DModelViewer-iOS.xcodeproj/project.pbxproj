@@ -10,6 +10,7 @@
 		2229A9AF1663867F00EBFA72 /* GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229A9AE1663867F00EBFA72 /* GLView.m */; };
 		2229A9B1166386FB00EBFA72 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2229A9B0166386FB00EBFA72 /* QuartzCore.framework */; };
 		2229A9B416638D8C00EBFA72 /* FWMVGLModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229A9B316638D8C00EBFA72 /* FWMVGLModelViewController.m */; };
+		2229A9B71663978600EBFA72 /* FWMVGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229A9B61663978600EBFA72 /* FWMVGLView.m */; };
 		2260003D165E960700F960C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2260003C165E960700F960C4 /* UIKit.framework */; };
 		2260003F165E960700F960C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2260003E165E960700F960C4 /* Foundation.framework */; };
 		22600041165E960700F960C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22600040165E960700F960C4 /* CoreGraphics.framework */; };
@@ -31,7 +32,7 @@
 		22600084165E9A8D00F960C4 /* GLLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260007F165E9A8D00F960C4 /* GLLight.m */; };
 		22600085165E9A8D00F960C4 /* GLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22600081165E9A8D00F960C4 /* GLModel.m */; };
 		22600086165E9A8D00F960C4 /* GLModelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22600083165E9A8D00F960C4 /* GLModelView.m */; };
-		22600089165E9B4A00F960C4 /* FWMVGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22600088165E9B4A00F960C4 /* FWMVGLView.m */; };
+		22600089165E9B4A00F960C4 /* FWMVGLModelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22600088165E9B4A00F960C4 /* FWMVGLModelView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		2229A9B0166386FB00EBFA72 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2229A9B216638D8C00EBFA72 /* FWMVGLModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWMVGLModelViewController.h; sourceTree = "<group>"; };
 		2229A9B316638D8C00EBFA72 /* FWMVGLModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWMVGLModelViewController.m; sourceTree = "<group>"; };
+		2229A9B51663978600EBFA72 /* FWMVGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = FWMVGLView.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		2229A9B61663978600EBFA72 /* FWMVGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = FWMVGLView.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 		22600038165E960700F960C4 /* FW-3DModelViewer-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FW-3DModelViewer-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2260003C165E960700F960C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2260003E165E960700F960C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -73,8 +76,8 @@
 		22600081165E9A8D00F960C4 /* GLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLModel.m; sourceTree = "<group>"; };
 		22600082165E9A8D00F960C4 /* GLModelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLModelView.h; sourceTree = "<group>"; };
 		22600083165E9A8D00F960C4 /* GLModelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLModelView.m; sourceTree = "<group>"; };
-		22600087165E9B4A00F960C4 /* FWMVGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWMVGLView.h; sourceTree = "<group>"; };
-		22600088165E9B4A00F960C4 /* FWMVGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWMVGLView.m; sourceTree = "<group>"; };
+		22600087165E9B4A00F960C4 /* FWMVGLModelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWMVGLModelView.h; sourceTree = "<group>"; };
+		22600088165E9B4A00F960C4 /* FWMVGLModelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWMVGLModelView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,8 +160,10 @@
 			children = (
 				2260005C165E960700F960C4 /* FWMVGLViewController.h */,
 				2260005D165E960700F960C4 /* FWMVGLViewController.m */,
-				22600087165E9B4A00F960C4 /* FWMVGLView.h */,
-				22600088165E9B4A00F960C4 /* FWMVGLView.m */,
+				2229A9B51663978600EBFA72 /* FWMVGLView.h */,
+				2229A9B61663978600EBFA72 /* FWMVGLView.m */,
+				22600087165E9B4A00F960C4 /* FWMVGLModelView.h */,
+				22600088165E9B4A00F960C4 /* FWMVGLModelView.m */,
 				2229A9B216638D8C00EBFA72 /* FWMVGLModelViewController.h */,
 				2229A9B316638D8C00EBFA72 /* FWMVGLModelViewController.m */,
 			);
@@ -266,9 +271,10 @@
 				22600084165E9A8D00F960C4 /* GLLight.m in Sources */,
 				22600085165E9A8D00F960C4 /* GLModel.m in Sources */,
 				22600086165E9A8D00F960C4 /* GLModelView.m in Sources */,
-				22600089165E9B4A00F960C4 /* FWMVGLView.m in Sources */,
+				22600089165E9B4A00F960C4 /* FWMVGLModelView.m in Sources */,
 				2229A9AF1663867F00EBFA72 /* GLView.m in Sources */,
 				2229A9B416638D8C00EBFA72 /* FWMVGLModelViewController.m in Sources */,
+				2229A9B71663978600EBFA72 /* FWMVGLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

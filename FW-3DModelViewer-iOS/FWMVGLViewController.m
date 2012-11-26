@@ -7,7 +7,7 @@
 //
 
 #import "FWMVGLViewController.h"
-#import "FWMVGLView.h"
+#import "FWMVGLModelView.h"
 
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
@@ -52,7 +52,7 @@ enum
 @implementation FWMVGLViewController
 
 - (void)loadView {
-    self.view = [[FWMVGLView alloc] init];
+    self.view = [[FWMVGLModelView alloc] init];
 }
 
 - (void)viewDidLoad
