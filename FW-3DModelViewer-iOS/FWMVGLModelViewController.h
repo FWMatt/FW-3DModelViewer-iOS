@@ -6,8 +6,7 @@
 //  Copyright (c) 2012 Future Workshops. All rights reserved.
 //
 
-#import "FWMVGLViewController.h"
 
-@interface FWMVGLModelViewController : FWMVGLViewController
+@interface FWMVGLModelViewController : UIViewController
 
 @end

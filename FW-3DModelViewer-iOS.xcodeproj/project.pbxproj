@@ -10,7 +10,8 @@
 		2229A9AF1663867F00EBFA72 /* GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229A9AE1663867F00EBFA72 /* GLView.m */; };
 		2229A9B1166386FB00EBFA72 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2229A9B0166386FB00EBFA72 /* QuartzCore.framework */; };
 		2229A9B416638D8C00EBFA72 /* FWMVGLModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229A9B316638D8C00EBFA72 /* FWMVGLModelViewController.m */; };
-		2229A9B71663978600EBFA72 /* FWMVGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229A9B61663978600EBFA72 /* FWMVGLView.m */; };
+		2229A9B91663AD7600EBFA72 /* pitcher.obj in Resources */ = {isa = PBXBuildFile; fileRef = 2229A9B81663AD7600EBFA72 /* pitcher.obj */; };
+		2229A9BB1663CA7100EBFA72 /* translated_desk.obj in Resources */ = {isa = PBXBuildFile; fileRef = 2229A9BA1663CA7100EBFA72 /* translated_desk.obj */; };
 		2260003D165E960700F960C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2260003C165E960700F960C4 /* UIKit.framework */; };
 		2260003F165E960700F960C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2260003E165E960700F960C4 /* Foundation.framework */; };
 		22600041165E960700F960C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22600040165E960700F960C4 /* CoreGraphics.framework */; };
@@ -24,7 +25,6 @@
 		22600057165E960700F960C4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22600056165E960700F960C4 /* Default-568h@2x.png */; };
 		22600059165E960700F960C4 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 22600058165E960700F960C4 /* Shader.fsh */; };
 		2260005B165E960700F960C4 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2260005A165E960700F960C4 /* Shader.vsh */; };
-		2260005E165E960700F960C4 /* FWMVGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260005D165E960700F960C4 /* FWMVGLViewController.m */; };
 		22600074165E9A7900F960C4 /* GLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 22600073165E9A7900F960C4 /* GLUtils.m */; };
 		2260007B165E9A8300F960C4 /* GLImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 22600076165E9A8300F960C4 /* GLImage.m */; };
 		2260007C165E9A8300F960C4 /* GLImageMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 22600078165E9A8300F960C4 /* GLImageMap.m */; };
@@ -41,8 +41,8 @@
 		2229A9B0166386FB00EBFA72 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2229A9B216638D8C00EBFA72 /* FWMVGLModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWMVGLModelViewController.h; sourceTree = "<group>"; };
 		2229A9B316638D8C00EBFA72 /* FWMVGLModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWMVGLModelViewController.m; sourceTree = "<group>"; };
-		2229A9B51663978600EBFA72 /* FWMVGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = FWMVGLView.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
-		2229A9B61663978600EBFA72 /* FWMVGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = FWMVGLView.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		2229A9B81663AD7600EBFA72 /* pitcher.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitcher.obj; sourceTree = "<group>"; };
+		2229A9BA1663CA7100EBFA72 /* translated_desk.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = translated_desk.obj; sourceTree = "<group>"; };
 		22600038165E960700F960C4 /* FW-3DModelViewer-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FW-3DModelViewer-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2260003C165E960700F960C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2260003E165E960700F960C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -60,8 +60,6 @@
 		22600056165E960700F960C4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		22600058165E960700F960C4 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
 		2260005A165E960700F960C4 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
-		2260005C165E960700F960C4 /* FWMVGLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWMVGLViewController.h; sourceTree = "<group>"; };
-		2260005D165E960700F960C4 /* FWMVGLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWMVGLViewController.m; sourceTree = "<group>"; };
 		22600072165E9A7900F960C4 /* GLUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUtils.h; sourceTree = "<group>"; };
 		22600073165E9A7900F960C4 /* GLUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLUtils.m; sourceTree = "<group>"; };
 		22600075165E9A8300F960C4 /* GLImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLImage.h; sourceTree = "<group>"; };
@@ -144,6 +142,8 @@
 		22600047165E960700F960C4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2229A9BA1663CA7100EBFA72 /* translated_desk.obj */,
+				2229A9B81663AD7600EBFA72 /* pitcher.obj */,
 				22600048165E960700F960C4 /* FW-3DModelViewer-iOS-Info.plist */,
 				22600049165E960700F960C4 /* InfoPlist.strings */,
 				2260004C165E960700F960C4 /* main.m */,
@@ -158,10 +158,6 @@
 		2260006F165E983400F960C4 /* ModelViewer */ = {
 			isa = PBXGroup;
 			children = (
-				2260005C165E960700F960C4 /* FWMVGLViewController.h */,
-				2260005D165E960700F960C4 /* FWMVGLViewController.m */,
-				2229A9B51663978600EBFA72 /* FWMVGLView.h */,
-				2229A9B61663978600EBFA72 /* FWMVGLView.m */,
 				22600087165E9B4A00F960C4 /* FWMVGLModelView.h */,
 				22600088165E9B4A00F960C4 /* FWMVGLModelView.m */,
 				2229A9B216638D8C00EBFA72 /* FWMVGLModelViewController.h */,
@@ -251,6 +247,8 @@
 				22600057165E960700F960C4 /* Default-568h@2x.png in Resources */,
 				22600059165E960700F960C4 /* Shader.fsh in Resources */,
 				2260005B165E960700F960C4 /* Shader.vsh in Resources */,
+				2229A9B91663AD7600EBFA72 /* pitcher.obj in Resources */,
+				2229A9BB1663CA7100EBFA72 /* translated_desk.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +261,6 @@
 			files = (
 				2260004D165E960700F960C4 /* main.m in Sources */,
 				22600051165E960700F960C4 /* FWMVAppDelegate.m in Sources */,
-				2260005E165E960700F960C4 /* FWMVGLViewController.m in Sources */,
 				22600074165E9A7900F960C4 /* GLUtils.m in Sources */,
 				2260007B165E9A8300F960C4 /* GLImage.m in Sources */,
 				2260007C165E9A8300F960C4 /* GLImageMap.m in Sources */,
@@ -274,7 +271,6 @@
 				22600089165E9B4A00F960C4 /* FWMVGLModelView.m in Sources */,
 				2229A9AF1663867F00EBFA72 /* GLView.m in Sources */,
 				2229A9B416638D8C00EBFA72 /* FWMVGLModelViewController.m in Sources */,
-				2229A9B71663978600EBFA72 /* FWMVGLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

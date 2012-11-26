@@ -6,12 +6,12 @@
 //  Copyright (c) 2012 Future Workshops. All rights reserved.
 //
 
-#import "FWMVGLView.h"
+#import "GLModelView.h"
 
 @class GLModel;
 @class GLImage;
 
-@interface FWMVGLModelView : FWMVGLView <UIGestureRecognizerDelegate>
+@interface FWMVGLModelView : GLModelView <UIGestureRecognizerDelegate>
 
 @property (nonatomic,retain) GLModel *model;
 @property (nonatomic, strong) GLImage *texture;

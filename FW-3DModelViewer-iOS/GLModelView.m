@@ -33,14 +33,13 @@
 
 #import "GLModelView.h"
 
+@interface GLModelView ()
+
+@property (nonatomic, assign) CATransform3D transform;
+
+@end
 
 @implementation GLModelView
-
-@synthesize model = _model;
-@synthesize texture = _texture;
-@synthesize blendColor = _blendColor;
-@synthesize lights = _lights;
-@synthesize transform = _transform;
 
 - (void)setUp
 {
@@ -70,6 +69,10 @@
     {
         [_model release];
         _model = [model ah_retain];
+        self.transform = model.normalisingTransform;
+//        if (_transform == nil   ) {
+//            
+//        }
         [self setNeedsDisplay];
     }
 }

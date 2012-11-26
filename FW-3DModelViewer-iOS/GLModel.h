@@ -38,6 +38,8 @@
 
 @interface GLModel : NSObject
 
+@property (nonatomic, assign) CATransform3D normalisingTransform;
+
 + (GLModel *)modelNamed:(NSString *)nameOrPath;
 + (GLModel *)modelWithContentsOfFile:(NSString *)nameOrPath;
 + (GLModel *)modelWithData:(NSData *)data;
