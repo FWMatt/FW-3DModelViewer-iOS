@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2229A9AF1663867F00EBFA72 /* GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229A9AE1663867F00EBFA72 /* GLView.m */; };
+		2229A9B1166386FB00EBFA72 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2229A9B0166386FB00EBFA72 /* QuartzCore.framework */; };
 		2260003D165E960700F960C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2260003C165E960700F960C4 /* UIKit.framework */; };
 		2260003F165E960700F960C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2260003E165E960700F960C4 /* Foundation.framework */; };
 		22600041165E960700F960C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22600040165E960700F960C4 /* CoreGraphics.framework */; };
@@ -20,10 +22,21 @@
 		22600057165E960700F960C4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22600056165E960700F960C4 /* Default-568h@2x.png */; };
 		22600059165E960700F960C4 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 22600058165E960700F960C4 /* Shader.fsh */; };
 		2260005B165E960700F960C4 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2260005A165E960700F960C4 /* Shader.vsh */; };
-		2260005E165E960700F960C4 /* FWMVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260005D165E960700F960C4 /* FWMVViewController.m */; };
+		2260005E165E960700F960C4 /* FWMVGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260005D165E960700F960C4 /* FWMVGLViewController.m */; };
+		22600074165E9A7900F960C4 /* GLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 22600073165E9A7900F960C4 /* GLUtils.m */; };
+		2260007B165E9A8300F960C4 /* GLImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 22600076165E9A8300F960C4 /* GLImage.m */; };
+		2260007C165E9A8300F960C4 /* GLImageMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 22600078165E9A8300F960C4 /* GLImageMap.m */; };
+		2260007D165E9A8300F960C4 /* GLImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260007A165E9A8300F960C4 /* GLImageView.m */; };
+		22600084165E9A8D00F960C4 /* GLLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260007F165E9A8D00F960C4 /* GLLight.m */; };
+		22600085165E9A8D00F960C4 /* GLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22600081165E9A8D00F960C4 /* GLModel.m */; };
+		22600086165E9A8D00F960C4 /* GLModelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22600083165E9A8D00F960C4 /* GLModelView.m */; };
+		22600089165E9B4A00F960C4 /* FWMVGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22600088165E9B4A00F960C4 /* FWMVGLView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2229A9AD1663867F00EBFA72 /* GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLView.h; sourceTree = "<group>"; };
+		2229A9AE1663867F00EBFA72 /* GLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLView.m; sourceTree = "<group>"; };
+		2229A9B0166386FB00EBFA72 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		22600038165E960700F960C4 /* FW-3DModelViewer-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FW-3DModelViewer-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2260003C165E960700F960C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2260003E165E960700F960C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -41,8 +54,24 @@
 		22600056165E960700F960C4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		22600058165E960700F960C4 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
 		2260005A165E960700F960C4 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
-		2260005C165E960700F960C4 /* FWMVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWMVViewController.h; sourceTree = "<group>"; };
-		2260005D165E960700F960C4 /* FWMVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWMVViewController.m; sourceTree = "<group>"; };
+		2260005C165E960700F960C4 /* FWMVGLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FWMVGLViewController.h; sourceTree = "<group>"; };
+		2260005D165E960700F960C4 /* FWMVGLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWMVGLViewController.m; sourceTree = "<group>"; };
+		22600072165E9A7900F960C4 /* GLUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUtils.h; sourceTree = "<group>"; };
+		22600073165E9A7900F960C4 /* GLUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLUtils.m; sourceTree = "<group>"; };
+		22600075165E9A8300F960C4 /* GLImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLImage.h; sourceTree = "<group>"; };
+		22600076165E9A8300F960C4 /* GLImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLImage.m; sourceTree = "<group>"; };
+		22600077165E9A8300F960C4 /* GLImageMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLImageMap.h; sourceTree = "<group>"; };
+		22600078165E9A8300F960C4 /* GLImageMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLImageMap.m; sourceTree = "<group>"; };
+		22600079165E9A8300F960C4 /* GLImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLImageView.h; sourceTree = "<group>"; };
+		2260007A165E9A8300F960C4 /* GLImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLImageView.m; sourceTree = "<group>"; };
+		2260007E165E9A8D00F960C4 /* GLLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLight.h; sourceTree = "<group>"; };
+		2260007F165E9A8D00F960C4 /* GLLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLight.m; sourceTree = "<group>"; };
+		22600080165E9A8D00F960C4 /* GLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLModel.h; sourceTree = "<group>"; };
+		22600081165E9A8D00F960C4 /* GLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLModel.m; sourceTree = "<group>"; };
+		22600082165E9A8D00F960C4 /* GLModelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLModelView.h; sourceTree = "<group>"; };
+		22600083165E9A8D00F960C4 /* GLModelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLModelView.m; sourceTree = "<group>"; };
+		22600087165E9B4A00F960C4 /* FWMVGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWMVGLView.h; sourceTree = "<group>"; };
+		22600088165E9B4A00F960C4 /* FWMVGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWMVGLView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2229A9B1166386FB00EBFA72 /* QuartzCore.framework in Frameworks */,
 				2260003D165E960700F960C4 /* UIKit.framework in Frameworks */,
 				2260003F165E960700F960C4 /* Foundation.framework in Frameworks */,
 				22600041165E960700F960C4 /* CoreGraphics.framework in Frameworks */,
@@ -81,6 +111,7 @@
 		2260003B165E960700F960C4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2229A9B0166386FB00EBFA72 /* QuartzCore.framework */,
 				2260003C165E960700F960C4 /* UIKit.framework */,
 				2260003E165E960700F960C4 /* Foundation.framework */,
 				22600040165E960700F960C4 /* CoreGraphics.framework */,
@@ -93,6 +124,7 @@
 		22600046165E960700F960C4 /* FW-3DModelViewer-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				22600071165E9A6100F960C4 /* GLView 3rd party */,
 				2260006F165E983400F960C4 /* ModelViewer */,
 				2260004F165E960700F960C4 /* FWMVAppDelegate.h */,
 				22600050165E960700F960C4 /* FWMVAppDelegate.m */,
@@ -120,10 +152,35 @@
 		2260006F165E983400F960C4 /* ModelViewer */ = {
 			isa = PBXGroup;
 			children = (
-				2260005C165E960700F960C4 /* FWMVViewController.h */,
-				2260005D165E960700F960C4 /* FWMVViewController.m */,
+				2260005C165E960700F960C4 /* FWMVGLViewController.h */,
+				2260005D165E960700F960C4 /* FWMVGLViewController.m */,
+				22600087165E9B4A00F960C4 /* FWMVGLView.h */,
+				22600088165E9B4A00F960C4 /* FWMVGLView.m */,
 			);
 			name = ModelViewer;
+			sourceTree = "<group>";
+		};
+		22600071165E9A6100F960C4 /* GLView 3rd party */ = {
+			isa = PBXGroup;
+			children = (
+				22600072165E9A7900F960C4 /* GLUtils.h */,
+				22600073165E9A7900F960C4 /* GLUtils.m */,
+				22600075165E9A8300F960C4 /* GLImage.h */,
+				22600076165E9A8300F960C4 /* GLImage.m */,
+				22600077165E9A8300F960C4 /* GLImageMap.h */,
+				22600078165E9A8300F960C4 /* GLImageMap.m */,
+				22600079165E9A8300F960C4 /* GLImageView.h */,
+				2260007A165E9A8300F960C4 /* GLImageView.m */,
+				2260007E165E9A8D00F960C4 /* GLLight.h */,
+				2260007F165E9A8D00F960C4 /* GLLight.m */,
+				22600080165E9A8D00F960C4 /* GLModel.h */,
+				22600081165E9A8D00F960C4 /* GLModel.m */,
+				22600082165E9A8D00F960C4 /* GLModelView.h */,
+				22600083165E9A8D00F960C4 /* GLModelView.m */,
+				2229A9AD1663867F00EBFA72 /* GLView.h */,
+				2229A9AE1663867F00EBFA72 /* GLView.m */,
+			);
+			name = "GLView 3rd party";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,7 +253,16 @@
 			files = (
 				2260004D165E960700F960C4 /* main.m in Sources */,
 				22600051165E960700F960C4 /* FWMVAppDelegate.m in Sources */,
-				2260005E165E960700F960C4 /* FWMVViewController.m in Sources */,
+				2260005E165E960700F960C4 /* FWMVGLViewController.m in Sources */,
+				22600074165E9A7900F960C4 /* GLUtils.m in Sources */,
+				2260007B165E9A8300F960C4 /* GLImage.m in Sources */,
+				2260007C165E9A8300F960C4 /* GLImageMap.m in Sources */,
+				2260007D165E9A8300F960C4 /* GLImageView.m in Sources */,
+				22600084165E9A8D00F960C4 /* GLLight.m in Sources */,
+				22600085165E9A8D00F960C4 /* GLModel.m in Sources */,
+				22600086165E9A8D00F960C4 /* GLModelView.m in Sources */,
+				22600089165E9B4A00F960C4 /* FWMVGLView.m in Sources */,
+				2229A9AF1663867F00EBFA72 /* GLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

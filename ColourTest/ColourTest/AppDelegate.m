@@ -1,22 +1,22 @@
 //
-//  FWMVAppDelegate.m
-//  FW-3DModelViewer-iOS
+//  AppDelegate.m
+//  ColourTest
 //
-//  Created by Tim Chilvers on 22/11/2012.
+//  Created by Tim Chilvers on 23/11/2012.
 //  Copyright (c) 2012 Future Workshops. All rights reserved.
 //
 
-#import "FWMVAppDelegate.h"
+#import "AppDelegate.h"
 
-#import "FWMVGLViewController.h"
+#import "ViewController.h"
 
-@implementation FWMVAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[FWMVGLViewController alloc] init];
+    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;

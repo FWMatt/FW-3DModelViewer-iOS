@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class FWMVViewController;
+@class FWMVGLViewController;
 
 @interface FWMVAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) FWMVViewController *viewController;
+@property (strong, nonatomic) FWMVGLViewController *viewController;
 
 @end
