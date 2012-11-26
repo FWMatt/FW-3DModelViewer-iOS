@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2229A9AF1663867F00EBFA72 /* GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229A9AE1663867F00EBFA72 /* GLView.m */; };
 		2229A9B1166386FB00EBFA72 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2229A9B0166386FB00EBFA72 /* QuartzCore.framework */; };
+		2229A9B416638D8C00EBFA72 /* FWMVGLModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229A9B316638D8C00EBFA72 /* FWMVGLModelViewController.m */; };
 		2260003D165E960700F960C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2260003C165E960700F960C4 /* UIKit.framework */; };
 		2260003F165E960700F960C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2260003E165E960700F960C4 /* Foundation.framework */; };
 		22600041165E960700F960C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22600040165E960700F960C4 /* CoreGraphics.framework */; };
@@ -37,6 +38,8 @@
 		2229A9AD1663867F00EBFA72 /* GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLView.h; sourceTree = "<group>"; };
 		2229A9AE1663867F00EBFA72 /* GLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLView.m; sourceTree = "<group>"; };
 		2229A9B0166386FB00EBFA72 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2229A9B216638D8C00EBFA72 /* FWMVGLModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWMVGLModelViewController.h; sourceTree = "<group>"; };
+		2229A9B316638D8C00EBFA72 /* FWMVGLModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWMVGLModelViewController.m; sourceTree = "<group>"; };
 		22600038165E960700F960C4 /* FW-3DModelViewer-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FW-3DModelViewer-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2260003C165E960700F960C4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2260003E165E960700F960C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -156,6 +159,8 @@
 				2260005D165E960700F960C4 /* FWMVGLViewController.m */,
 				22600087165E9B4A00F960C4 /* FWMVGLView.h */,
 				22600088165E9B4A00F960C4 /* FWMVGLView.m */,
+				2229A9B216638D8C00EBFA72 /* FWMVGLModelViewController.h */,
+				2229A9B316638D8C00EBFA72 /* FWMVGLModelViewController.m */,
 			);
 			name = ModelViewer;
 			sourceTree = "<group>";
@@ -263,6 +268,7 @@
 				22600086165E9A8D00F960C4 /* GLModelView.m in Sources */,
 				22600089165E9B4A00F960C4 /* FWMVGLView.m in Sources */,
 				2229A9AF1663867F00EBFA72 /* GLView.m in Sources */,
+				2229A9B416638D8C00EBFA72 /* FWMVGLModelViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

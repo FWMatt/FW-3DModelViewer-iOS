@@ -8,7 +8,7 @@
 
 #import "FWMVAppDelegate.h"
 
-#import "FWMVGLViewController.h"
+#import "FWMVGLModelViewController.h"
 
 @implementation FWMVAppDelegate
 
@@ -16,7 +16,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[FWMVGLViewController alloc] init];
+    self.viewController = [[FWMVGLModelViewController alloc] init];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
