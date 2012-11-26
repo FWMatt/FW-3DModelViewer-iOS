@@ -10,10 +10,8 @@
 
 @class GLModel;
 
-@interface FWMVGLView : GLKView
+@interface FWMVGLView : GLKView <UIGestureRecognizerDelegate>
 
-@property (nonatomic,retain,readonly) GLModel *model;
-
-- (void)useModelNamed:(NSString *)modelName;
+@property (nonatomic,retain) GLModel *model;
 
 @end
