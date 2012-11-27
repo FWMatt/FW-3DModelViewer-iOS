@@ -53,8 +53,8 @@
         self.targetZ = 0.0f;
         
         self.cameraDistance = sqrtf(2.0f);
-        self.cameraTheta = 0.5 * M_PI / 180.0f;
-        self.cameraUpsilon = 0.0f;
+        self.cameraTheta = M_PI * 0.25;
+        self.cameraUpsilon = M_PI * 0.25;
         [self updateCameraPosition];
     }
     return self;
@@ -134,6 +134,12 @@ static NSNumberFormatter *formatter;
     NSLog(@"Pinch %@ scale %f velocity %f",pinchGesture,pinchGesture.scale,pinchGesture.velocity);
 }
 
+- (void)lookoutLog {
+    if (LookatLogOn) {
+        NSLog(@"Lookat On - XYZ %f %f %f Angle %f %f %f",self.cameraX, self.cameraY, self.cameraZ, self.cameraTheta, self.cameraUpsilon, self.cameraDistance);
+    }
+}
+
 - (void)drawOrigin {
     // save previous matrix
     glPushMatrix();
@@ -170,9 +176,8 @@ static NSNumberFormatter *formatter;
     
     glColorPointer(4, GL_FLOAT, 0, colors);
     
-    if (LookatLogOn) {
-        NSLog(@"Lookat On - %f %f %f",self.cameraX, self.cameraY, self.cameraZ);
-    }
+    [self lookoutLog];
+    
     gluLookAt((GLfloat)self.cameraX, (GLfloat)self.cameraY, (GLfloat)self.cameraZ, (GLfloat)self.targetX, (GLfloat)self.targetY, (GLfloat)self.targetZ);
 
     glDrawArrays(GL_LINES, 0, 6);
@@ -194,9 +199,6 @@ static NSNumberFormatter *formatter;
     glGetFloatv(GL_PROJECTION, projMatrix);
     glGetFloatv(GL_MODELVIEW, modelMatrix);
     
-    if (LookatLogOn) {
-        NSLog(@"Lookat On - %f %f %f",self.cameraX, self.cameraY, self.cameraZ);
-    }
     gluLookAt(self.cameraX, self.cameraY, self.cameraZ, self.targetX, self.targetY, self.targetZ);
 
     GLfloat altProjMatrix[16];
