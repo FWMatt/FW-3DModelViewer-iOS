@@ -66,9 +66,10 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
+void gluLookAt(GLfloat eyex, GLfloat eyey, GLfloat eyez,
+               GLfloat centerx, GLfloat centery, GLfloat centerz);
 
 void CGRectGetGLCoords(CGRect rect, GLfloat *coords);
-
 
 @interface UIColor (GL)
 

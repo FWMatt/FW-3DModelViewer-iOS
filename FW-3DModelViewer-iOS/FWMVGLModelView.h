@@ -8,15 +8,6 @@
 
 #import "GLModelView.h"
 
-@class GLModel;
-@class GLImage;
-
 @interface FWMVGLModelView : GLModelView <UIGestureRecognizerDelegate>
-
-@property (nonatomic,retain) GLModel *model;
-@property (nonatomic, strong) GLImage *texture;
-@property (nonatomic, strong) UIColor *blendColor;
-@property (nonatomic, copy) NSArray *lights;
-@property (nonatomic, assign) CATransform3D transform;
 
 @end

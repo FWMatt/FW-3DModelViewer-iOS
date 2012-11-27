@@ -129,7 +129,7 @@
     }
     
     //apply transform
-    glLoadMatrixf((GLfloat *)&_transform);
+    glMultMatrixf((GLfloat *)&_transform);
     
     //set texture
     [self.blendColor ?: [UIColor whiteColor] bindGLColor];

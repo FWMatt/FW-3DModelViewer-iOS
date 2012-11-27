@@ -11,10 +11,10 @@
 #import "GLModel.h"
 #import "GLLight.h"
 #import "GLImage.h"
-#import "GLModelView.h"
+#import "FWMVGLModelView.h"
 @interface FWMVGLModelViewController ()
 
-@property (nonatomic,retain) GLModelView *modelView;
+@property (nonatomic,retain) FWMVGLModelView *modelView;
 
 @end
 
@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.modelView = [[GLModelView alloc] initWithFrame:self.view.bounds];
+    self.modelView = [[FWMVGLModelView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.modelView];
     [self setModel];
 }
@@ -53,4 +53,8 @@
     //self.modelView.transform = CATransform3DMakeScale(0.01f, 0.01f, 0.01f);
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.modelView startAnimating];
+}
 @end
