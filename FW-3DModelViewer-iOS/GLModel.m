@@ -389,11 +389,11 @@ WWDC2010Attributes;
     
     CGFloat xDiff = extremese[0] - extremese[3], yDiff = extremese[1] - extremese[4], zDiff = extremese[2] - extremese[5];
     CGFloat normalizers [3] = {(xDiff / 2.0f) - extremese[0], (yDiff / 2.0f) - extremese[1], (zDiff / 2.0f) - extremese[2]};
-    self.normalisingTransform = CATransform3DMakeTranslation(normalizers[0],normalizers[1],normalizers[2]);
     
     CGFloat scaleFactor = 1.0f / MAX(MAX(fabsf(xDiff), fabsf(yDiff)), fabsf(zDiff));
-    self.normalisingTransform = CATransform3DScale(self.normalisingTransform, scaleFactor, scaleFactor, scaleFactor);
-    
+    self.normalisingTransform = CATransform3DScale(CATransform3DIdentity, scaleFactor, scaleFactor, scaleFactor);
+    self.normalisingTransform = CATransform3DTranslate(self.normalisingTransform,normalizers[0],normalizers[1],normalizers[2]);
+
     //success
     return YES;
 }
