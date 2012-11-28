@@ -9,11 +9,52 @@
 #import "FWMVAppDelegate.h"
 
 #import "FWMVGLModelViewController.h"
+#import "ZipFile.h"
+#import "FileInZipInfo.h"
+#import "ZipReadStream.h"
+
+#define TEST_FILEWRITE YES
 
 @implementation FWMVAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    NSString *modelsPath = [documentsDirectory stringByAppendingPathComponent:@"Models"];
+    if (TEST_FILEWRITE) {
+        NSError *error = nil;
+        [fileManager removeItemAtPath:modelsPath error:&error];
+        NSLog(@"%@",error);
+    }
+    if (![fileManager fileExistsAtPath:modelsPath isDirectory:nil]) {
+        [fileManager createDirectoryAtPath:modelsPath withIntermediateDirectories:NO attributes:nil error:nil];
+        NSInteger i = 0;
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setMinimumIntegerDigits:3];
+
+        ZipFile *zipFile = [[ZipFile alloc] initWithFileName:[[NSBundle mainBundle] pathForResource:@"model_examples" ofType:@"zip"] mode:ZipFileModeUnzip];
+        
+        for (FileInZipInfo *zipContent in [zipFile listFileInZipInfos]) {
+            NSString *firstChar = [zipContent.name substringToIndex:1];
+            if ([firstChar isEqualToString:@"."] || [firstChar isEqualToString:@"_"]) {
+                continue;
+            }
+            NSError *error = nil;
+            NSNumber *fileNum = [NSNumber numberWithInt:i];
+            [zipFile locateFileInZip:zipContent.name];
+            ZipReadStream *read1= [zipFile readCurrentFileInZip];
+
+            NSMutableData *modelData = [[NSMutableData alloc] initWithLength:zipContent.length];
+            [read1 readDataWithBuffer:modelData];
+            
+            [modelData writeToFile:[modelsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@",[formatter stringFromNumber:fileNum],zipContent.name]]  options:0 error:&error];
+            NSLog(@"%@",error);
+            i++;
+        }
+    }
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[FWMVGLModelViewController alloc] init];

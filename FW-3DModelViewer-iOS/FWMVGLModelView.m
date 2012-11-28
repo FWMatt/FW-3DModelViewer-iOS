@@ -11,7 +11,7 @@
 #import "GLImage.h"
 #import "GLLight.h"
 
-#define LookatLogOn YES
+#define LookatLogOn NO
 #define kInputAngleCoefficient (( 180.0f / M_PI ) * 0.0001)
 
 @interface FWMVGLModelView ()

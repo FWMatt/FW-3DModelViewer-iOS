@@ -12,15 +12,17 @@
 #import "GLLight.h"
 #import "GLImage.h"
 #import "FWMVGLModelView.h"
+#import "FWMVRadialMenuView.h"
+#import "FWMVFavouriteMenuViewController.h"
+
+#define kPopupSize 235.0f
+#define kMenuButtonSize 44.0f
 @interface FWMVGLModelViewController ()
 
-@property (nonatomic,retain) FWMVGLModelView *modelView;
-
-@end
-
-@interface GLModelView (asdf)
-
-@property (nonatomic, assign) CATransform3D transform;
+@property (nonatomic,strong) FWMVGLModelView *modelView;
+@property (nonatomic,strong) UIButton *menuButton;
+@property (nonatomic,strong) UIView *menuView;
+@property (nonatomic,strong) UIViewController *selectedMenuViewController;
 
 @end
 
@@ -32,6 +34,59 @@
     self.modelView = [[FWMVGLModelView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.modelView];
     [self setModel];
+    
+    self.menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.menuButton.frame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - kMenuButtonSize, kMenuButtonSize, kMenuButtonSize);
+    [self.menuButton setTitle:@"+" forState:UIControlStateNormal];
+    self.menuButton.backgroundColor = [UIColor purpleColor];
+    [self.menuButton addTarget:self action:@selector(openMenu:) forControlEvents:UIControlEventTouchUpInside];
+    self.menuButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
+    [self.view addSubview:self.menuButton];
+}
+
+- (UIView *)menuView {
+    if (!self->_menuView) {
+        FWMVRadialMenuView *menuView = [[FWMVRadialMenuView alloc] init];
+        menuView.delegate = self;
+        menuView.numberOfSegments = 4;
+        menuView.backgroundColor = [UIColor orangeColor];
+        menuView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
+        self->_menuView = menuView;
+    }
+    return self->_menuView;
+}
+
+- (void)openMenu:(UIButton *)button {
+    if (self.selectedMenuViewController) {
+        [UIView animateWithDuration:0.3f animations:^{
+            CGRect menuViewFrame = self.selectedMenuViewController.view.frame;
+            menuViewFrame.origin.x = -menuViewFrame.size.width;
+            self.selectedMenuViewController.view.frame = menuViewFrame;
+        } completion:^(BOOL finished) {
+            [self.selectedMenuViewController.view removeFromSuperview];
+            self.selectedMenuViewController = nil;
+        }];
+    } else if (!self.menuView.superview) {
+        self.menuView.transform = CGAffineTransformIdentity;
+        self.menuView.frame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - kPopupSize, kPopupSize, kPopupSize);
+        self.menuView.transform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(M_PI / 2.0f),kPopupSize,0.0f);
+        NSLog(@"Adding %@ to %@",self.menuView,self.view);
+        [self.view addSubview:self.menuView];
+        [self.view bringSubviewToFront:self.menuButton];
+        [UIView animateWithDuration:0.3f animations:^{
+            self.menuButton.transform = CGAffineTransformMakeRotation(-M_PI / 4.0f);
+            self.menuView.transform = CGAffineTransformIdentity;
+        }];
+    } else {
+        [UIView animateWithDuration:0.3f animations:^{
+            self.menuView.transform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(M_PI / 2.0f),kPopupSize,0.0f);
+            self.menuButton.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            [self.menuView removeFromSuperview];
+        }];
+        
+
+    }
 }
 
 - (void)setModel
@@ -49,12 +104,32 @@
     light.transform = CATransform3DMakeTranslation(0.0f, 2.0f, 0.0f);
     
     self.modelView.lights = @[light];
-    //set default transform
-    //self.modelView.transform = CATransform3DMakeScale(0.01f, 0.01f, 0.01f);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.modelView startAnimating];
+}
+
+- (void)radialMenuView:(FWMVRadialMenuView *)radialMenuView didSelectIndex:(NSInteger)index {
+    FWMVFavouriteMenuViewController *favouriteMenuViewController = [[FWMVFavouriteMenuViewController alloc] init];
+    favouriteMenuViewController.selectionDelegate = self;   
+    self.selectedMenuViewController = favouriteMenuViewController;
+    self.selectedMenuViewController.view.frame = CGRectMake(-2.0f *kPopupSize, CGRectGetMaxY(self.view.bounds) - kPopupSize, CGRectGetWidth(self.view.bounds), kPopupSize);
+    self.selectedMenuViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth| UIViewAutoresizingFlexibleTopMargin;
+
+    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [self.view addSubview:self.selectedMenuViewController.view];
+        [self.view bringSubviewToFront:self.menuButton];
+        self.selectedMenuViewController.view.frame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - kPopupSize, CGRectGetWidth(self.view.bounds), kPopupSize);
+    } completion:nil];
+}
+
+- (void)favouriteModelSelectedWithName:(NSString *)modelName {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    NSString *modelsPath = [documentsDirectory stringByAppendingPathComponent:@"Models"];
+    NSString *selectedModelPath = [modelsPath stringByAppendingPathComponent:modelName];
+    [self.modelView setModel:[[GLModel alloc] initWithContentsOfFile:selectedModelPath]];
 }
 @end
