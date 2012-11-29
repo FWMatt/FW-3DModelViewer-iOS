@@ -13,7 +13,7 @@
 #import "FileInZipInfo.h"
 #import "ZipReadStream.h"
 
-#define TEST_FILEWRITE YES
+#define TEST_FILEWRITE NO
 
 @implementation FWMVAppDelegate
 
@@ -28,6 +28,7 @@
         [fileManager removeItemAtPath:modelsPath error:&error];
         NSLog(@"%@",error);
     }
+    
     if (![fileManager fileExistsAtPath:modelsPath isDirectory:nil]) {
         [fileManager createDirectoryAtPath:modelsPath withIntermediateDirectories:NO attributes:nil error:nil];
         NSInteger i = 0;
@@ -60,6 +61,7 @@
     self.viewController = [[FWMVGLModelViewController alloc] init];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

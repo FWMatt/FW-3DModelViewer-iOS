@@ -10,6 +10,12 @@
 #import "CollectionViewCell.h"
 #import <QuartzCore/QuartzCore.h>
 
+
+@interface MutableOrderedCollectionViewController (Known)
+@property (nonatomic, assign) CGFloat autoscrollDistance;
+- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
+@end
+
 @interface FWMVFavouriteModelMeta : NSObject
 
 @property (nonatomic,strong) NSString *modelName;
@@ -24,6 +30,7 @@
 
 @interface FWMVFavouriteMenuViewController ()
 
+@property (nonatomic, assign) BOOL editing;
 @property (nonatomic, assign) UICollectionViewScrollDirection scrollDirection;
 @property (nonatomic, strong) NSMutableArray *modelDataArray;
 @end
@@ -53,6 +60,28 @@
     self.collectionView.layer.borderColor = [UIColor redColor].CGColor;
     self.collectionView.layer.borderWidth = 2.0f;
     [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
+    
+    UIButton *editButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [editButton setTitle:@"Edit" forState:UIControlStateNormal];
+    [editButton setTitle:@"Done" forState:UIControlStateSelected];
+    [editButton addTarget:self action:@selector(editButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [editButton sizeToFit];
+    editButton.frame = CGRectMake(CGRectGetMaxX(self.view.bounds) - editButton.frame.size.width,
+                                  CGRectGetMinY(self.view.bounds),
+                                  editButton.frame.size.width,
+                                  editButton.frame.size.height);
+    [self.view addSubview:editButton];
+    
+}
+
+- (void)editButtonTapped:(UIButton *)editButton {
+    editButton.selected = !editButton.selected;
+    self.editing = editButton.selected;
+    for (CollectionViewCell *cell in [self.collectionView visibleCells]) {
+        cell.showDeleteButton = editButton.selected;
+        [cell setNeedsLayout];
+    }
+
 }
 
 - (CGColorRef)colorForIndex:(NSInteger)index {
@@ -73,6 +102,32 @@
         default:
             return [UIColor whiteColor].CGColor;
             break;
+    }
+}
+
+- (void)updateFilesToReflectModelArray {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setMinimumIntegerDigits:3];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *modelDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Models"]; // Get documents folder
+
+    for (FWMVFavouriteModelMeta *data in self.modelDataArray) {
+        NSString *oldFilePath = [modelDirectory stringByAppendingPathComponent:data.filePath];
+        NSInteger index = [self.modelDataArray indexOfObject:data];
+        NSString *newFilePath = [[oldFilePath stringByDeletingLastPathComponent] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@",[formatter stringFromNumber:[NSNumber numberWithInteger:index]],[[oldFilePath lastPathComponent] substringFromIndex:4]]];
+        if (![newFilePath isEqualToString:oldFilePath]) {
+            data.filePath = [newFilePath lastPathComponent];
+            NSError *error = nil;
+            [fileManager moveItemAtPath:oldFilePath toPath:newFilePath error:&error];
+            if (error) {
+                NSLog(@"Moving error %@ for old path %@ to new path %@",error,oldFilePath,newFilePath);
+            }
+        
+        }        
     }
 }
 
@@ -112,7 +167,9 @@
     cell.label.text = data.modelName;
     cell.imageView.image = [UIImage imageWithContentsOfFile:data.imagePath];
     cell.decoratorView.layer.borderColor = [self colorForIndex:indexPath.row];
-    
+    cell.showDeleteButton = self.editing;
+    cell.informOnDeletion = self;
+    cell.deleteMethod = @selector(deleteModelForCollectionViewCell:);
     return cell;
 }
 
@@ -122,20 +179,7 @@
     [self.modelDataArray removeObjectAtIndex:sourceIndexPath.row];
     [self.modelDataArray insertObject:object atIndex:destinationIndexPath.row];
     
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setMinimumIntegerDigits:3];
-    
-    for (FWMVFavouriteModelMeta *data in self.modelDataArray) {
-        NSString *oldFilePath = data.filePath;
-        NSInteger index = [self.modelDataArray indexOfObject:data];
-        NSString *newFilePath = [[oldFilePath stringByDeletingLastPathComponent] stringByAppendingString:[NSString stringWithFormat:@"%@_%@",[formatter stringFromNumber:[NSNumber numberWithInteger:index]],[[oldFilePath lastPathComponent] substringFromIndex:4]]];
-        if (![newFilePath isEqualToString:oldFilePath]) {
-            [fileManager moveItemAtPath:oldFilePath toPath:newFilePath error:nil];
-        }
-    
-    }
+    [self updateFilesToReflectModelArray];
 }
 
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -166,4 +210,21 @@
     return _array;
 }
 
+
+- (void)deleteModelForCollectionViewCell:(CollectionViewCell *)cell {
+    NSIndexPath *deletePath = [self.collectionView indexPathForCell:cell];
+    FWMVFavouriteModelMeta *modelData = [self.modelDataArray objectAtIndex:deletePath.row];
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *modelDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Models"]; // Get documents folder
+    NSError *error = nil;
+    
+    [fileManager removeItemAtPath:[modelDirectory stringByAppendingPathComponent:modelData.filePath] error:&error];
+    [self.modelDataArray removeObjectAtIndex:deletePath.row];
+    [self updateFilesToReflectModelArray];
+    [self.collectionView deleteItemsAtIndexPaths:@[deletePath]];
+
+}
 @end
