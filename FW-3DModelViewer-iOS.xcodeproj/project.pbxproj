@@ -44,11 +44,11 @@
 		2269CA4C166653FE00681650 /* dchair_obj.obj.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2269CA49166653FE00681650 /* dchair_obj.obj.zip */; };
 		2269CA4D166653FE00681650 /* pitcher.obj.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2269CA4A166653FE00681650 /* pitcher.obj.zip */; };
 		2269CA4E166653FE00681650 /* Ship.obj.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2269CA4B166653FE00681650 /* Ship.obj.zip */; };
-		2269CA621666571F00681650 /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA591666571F00681650 /* ZipFile.m */; };
-		2269CA631666571F00681650 /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA5B1666571F00681650 /* ZipException.m */; };
-		2269CA641666571F00681650 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA5D1666571F00681650 /* ZipWriteStream.m */; };
-		2269CA651666571F00681650 /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA5F1666571F00681650 /* FileInZipInfo.m */; };
-		2269CA661666571F00681650 /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA611666571F00681650 /* ZipReadStream.m */; };
+		2269CA621666571F00681650 /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA591666571F00681650 /* ZipFile.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2269CA631666571F00681650 /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA5B1666571F00681650 /* ZipException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2269CA641666571F00681650 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA5D1666571F00681650 /* ZipWriteStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2269CA651666571F00681650 /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA5F1666571F00681650 /* FileInZipInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2269CA661666571F00681650 /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA611666571F00681650 /* ZipReadStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2269CA721666574200681650 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA6A1666574200681650 /* ioapi.c */; };
 		2269CA731666574200681650 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA6C1666574200681650 /* mztools.c */; };
 		2269CA741666574200681650 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA6E1666574200681650 /* unzip.c */; };
@@ -603,10 +603,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FW-3DModelViewer-iOS/FW-3DModelViewer-iOS-Prefix.pch";
 				INFOPLIST_FILE = "FW-3DModelViewer-iOS/FW-3DModelViewer-iOS-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -615,10 +617,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FW-3DModelViewer-iOS/FW-3DModelViewer-iOS-Prefix.pch";
 				INFOPLIST_FILE = "FW-3DModelViewer-iOS/FW-3DModelViewer-iOS-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

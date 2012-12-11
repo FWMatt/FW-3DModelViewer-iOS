@@ -39,11 +39,11 @@
         
         for (FileInZipInfo *zipContent in [zipFile listFileInZipInfos]) {
             NSString *firstChar = [zipContent.name substringToIndex:1];
-            if ([firstChar isEqualToString:@"."] || [firstChar isEqualToString:@"_"]) {
+            if (!firstChar || [firstChar isEqualToString:@"."] || [firstChar isEqualToString:@"_"]) {
                 continue;
             }
             NSError *error = nil;
-            NSNumber *fileNum = [NSNumber numberWithInt:i];
+            NSNumber *fileNum = @(i);
             [zipFile locateFileInZip:zipContent.name];
             ZipReadStream *read1= [zipFile readCurrentFileInZip];
 

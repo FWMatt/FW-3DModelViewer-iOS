@@ -33,6 +33,7 @@
     [super viewDidLoad];
     self.modelView = [[FWMVGLModelView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.modelView];
+    self.modelView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     [self setModel];
     
     self.menuButton = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -68,7 +68,6 @@
 {
     if (!self->_label)
     {
-        BOOL isiPad = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
         self->_label = [[UILabel alloc] init];
         self->_label.backgroundColor = [UIColor clearColor];
         self->_label.textAlignment = NSTextAlignmentCenter;
