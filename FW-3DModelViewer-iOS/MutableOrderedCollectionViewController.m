@@ -17,7 +17,6 @@
 - (id)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath*)indexPath
 {
     id toReturn = [super dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    NSLog(@"dequeueReusableCellWithReuseIdentifier");
     return toReturn;
 }
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="MVModel" representedClassName="MVModel" syncable="YES">
+        <attribute name="modelDirectory" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="modelName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbPath" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="MVModel" positionX="-2952" positionY="-2007" width="128" height="105"/>
+    </elements>
+</model>

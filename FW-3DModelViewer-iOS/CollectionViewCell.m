@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface CollectionViewCell ()
-@property (nonatomic, strong) UIView *deleteButton;
+@property (nonatomic, strong) UIButton *deleteButton;
 @property (nonatomic, readwrite, strong) UIView *decoratorView;
 @end
 
@@ -45,10 +45,10 @@
     self.label.frame = self.bounds;
     
     if (self.showDeleteButton) {
-        self.deleteButton.frame = CGRectMake(CGRectGetMaxX(self.contentView.bounds) - 30.0f,
-                                             0.0f,
-                                             20.0f,
-                                             20.0f);
+        self.deleteButton.frame = CGRectMake(CGRectGetMaxX(self.contentView.bounds) - 20.0f,
+                                             -5.0f,
+                                             28.0f,
+                                             28.0f);
         [self.contentView addSubview:self.deleteButton];
     } else {
         [self->_deleteButton removeFromSuperview];
@@ -57,9 +57,9 @@
 
 - (UIView *)deleteButton {
     if(!self->_deleteButton) {
-        self->_deleteButton = [[UIView alloc] init];
+        self->_deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self->_deleteButton addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(deleteButtonPressed:)]];
-        self->_deleteButton.backgroundColor = [UIColor blackColor];
+        [self->_deleteButton setBackgroundImage:[UIImage imageNamed:@"remove-btn"] forState:UIControlStateNormal];
     }
     return self->_deleteButton;
 }
