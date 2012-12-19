@@ -7,41 +7,83 @@
 //
 
 #import "MVGLModelViewController.h"
-#import "MVGLModelView.h"
-#import "GLLight.h"
-#import "MVGLModelView.h"
 #import "MVRadialMenuView.h"
 #import "MVFavouriteMenuViewController.h"
 #import "MVModel.h"
+#import "MVScene.h"
+#import "MVCameraController.h"
+
+#import <QuartzCore/QuartzCore.h>
 
 #define kPopupSize 192.5f
 #define kMenuButtonSize 44.0f
 
-@interface MVGLModelViewController ()
 
-@property (nonatomic,strong) MVGLModelView *modelView;
-@property (nonatomic,strong) UIButton *menuButton;
-@property (nonatomic,strong) UIView *menuView;
-@property (nonatomic,strong) UIViewController *selectedMenuViewController;
+@interface MVGLModelViewController ()<GLKViewControllerDelegate>
+
+@property (nonatomic, strong) UIButton *menuButton;
+@property (nonatomic, strong) UIView *menuView;
+@property (nonatomic, strong) UIViewController *selectedMenuViewController;
+@property (nonatomic, strong) EAGLContext *context;
+@property (nonatomic, strong) MVCameraController *cameraController;
+
+@property (nonatomic, strong) MVModel *model;
+@property (nonatomic, strong) MVScene *scene;
+@property (nonatomic, assign) GLKMatrix4 projection;
 
 @end
 
 @implementation MVGLModelViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.modelView = [[MVGLModelView alloc] initWithFrame:self.view.bounds];
-    self.modelView.backgroundColor = [UIColor colorWithRed:57.0f / 255.0f green:57.0f / 255.0f blue:57.0f / 255.0f alpha:1.0f];
-    [self.view addSubview:self.modelView];
-    self.modelView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        
+- (void)loadView {
+    [super loadView];
     self.menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.menuButton.frame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - kMenuButtonSize, kMenuButtonSize, kMenuButtonSize);
     [self.menuButton setBackgroundImage:[UIImage imageNamed:@"menu-btn"] forState:UIControlStateNormal];
     [self.menuButton addTarget:self action:@selector(openMenu:) forControlEvents:UIControlEventTouchUpInside];
     self.menuButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
     [self.view addSubview:self.menuButton];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    if (!self.context) {
+        NSLog(@"Failed to create ES context");
+    }
+    
+    self.scene = [[MVScene alloc] init];
+    
+    self.cameraController = [[MVCameraController alloc] initWithView:self.view];
+    [self.cameraController reset];
+
+    GLKView *view = (GLKView *)self.view;
+    view.context = self.context;
+    view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+    self.delegate = self;
+    [self setupGL];
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    [self setupGL];
+}
+
+- (void)dealloc {
+    if ([EAGLContext currentContext] == self.context) {
+        [EAGLContext setCurrentContext:nil];
+    }
+    self.context = nil;
+}
+
+- (void)setupGL {
+    [EAGLContext setCurrentContext:self.context];
+    
+    const GLfloat znear = 1.0f, zfar = 51.0f;
+    GLfloat aspect = self.view.bounds.size.width / self.view.bounds.size.height;
+    GLfloat top = tanf(M_PI_2 * 0.5f) * znear;
+    self.projection = GLKMatrix4Translate(GLKMatrix4MakeFrustum(aspect * -top, aspect * top, -top, top, znear, zfar), .0f, .0f, -1.0f);
+    [self.scene setProjectionMatrix:self.projection];
 }
 
 - (UIView *)menuView {
@@ -72,7 +114,6 @@
         
         self.menuView.transform = CGAffineTransformMakeRotation(M_PI_2);
         
-        NSLog(@"Adding %@ to %@",self.menuView,self.view);
         [self.view addSubview:self.menuView];
         [self.view bringSubviewToFront:self.menuButton];
         [UIView animateWithDuration:0.4f animations:^{
@@ -85,16 +126,6 @@
             [self.menuView removeFromSuperview];
         }];
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self.modelView startAnimating];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [self.modelView stopAnimating];
-    [super viewWillDisappear:animated];
 }
 
 - (void)radialMenuView:(MVRadialMenuView *)radialMenuView didSelectIndex:(NSInteger)index {
@@ -112,10 +143,22 @@
 }
 
 - (void)favouriteModelSelected:(MVModel *)model {
-    [self.modelView stopAnimating];
     [model load:NULL];
-    [self.modelView setModel:model];
-    [self.modelView startAnimating];
+    [model setProjectionMatrix:self.projection];
+    self.model = model;
+    [self.cameraController reset];
 }
+
+- (void)glkViewControllerUpdate:(GLKViewController *)controller {
+    GLKMatrix4 modelview = self.cameraController.cameraModelview;
+    [self.scene setModelviewMatrix:modelview];
+    [self.model setModelviewMatrix:modelview];
+}
+
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
+    [self.scene draw];
+    [self.model draw];
+}
+
 
 @end

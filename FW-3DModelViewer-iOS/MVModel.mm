@@ -7,7 +7,6 @@
 //
 
 #import "MVModel.h"
-#import "MVMaterial.h"
 #import "MVVertex.h"
 #import "MVFace.h"
 #import "MVGroup.h"
@@ -32,11 +31,15 @@ using namespace std;
 
 @interface MVModel ()
 
-@property (nonatomic, assign) CATransform3D normalisingTransform;
-@property (nonatomic, strong) MVMaterial *material;
 @property (nonatomic, strong, readonly) NSNumberFormatter *numberFormatter;
-@property (nonatomic, strong) NSMutableDictionary *materials;
-@property (nonatomic, strong, readonly) MVMaterial *defaultMaterial;
+
+@property (nonatomic, strong) NSMutableDictionary *effects;
+@property (nonatomic, strong, readonly) GLKBaseEffect *defaultEffect;
+@property (nonatomic, strong, readonly) GLKEffectPropertyLight *light;
+
+@property (nonatomic, assign) GLKVector3 scale, translation;
+
++ (GLKBaseEffect *)baseEffect;
 
 @end
 
@@ -46,11 +49,10 @@ using namespace std;
 @dynamic objPath, thumbPath;
 @dynamic modelName, modelDirectory;
 
-@synthesize normalisingTransform = _normalisingTransform;
-@synthesize material = _material;
+@synthesize defaultEffect = _defaultEffect, effects = _effects;
+@synthesize scale = _scale, translation = _translation;
+@synthesize light = _light;
 @synthesize numberFormatter = _numberFormatter;
-@synthesize defaultMaterial = _defaultMaterial;
-@synthesize materials;
 
 #pragma mark -
 #pragma mark Loading
@@ -82,10 +84,10 @@ using namespace std;
     if (!fin)
         return NO;
     
-    self.materials = [NSMutableDictionary dictionary];
+    self.effects = [NSMutableDictionary dictionary];
     vector<MVVertex *> vertices;
     MVGroup *group = [[MVGroup alloc] init];
-    group.material = self.defaultMaterial;
+    group.effect = self.defaultEffect;
     groups.push_back(group);
     
     CGFloat ext[6] = {-HUGE_VALF, -HUGE_VALF, -HUGE_VALF, HUGE_VALF, HUGE_VALF, HUGE_VALF};
@@ -144,14 +146,14 @@ using namespace std;
                     group = [[MVGroup alloc] init];
                     if (v.count > 1)
                         group.name = v[1];
-                    group.material = self.defaultMaterial;
+                    group.effect = self.defaultEffect;
                     groups.push_back(group);
                 } else if ([type isEqualToString:OBJ_USE_MAT]) {
                     if (v.count < 1)
                         return NO;
-                    NSString *materialName = v[1];
-                    if ([self.materials.allKeys containsObject:materialName])
-                        group.material = self.materials[materialName];
+                    NSString *effectLabel = v[1];
+                    if ([self.effects.allKeys containsObject:effectLabel])
+                        group.effect = self.effects[effectLabel];
                 }
             }
         }
@@ -177,12 +179,24 @@ using namespace std;
         [g recalculateGeometryForVertexMap:vertexMap];
     
     CGFloat xd = ext[0] - ext[3], yd = ext[1] - ext[4], zd = ext[2] - ext[5];
-    CGFloat norm[3] = { xd / 2.0f - ext[0], yd / 2.0f - ext[1], zd / 2.0f - ext[2] };
-    const CGFloat scalingFactor = 1.6f;
-    CGFloat scale = 1.0f / MAX(MAX(fabsf(xd), fabsf(yd)), fabsf(zd)) * scalingFactor;
-    self->_normalisingTransform = CATransform3DTranslate(CATransform3DScale(CATransform3DIdentity, scale, scale, scale), norm[0], norm[1], norm[2]);
+    CGFloat scale = 1.0f / MAX(MAX(fabsf(xd), fabsf(yd)), fabsf(zd));
+    self.scale = GLKVector3Make(scale, scale, scale);
+    self.translation = GLKVector3Make(xd / 2.0f - ext[0], yd / 2.0f - ext[1], zd / 2.0f - ext[2]);
     
     return YES;
+}
+
+- (void)setProjectionMatrix:(GLKMatrix4)projection {
+    self.defaultEffect.transform.projectionMatrix = projection;
+    for (GLKBaseEffect *e in self.effects.allValues)
+        e.transform.projectionMatrix = projection;
+}
+
+- (void)setModelviewMatrix:(GLKMatrix4)modelview {
+    GLKMatrix4 m = GLKMatrix4TranslateWithVector3(GLKMatrix4ScaleWithVector3(modelview, self.scale), self.translation);
+    self.defaultEffect.transform.modelviewMatrix = m;
+    for (GLKBaseEffect *e in self.effects.allValues)
+        e.transform.modelviewMatrix = m;
 }
 
 - (void)parseMTLFile:(NSString *)path {
@@ -192,7 +206,7 @@ using namespace std;
     if (!fin)
         return;
     
-    MVMaterial *material = nil;
+    GLKBaseEffect *effect = nil;
     while (fgets(buffer, sizeof buffer, fin)) {
         @autoreleasepool {
             NSString *line = [[[NSString stringWithUTF8String:buffer] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@" "];
@@ -202,47 +216,70 @@ using namespace std;
             NSString *type = v[0];
             
             if ([type isEqualToString:MTL_NEWMAT]) {
-                if (material)
-                    self.materials[material.name] = material;
-                material = [[MVMaterial alloc] init];
-                material.name = v[1];
+                if (effect)
+                    self.effects[effect.label] = effect;
+                effect = [MVModel baseEffect];
+                effect.label = v[1];
             } else if ([type isEqualToString:MTL_AMBIENT_COL]) {
                 if (v.count < 4)
                     continue;
                 CGFloat x = floatv(v[1]), y = floatv(v[2]), z = floatv(v[3]), w = 1.0f;
                 if (v.count >= 5)
                     w = floatv(v[4]);
-                material.ambient = GLKVector4Make(x, y, z, w);
+                effect.material.ambientColor = GLKVector4Make(x, y, z, w);
             } else if ([type isEqualToString:MTL_DIFFUSE_COL]) {
                 if (v.count < 4)
                     continue;
                 CGFloat x = floatv(v[1]), y = floatv(v[2]), z = floatv(v[3]), w = 1.0f;
                 if (v.count >= 5)
                     w = floatv(v[4]);
-                material.diffuse = GLKVector4Make(x, y, z, w);
+                effect.material.diffuseColor = GLKVector4Make(x, y, z, w);
             } else if ([type isEqualToString:MTL_SPECULAR_COL]) {
                 if (v.count < 4)
                     continue;
                 CGFloat x = floatv(v[1]), y = floatv(v[2]), z = floatv(v[3]), w = 1.0f;
                 if (v.count >= 5)
                     w = floatv(v[4]);
-                material.specular = GLKVector4Make(x, y, z, w);
+                effect.material.specularColor = GLKVector4Make(x, y, z, w);
             } else if ([type isEqualToString:MTL_SHININESS]) {
                 if (v.count < 2)
                     continue;
-                material.shininess = floatv(v[1]);
+                effect.material.shininess = MAX(floatv(v[1]), 1.0f);
             }
         }
     }
     fclose(fin);
-    if (material)
-        self.materials[material.name] = material;
+    if (effect)
+        self.effects[effect.label] = effect;
 }
 
 #undef intv
 #undef floatv
 #undef numv
 
+#pragma mark - Effects
+
+- (GLKBaseEffect *)defaultEffect {
+    if (!self->_defaultEffect) {
+        GLKBaseEffect *e = [MVModel baseEffect];
+        e.material.ambientColor = GLKVector4Make(192.0f / 255.0f, 192.0f / 255.0f, 192.0f / 255.0f, 1.0f);
+        e.material.diffuseColor = GLKVector4Make(192.0f / 255.0f, 192.0f / 255.0f, 192.0f / 255.0f, 1.0f);
+        e.material.specularColor = GLKVector4Make(1.0f, 1.0f, 1.0f, 1.0f);
+        e.material.shininess = 128.0f;
+        self->_defaultEffect = e;
+    }
+    return self->_defaultEffect;
+}
+
++ (GLKBaseEffect *)baseEffect {
+    GLKBaseEffect *e = [[GLKBaseEffect alloc] init];
+    e.light0.enabled = YES;
+    e.light0.ambientColor = GLKVector4Make(0.125f, 0.125f, 0.125f, 1.0f);
+    e.light0.diffuseColor = GLKVector4Make(0.8f, 0.8f, 0.8f, 1.0f);
+    e.light0.specularColor = GLKVector4Make(1.0f, 1.0f, 1.0f, 1.0f);
+    e.light0.position = GLKVector4Make(.0f, 2.0f, 2.0f, .0f);
+    return e;
+}
 
 #pragma mark - Object Lifecycle
 
@@ -261,40 +298,31 @@ using namespace std;
     return self->_numberFormatter;
 }
 
-- (MVMaterial *)defaultMaterial {
-    if (!self->_defaultMaterial) {
-        MVMaterial *material = [[MVMaterial alloc] init];
-        material.ambient = GLKVector4Make(192.0f / 255.0f, 192.0f / 255.0f, 192.0f / 255.0f, 1.0f);
-        material.diffuse = GLKVector4Make(192.0f / 255.0f, 192.0f / 255.0f, 192.0f / 255.0f, 1.0f);
-        material.specular = GLKVector4Make(1.0f, 1.0f, 1.0f, 1.0f);
-        material.shininess = 128.0f;
-        self->_defaultMaterial = material;
-    }
-    return self->_defaultMaterial;
-}
-
 #pragma mark -
 #pragma mark Drawing
 
 - (void)draw {
-    
+        
     glEnable(GL_DEPTH_TEST);
-    
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glEnableClientState(GL_NORMAL_ARRAY);
+
+    glEnableVertexAttribArray(GLKVertexAttribPosition);
+    glEnableVertexAttribArray(GLKVertexAttribNormal);
     
     glBindBuffer(GL_ARRAY_BUFFER, geometryVBO);
     glBufferData(GL_ARRAY_BUFFER, vertexCount * sizeof(VertexGeometry), vertexGeometry, GL_DYNAMIC_DRAW);
-    glVertexPointer(3, GL_FLOAT, sizeof(VertexGeometry), (GLvoid*) offsetof(VertexGeometry, position));
-    glNormalPointer(GL_FLOAT, sizeof(VertexGeometry), (GLvoid *) offsetof(VertexGeometry, normal));
+    
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(VertexGeometry), (GLvoid *)offsetof(VertexGeometry, position));
+    glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, sizeof(VertexGeometry), (GLvoid *) offsetof(VertexGeometry, normal));
     
     for (MVGroup *group : groups)
         [group draw];
 
-    glDisableClientState(GL_NORMAL_ARRAY);
-    glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableVertexAttribArray(GLKVertexAttribNormal);
+    glDisableVertexAttribArray(GLKVertexAttribPosition);
 
     glDisable(GL_DEPTH_TEST);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 

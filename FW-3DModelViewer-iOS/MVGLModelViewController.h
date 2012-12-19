@@ -9,6 +9,6 @@
 #import "MVRadialMenuView.h"
 #import "MVFavouriteMenuViewController.h"
 
-@interface MVGLModelViewController : UIViewController <MVRadialMenuViewDelegate, MVFavouriteModelSelection>
+@interface MVGLModelViewController : GLKViewController <MVRadialMenuViewDelegate, MVFavouriteModelSelection>
 
 @end

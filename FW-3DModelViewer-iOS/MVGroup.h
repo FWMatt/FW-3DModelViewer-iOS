@@ -11,20 +11,19 @@
 
 @class MVVertex;
 @class MVFace;
-@class MVMaterial;
 
 @interface MVGroup : NSObject {
     std::vector<MVFace *> faces;
     GLuint indexesVBO, *indexes;
 }
 
-@property (nonatomic, strong) MVMaterial *material;
+@property (nonatomic, strong) GLKBaseEffect *effect;
 @property (nonatomic, strong) NSString *name;
 
 - (void)addFace:(MVFace *)face;
-
 - (void)draw;
 - (void)recalculateGeometryForVertexMap:(std::map<MVVertex *, GLuint>&)vertexMap;
+
 
 
 @end

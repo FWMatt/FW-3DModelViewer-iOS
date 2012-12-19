@@ -9,7 +9,6 @@
 #import "MVGroup.h"
 #import "MVVertex.h"
 #import "MVFace.h"
-#import "MVMaterial.h"
 
 #import <map>
 
@@ -38,14 +37,14 @@ using namespace std;
 }
 
 - (void)draw {
-//    NSLog(@"%d", faces.size());
     if (faces.size()) {
 
-        [self.material bind:GL_FRONT_AND_BACK];
+        [self.effect prepareToDraw];
         
         GLuint indexCount = 3 * faces.size();
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexesVBO);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexCount * sizeof(GLuint), indexes, GL_DYNAMIC_DRAW);
+        
         glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
     }
 }
