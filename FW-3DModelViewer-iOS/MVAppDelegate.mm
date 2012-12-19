@@ -82,6 +82,12 @@
         m.modelDirectory = [modelDir stringByAppendingPathComponent:@"007_cube"];
         m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"cube.obj"];
     }
+    {
+        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
+        m.modelName = @"Chair";
+        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"008_chair"];
+        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"chair.obj"];
+    }
     
     [context save:NULL];
     [defaults setBool:YES forKey:seededKey];
