@@ -13,6 +13,7 @@
 struct VertexGeometry {
     GLKVector3 position;
     GLKVector3 normal;
+    GLKVector2 texCoord;
 };
 
 @interface MVVertex : NSObject {
@@ -23,7 +24,7 @@ struct VertexGeometry {
 - (id)initWithPosition:(GLKVector3)position;
 
 - (const std::set<MVFace *> &) faces;
-- (const VertexGeometry &) geometry;
+- (VertexGeometry &) geometry;
 
 - (void)addFaceObject:(MVFace *)face;
 - (void)calculateNormal;

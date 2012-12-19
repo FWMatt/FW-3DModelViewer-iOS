@@ -30,7 +30,6 @@ using namespace std;
     return self;
 }
 
-
 - (MVVertex * const __unsafe_unretained *) vertices {
     return vertices;
 }

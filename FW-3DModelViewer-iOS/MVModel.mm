@@ -26,6 +26,9 @@
 #define MTL_DIFFUSE_COL @"Kd"
 #define MTL_SPECULAR_COL @"Ks"
 #define MTL_SHININESS @"Ns"
+#define MTL_AMBIENT_TEX @"map_Ka"
+#define MTL_DIFFUSE_TEX @"map_Kd"
+#define MTL_SPECULAR_TEX @"map_Ks"
 
 using namespace std;
 
@@ -34,8 +37,8 @@ using namespace std;
 @property (nonatomic, strong, readonly) NSNumberFormatter *numberFormatter;
 
 @property (nonatomic, strong) NSMutableDictionary *effects;
+@property (nonatomic, strong) NSMutableArray *textures;
 @property (nonatomic, strong, readonly) GLKBaseEffect *defaultEffect;
-@property (nonatomic, strong, readonly) GLKEffectPropertyLight *light;
 
 @property (nonatomic, assign) GLKVector3 scale, translation;
 
@@ -51,7 +54,7 @@ using namespace std;
 
 @synthesize defaultEffect = _defaultEffect, effects = _effects;
 @synthesize scale = _scale, translation = _translation;
-@synthesize light = _light;
+@synthesize textures = _textures;
 @synthesize numberFormatter = _numberFormatter;
 
 #pragma mark -
@@ -66,13 +69,23 @@ using namespace std;
 #define intv(x) [numv(x) intValue]
 
 
-- (MVVertex *)vertexWithFaceInfo:(NSString *)faceInfo vertices:(vector<MVVertex *>&)vertices {
+- (MVVertex *)vertexWithFaceInfo:(NSString *)faceInfo vertices:(vector<MVVertex *>&)vertices texCoords:(vector<GLKVector2> &)texCoords {
     NSArray *e = [faceInfo componentsSeparatedByString:@"/"];
     NSInteger i = intv(e[0]);
     if (i < 0)
         i += vertices.size();
     else
         --i;
+    MVVertex *v = vertices[i];
+    if (e.count > 1 && [e[1] length]) {
+        NSInteger ti = intv(e[1]);
+        if (ti < 0)
+            ti += texCoords.size();
+        else
+            --ti;
+        GLKVector2 texCoord = texCoords[ti];
+        v.geometry.texCoord = texCoord;
+    }
     return vertices[i];
 }
 
@@ -85,7 +98,9 @@ using namespace std;
         return NO;
     
     self.effects = [NSMutableDictionary dictionary];
+    self.textures = [NSMutableArray array];
     vector<MVVertex *> vertices;
+    vector<GLKVector2> texCoords;
     MVGroup *group = [[MVGroup alloc] init];
     group.effect = self.defaultEffect;
     groups.push_back(group);
@@ -123,8 +138,12 @@ using namespace std;
                     
                     if (v.count < 3)
                         return NO;
-//                    CGFloat x = floatv(v[1]), y = floatv(v[2]);
-//                    texCoords.push_back(GLKVector2Make(x, y));
+                    CGFloat x = floatv(v[1]), y = floatv(v[2]);
+                    if (x > 1 || x < 0)
+                        x = fmod(x, 1);
+                    if (y > 1 || y < 0)
+                        y = fmod(y, 1);
+                    texCoords.push_back(GLKVector2Make(x, y));
                     
                 } else if ([type isEqualToString:OBJ_NORMAL]) {
                     
@@ -134,10 +153,10 @@ using namespace std;
                     
                     if (v.count < 4)
                         return NO;
-                    MVVertex *v1 = [self vertexWithFaceInfo:v[1] vertices:vertices];
+                    MVVertex *v1 = [self vertexWithFaceInfo:v[1] vertices:vertices texCoords:texCoords];
                     for (NSInteger i = 2; i + 1 < v.count; ++i) {
-                        MVVertex *v2 = [self vertexWithFaceInfo:v[i] vertices:vertices];
-                        MVVertex *v3 = [self vertexWithFaceInfo:v[i + 1] vertices:vertices];
+                        MVVertex *v2 = [self vertexWithFaceInfo:v[i] vertices:vertices texCoords:texCoords];
+                        MVVertex *v3 = [self vertexWithFaceInfo:v[i + 1] vertices:vertices texCoords:texCoords];
                         MVFace *f = [[MVFace alloc] initWithVertices:v1 :v2 :v3];
                         [group addFace:f];
                     }
@@ -245,6 +264,25 @@ using namespace std;
                 if (v.count < 2)
                     continue;
                 effect.material.shininess = MAX(floatv(v[1]), 1.0f);
+            } else if ([type isEqualToString:MTL_AMBIENT_TEX]) {
+                if (v.count < 2)
+                    continue;
+                // TODO properly handle ambient, diffuse and specular texture channels
+
+            } else if ([type isEqualToString:MTL_DIFFUSE_TEX]) {
+                if (v.count < 2)
+                    continue;
+                NSString *texPath = [[path stringByDeletingLastPathComponent] stringByAppendingPathComponent:v[1]];
+                UIImage *image = [UIImage imageWithContentsOfFile:texPath];
+                GLKTextureInfo *texture = [GLKTextureLoader textureWithCGImage:image.CGImage options:nil error:NULL];
+                [self.textures addObject:texture];
+                effect.texture2d0.envMode = GLKTextureEnvModeReplace;
+                effect.texture2d0.target = GLKTextureTarget2D;
+                effect.texture2d0.name = texture.name;
+            } else if ([type isEqualToString:MTL_SPECULAR_TEX]) {
+                if (v.count < 2)
+                    continue;
+                // TODO properly handle ambient, diffuse and specular texture channels
             }
         }
     }
@@ -307,16 +345,19 @@ using namespace std;
 
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glEnableVertexAttribArray(GLKVertexAttribNormal);
+    glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     
     glBindBuffer(GL_ARRAY_BUFFER, geometryVBO);
     glBufferData(GL_ARRAY_BUFFER, vertexCount * sizeof(VertexGeometry), vertexGeometry, GL_DYNAMIC_DRAW);
     
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(VertexGeometry), (GLvoid *)offsetof(VertexGeometry, position));
     glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, sizeof(VertexGeometry), (GLvoid *) offsetof(VertexGeometry, normal));
+    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, sizeof(VertexGeometry), (GLvoid *) offsetof(VertexGeometry, texCoord));
     
     for (MVGroup *group : groups)
         [group draw];
 
+    glDisableVertexAttribArray(GLKVertexAttribTexCoord0);
     glDisableVertexAttribArray(GLKVertexAttribNormal);
     glDisableVertexAttribArray(GLKVertexAttribPosition);
 

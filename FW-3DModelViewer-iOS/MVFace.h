@@ -12,7 +12,6 @@
 
 @interface MVFace : NSObject {
     __strong MVVertex *vertices[3];
-    GLKVector3 texCoords[3];
 }
 
 @property (nonatomic, assign, readonly) GLKVector3 normal;

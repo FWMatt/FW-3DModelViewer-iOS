@@ -23,7 +23,7 @@
     return faces;
 }
 
-- (const VertexGeometry &) geometry {
+- (VertexGeometry &) geometry {
     return geometry;
 }
 
