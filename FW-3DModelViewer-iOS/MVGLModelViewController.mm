@@ -13,16 +13,18 @@
 #import "MVScene.h"
 #import "MVCameraController.h"
 
+#import "MVMenuButton.h"
+
 #import <QuartzCore/QuartzCore.h>
 
-#define kPopupSize 192.5f
+#define kPopupSize 280.0f
 #define kMenuButtonSize 44.0f
 
 
 @interface MVGLModelViewController ()<GLKViewControllerDelegate>
 
 @property (nonatomic, strong) UIButton *menuButton;
-@property (nonatomic, strong) UIView *menuView;
+@property (nonatomic, strong) MVRadialMenuView *menuView;
 @property (nonatomic, strong) UIViewController *selectedMenuViewController;
 @property (nonatomic, strong) EAGLContext *context;
 @property (nonatomic, strong) MVCameraController *cameraController;
@@ -37,11 +39,21 @@
 
 - (void)loadView {
     [super loadView];
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
     self.menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.menuButton.frame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - kMenuButtonSize, kMenuButtonSize, kMenuButtonSize);
     [self.menuButton setBackgroundImage:[UIImage imageNamed:@"menu-btn"] forState:UIControlStateNormal];
     [self.menuButton addTarget:self action:@selector(openMenu:) forControlEvents:UIControlEventTouchUpInside];
     self.menuButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
+    
+    CGRect menuFrame = CGRectMake(-kPopupSize / 2.0f, CGRectGetMaxY(self.view.bounds) - kPopupSize * 1.5f, kPopupSize, kPopupSize);
+    MVRadialMenuView *menuView = [[MVRadialMenuView alloc] initWithFrame:menuFrame segments:@[@"Favorites", @"Download", @"Background", @"Share"]];
+    menuView.delegate = self;
+    menuView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
+    self.menuView = menuView;
+    [self.view addSubview:self.menuView];
+    
     [self.view addSubview:self.menuButton];
 }
 
@@ -61,6 +73,7 @@
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     self.delegate = self;
+    [self.menuView hideAnimated:NO];
     [self setupGL];
 }
 
@@ -86,46 +99,8 @@
     [self.scene setProjectionMatrix:self.projection];
 }
 
-- (UIView *)menuView {
-    if (!self->_menuView) {
-        MVRadialMenuView *menuView = [[MVRadialMenuView alloc] initWithFrame:CGRectZero];
-        menuView.delegate = self;
-        menuView.numberOfSegments = 4;
-        menuView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
-        self->_menuView = menuView;
-    }
-    return self->_menuView;
-}
-
 - (void)openMenu:(UIButton *)button {
-    if (self.selectedMenuViewController) {
-        [UIView animateWithDuration:0.3f animations:^{
-            CGRect menuViewFrame = self.selectedMenuViewController.view.frame;
-            menuViewFrame.origin.x = -menuViewFrame.size.width;
-            self.selectedMenuViewController.view.frame = menuViewFrame;
-        } completion:^(BOOL finished) {
-            [self.selectedMenuViewController.view removeFromSuperview];
-            self.selectedMenuViewController = nil;
-        }];
-    } else if (!self.menuView.superview) {
-        self.menuView.transform = CGAffineTransformIdentity;
-        self.menuView.layer.anchorPoint = CGPointMake(0.0f, 1.0f);
-        self.menuView.frame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - kPopupSize, kPopupSize, kPopupSize);
-        
-        self.menuView.transform = CGAffineTransformMakeRotation(M_PI_2);
-        
-        [self.view addSubview:self.menuView];
-        [self.view bringSubviewToFront:self.menuButton];
-        [UIView animateWithDuration:0.4f animations:^{
-            self.menuView.transform = CGAffineTransformIdentity;
-        }];
-    } else {
-        [UIView animateWithDuration:0.4f animations:^{
-            self.menuView.transform = CGAffineTransformMakeRotation(M_PI_2);
-        } completion:^(BOOL finished) {
-            [self.menuView removeFromSuperview];
-        }];
-    }
+    [self.menuView toggleAnimated:YES];
 }
 
 - (void)radialMenuView:(MVRadialMenuView *)radialMenuView didSelectIndex:(NSInteger)index {

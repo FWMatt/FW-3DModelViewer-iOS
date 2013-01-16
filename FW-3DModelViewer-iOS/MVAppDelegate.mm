@@ -40,6 +40,26 @@
     
     NSManagedObjectContext *context = [RKObjectManager sharedManager].objectStore.managedObjectContextForCurrentThread;
     NSString *modelDir = [[self documentsDirectory] stringByAppendingPathComponent:@"Models"];
+    
+    
+    {
+        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
+        m.modelName = @"Soho Centro";
+        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"009_soho_centro"];
+        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"Soho Centro.obj"];
+    }
+    {
+        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
+        m.modelName = @"Yasmin Solo";
+        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"010_yasmin_solo"];
+        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"Yasmin Solo.obj"];
+    }
+    {
+        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
+        m.modelName = @"Yasmin Tranquillo";
+        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"011_yasmin_tranquillo"];
+        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"Yasmin Tranquillo.obj"];
+    }
     {
         MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
         m.modelName = @"Chair";
@@ -84,9 +104,9 @@
     }
     {
         MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
-        m.modelName = @"Chair";
-        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"008_chair"];
-        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"chair.obj"];
+        m.modelName = @"Sofa";
+        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"008_sofa"];
+        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"sofa_OBJ.obj"];
     }
     
     [context save:NULL];

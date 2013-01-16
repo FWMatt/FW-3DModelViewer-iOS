@@ -8,6 +8,16 @@
 	<string>Model Viewer</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>Icon@2x.png</string>
+			</array>
+		</dict>
+	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>com.futureworkshops.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -26,6 +36,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>AndaleMono.ttf</string>
 		<string>SegoeWPN-Semilight.ttf</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>

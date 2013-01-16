@@ -8,15 +8,12 @@
 
 #import "MVCameraController.h"
 
-#define kInputAngleCoefficient (( 180.0f / M_PI ) * 0.0001)
-
 @interface MVCameraController ()<UIGestureRecognizerDelegate>
 
-@property (nonatomic, assign) GLKVector3 target, camera;
-@property (nonatomic, assign) CGFloat cameraDistance, theta, upsilon;
-@property (nonatomic, assign) CGFloat lastPinchScale;
+@property (nonatomic, assign) GLKQuaternion quaternion;
+@property (nonatomic, assign) GLKVector3 lastPosition;
+@property (nonatomic, assign) CGFloat lastScale, scale;
 @property (nonatomic, assign) GLKMatrix4 cameraModelview;
-@property (nonatomic, assign) CGPoint lastPosition;
 @property (nonatomic, weak) UIView *view;
 
 @end
@@ -27,12 +24,12 @@
     if ((self = [super init])) {
         self.view = view;
         
-        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(gesturePanned:)];
+        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
         panGesture.delegate = self;
-        panGesture.maximumNumberOfTouches = 1;
+        panGesture.maximumNumberOfTouches = 2;
         [self.view addGestureRecognizer:panGesture];
         
-        UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(gesturePinched:)];
+        UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
         pinchGesture.delegate = self;
         [self.view addGestureRecognizer:pinchGesture];
 
@@ -40,19 +37,16 @@
     return self;
 }
 
-
 - (void)reset {
-    self.target = GLKVector3Make(.0f, .0f, .0f);
-    self.cameraDistance = sqrtf(2.0f);
-    self.theta = self.upsilon = M_PI_4;
+    self.quaternion = GLKQuaternionIdentity;
+    self.scale = 1.0f;
     [self updateCamera];
 }
 
 - (void)updateCamera {
-    GLKVector3 camera = GLKVector3Make(sin(self.upsilon), cos(self.upsilon) * cos(self.theta), cos(self.upsilon) * sin(self.theta));
-    self.camera = GLKVector3MultiplyScalar(camera, self.cameraDistance);
-
-    self.cameraModelview = GLKMatrix4MakeLookAt(self.camera.x, self.camera.y, self.camera.z, self.target.x, self.target.y, self.target.z, .0f, 1.0f, .0f);
+    self.cameraModelview = GLKMatrix4MakeLookAt(0.75f, 0.75f, 0.75f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    self.cameraModelview = GLKMatrix4Multiply(self.cameraModelview, GLKMatrix4MakeWithQuaternion(self.quaternion));
+    self.cameraModelview = GLKMatrix4Scale(self.cameraModelview, self.scale, self.scale, self.scale);
 }
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -61,27 +55,46 @@
     return NO;
 }
 
-- (void)gesturePanned:(UIPanGestureRecognizer *)panGesture {
-    CGPoint currentPointInView = [panGesture translationInView:self.view];
-    if (panGesture.state == UIGestureRecognizerStateBegan) {
-        self.lastPosition = currentPointInView;
-    }
-    CGFloat deltaUpsilon = ((self.lastPosition.x - currentPointInView.x) * kInputAngleCoefficient);
-    CGFloat deltaTheta = ((self.lastPosition.y - currentPointInView.y) * kInputAngleCoefficient);
-    self.theta += deltaTheta;
-    self.upsilon += deltaUpsilon;
-    [self updateCamera];
-    self.lastPosition = currentPointInView;
+- (void)handlePan:(UIPanGestureRecognizer *)recognizer {
+    CGPoint location = [recognizer translationInView:self.view];
+    GLKVector3 position;
+    if (recognizer.state == UIGestureRecognizerStateCancelled || recognizer.state == UIGestureRecognizerStateEnded)
+        return;
+    if (recognizer.numberOfTouches == 2)
+        position = GLKVector3Make(self.lastPosition.x, self.lastPosition.y, location.y);
+    else
+        position = GLKVector3Make(location.x, location.y, self.lastPosition.z);
+    if (recognizer.state == UIGestureRecognizerStateBegan)
+        self.lastPosition = position;
+
+    [self rotateMatrixWithVector:GLKVector3Subtract(position, self.lastPosition)];
+    self.lastPosition = position;
 }
 
-- (void)gesturePinched:(UIPinchGestureRecognizer *)pinchGesture {
-    if (pinchGesture.state == UIGestureRecognizerStateBegan) {
-        self.lastPinchScale = pinchGesture.scale;
+- (void)handlePinch:(UIPinchGestureRecognizer *)recognizer {
+    const CGFloat minScale = 0.25f, maxScale = 2.0f, factor = 0.3f;
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        self.lastScale = 1.0f;
     }
-    self.cameraDistance = self.cameraDistance + (self.lastPinchScale - pinchGesture.scale);
+    CGFloat scale = 1.0f - (self.lastScale - recognizer.scale) * factor;
+    self.scale = MIN(MAX(self.scale * scale, minScale), maxScale);
     [self updateCamera];
-    self.lastPinchScale = pinchGesture.scale;
+    self.lastScale = recognizer.scale;
 }
+
+- (void)rotateMatrixWithVector:(GLKVector3)delta {
+    const CGFloat rate = M_PI / 250.0f;
+	GLKVector3 up = GLKQuaternionRotateVector3(GLKQuaternionInvert(self.quaternion), GLKVector3Make(0.0f, 1.0f, 0.0f));
+	self.quaternion = GLKQuaternionMultiply(GLKQuaternionMakeWithAngleAndVector3Axis(delta.x * rate, up), self.quaternion);
+    GLKVector3 right = GLKQuaternionRotateVector3(GLKQuaternionInvert(self.quaternion), GLKVector3Make(1.0f, 0.0f, 0.0f));
+	self.quaternion = GLKQuaternionMultiply(GLKQuaternionMakeWithAngleAndVector3Axis(delta.y * rate, right), self.quaternion);
+    GLKVector3 front = GLKQuaternionRotateVector3(GLKQuaternionInvert(self.quaternion), GLKVector3Make(0.0f, 0.0f, -1.0f));
+    self.quaternion = GLKQuaternionMultiply(GLKQuaternionMakeWithAngleAndVector3Axis(delta.z * rate, front), self.quaternion);
+    [self updateCamera];
+
+}
+
+
 
 
 @end

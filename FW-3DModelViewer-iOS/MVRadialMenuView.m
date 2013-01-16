@@ -7,33 +7,69 @@
 //
 
 #import "MVRadialMenuView.h"
+#import "MVMenuButton.h"
+
+#import <QuartzCore/QuartzCore.h>
+
+@interface MVRadialMenuView ()
+
+@property (nonatomic, assign) BOOL visible;
+
+@end
 
 @implementation MVRadialMenuView
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame segments:(NSArray *)segments {
     if ((self = [super initWithFrame:frame])) {
-        UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu-bg"]];
-        [self addSubview:backgroundView];
+
+        CGRect btnFrame = CGRectMake(.0f, .0f, frame.size.width, frame.size.height);
+        for (NSInteger i = 0; i < segments.count; ++i) {
+            MVMenuButton *btn = [[MVMenuButton alloc] initWithIndex:i count:segments.count title:segments[i]];
+            btn.frame = btnFrame;
+            btn.tag = i;
+            [btn addTarget:self action:@selector(didSelectSegment:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:btn];
+        }
+        self.layer.anchorPoint = CGPointMake(0.0f, 1.0f);
+        self.visible = YES;
     }
     return self;
 }
 
-- (NSInteger)segmentIndexForPoint:(CGPoint)inputPoint { // UNTESTED!!
-    assert(CGRectContainsPoint(self.bounds, inputPoint) && self.numberOfSegments > 0);
-    CGPoint bottomLeftPoint = CGPointMake(inputPoint.x, self.bounds.size.height - inputPoint.y);
-    CGFloat coeff = fabsf(bottomLeftPoint.y / bottomLeftPoint.x);
-    CGFloat theta = asinf(coeff);
-    if(coeff > 1.0f) {
-        coeff = 1.0f / coeff;
-        theta = asinf(coeff);
-        theta = M_PI_4 - theta;
-    }
-    return (NSInteger) (fabsf(theta) / (M_PI_2 / self.numberOfSegments));
+- (void)toggleAnimated:(BOOL)animated {
+    if (!self.visible)
+        [self showAnimated:animated];
+    else
+        [self hideAnimated:animated];
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.delegate radialMenuView:self didSelectIndex:0];
-    return;
+- (void)showAnimated:(BOOL)animated {
+    self.visible = YES;
+    if (animated) {
+        self.transform = CGAffineTransformMakeRotation(M_PI_2);
+        [UIView animateWithDuration:0.4f animations:^{
+            self.transform = CGAffineTransformIdentity;
+        }];
+    } else {
+        self.transform = CGAffineTransformIdentity;
+    }
+}
+
+- (void)hideAnimated:(BOOL)animated {
+    self.visible = NO;
+    if (animated) {
+        self.transform = CGAffineTransformIdentity;
+        [UIView animateWithDuration:0.4f animations:^{
+            self.transform = CGAffineTransformMakeRotation(M_PI_2);
+        }];
+    } else {
+        self.transform = CGAffineTransformMakeRotation(M_PI_2);
+    }
+}
+
+- (void)didSelectSegment:(UIButton *)sender {
+    NSInteger index = sender.tag;
+    [self.delegate radialMenuView:self didSelectIndex:index];
 }
 
 @end

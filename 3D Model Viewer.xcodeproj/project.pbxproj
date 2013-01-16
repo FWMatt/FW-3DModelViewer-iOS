@@ -30,6 +30,8 @@
 		2269CA351666268A00681650 /* UIScrollView+FWT.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA311666268A00681650 /* UIScrollView+FWT.m */; };
 		2269CA381666271100681650 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA371666271100681650 /* CollectionViewCell.m */; };
 		2269CA48166650EE00681650 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2269CA47166650EE00681650 /* libz.1.2.5.dylib */; };
+		8E005F6916A5BB25004D2797 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E005F6816A5BB25004D2797 /* Icon@2x.png */; };
+		8E4294331684815A006E7829 /* MVMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4294321684815A006E7829 /* MVMenuButton.m */; };
 		8E43E6131678BB9200A95424 /* 3DModelViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E6111678BB9200A95424 /* 3DModelViewer.xcdatamodeld */; };
 		8E43E6481678BEBE00A95424 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E62D1678BEBE00A95424 /* ioapi.c */; };
 		8E43E6491678BEBE00A95424 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E62F1678BEBE00A95424 /* mztools.c */; };
@@ -46,6 +48,7 @@
 		8E72DDE91680C253008682AB /* MVGroup.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E72DDE81680C253008682AB /* MVGroup.mm */; };
 		8E8204661682009100C734F8 /* MVCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8204651682009100C734F8 /* MVCameraController.m */; };
 		8E82046D16820AA700C734F8 /* MVScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E82046C16820AA700C734F8 /* MVScene.m */; };
+		8EA97D731684C380008D4AB7 /* AndaleMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA97D721684C380008D4AB7 /* AndaleMono.ttf */; };
 		8EF84152167A206800B6C83B /* menu-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84151167A206800B6C83B /* menu-btn@2x.png */; };
 		8EF84154167A24F500B6C83B /* menu-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84153167A24F500B6C83B /* menu-bg@2x.png */; };
 		8EF8415D167A2F3400B6C83B /* SegoeWPN-Semilight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EF8415C167A2F3400B6C83B /* SegoeWPN-Semilight.ttf */; };
@@ -88,6 +91,9 @@
 		2269CA361666271100681650 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		2269CA371666271100681650 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		2269CA47166650EE00681650 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		8E005F6816A5BB25004D2797 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		8E4294311684815A006E7829 /* MVMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMenuButton.h; sourceTree = "<group>"; };
+		8E4294321684815A006E7829 /* MVMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVMenuButton.m; sourceTree = "<group>"; };
 		8E43E6121678BB9200A95424 /* 3DModelViewer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3DModelViewer.xcdatamodel; sourceTree = "<group>"; };
 		8E43E6171678BE4800A95424 /* SampleModels.xcappdata */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SampleModels.xcappdata; path = ../SampleModels.xcappdata; sourceTree = "<group>"; };
 		8E43E62C1678BEBE00A95424 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 		8E82046B16820AA700C734F8 /* MVScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVScene.h; sourceTree = "<group>"; };
 		8E82046C16820AA700C734F8 /* MVScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVScene.m; sourceTree = "<group>"; };
 		8E82046E1682105F00C734F8 /* MVESObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVESObject.h; sourceTree = "<group>"; };
+		8EA97D721684C380008D4AB7 /* AndaleMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AndaleMono.ttf; sourceTree = "<group>"; };
 		8EF84151167A206800B6C83B /* menu-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-btn@2x.png"; sourceTree = "<group>"; };
 		8EF84153167A24F500B6C83B /* menu-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bg@2x.png"; sourceTree = "<group>"; };
 		8EF8415C167A2F3400B6C83B /* SegoeWPN-Semilight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SegoeWPN-Semilight.ttf"; sourceTree = "<group>"; };
@@ -153,8 +160,10 @@
 		22296DE4166538EA00779A11 /* Radial Menu */ = {
 			isa = PBXGroup;
 			children = (
-				8E72DDDE16808273008682AB /* MVRadialMenuView.h */,
 				22296DE7166538FC00779A11 /* MVRadialMenuView.m */,
+				8E72DDDE16808273008682AB /* MVRadialMenuView.h */,
+				8E4294311684815A006E7829 /* MVMenuButton.h */,
+				8E4294321684815A006E7829 /* MVMenuButton.m */,
 			);
 			name = "Radial Menu";
 			sourceTree = "<group>";
@@ -162,6 +171,7 @@
 		2260002D165E960700F960C4 = {
 			isa = PBXGroup;
 			children = (
+				8E005F6816A5BB25004D2797 /* Icon@2x.png */,
 				22600046165E960700F960C4 /* 3D Model Viewer */,
 				2260003B165E960700F960C4 /* Frameworks */,
 				22600039165E960700F960C4 /* Products */,
@@ -215,7 +225,7 @@
 			children = (
 				8E43E6111678BB9200A95424 /* 3DModelViewer.xcdatamodeld */,
 				8EF84150167A206800B6C83B /* Images */,
-				8EF8415C167A2F3400B6C83B /* SegoeWPN-Semilight.ttf */,
+				8EA97D751684C384008D4AB7 /* Fonts */,
 				22600048165E960700F960C4 /* 3D Model Viewer-Info.plist */,
 				22600049165E960700F960C4 /* InfoPlist.strings */,
 				2260004C165E960700F960C4 /* main.m */,
@@ -333,6 +343,15 @@
 			name = Shaders;
 			sourceTree = "<group>";
 		};
+		8EA97D751684C384008D4AB7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8EF8415C167A2F3400B6C83B /* SegoeWPN-Semilight.ttf */,
+				8EA97D721684C380008D4AB7 /* AndaleMono.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		8EF84150167A206800B6C83B /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,6 +426,8 @@
 				8EF84154167A24F500B6C83B /* menu-bg@2x.png in Resources */,
 				8EF8415D167A2F3400B6C83B /* SegoeWPN-Semilight.ttf in Resources */,
 				8EF84163167A3B2E00B6C83B /* remove-btn@2x.png in Resources */,
+				8EA97D731684C380008D4AB7 /* AndaleMono.ttf in Resources */,
+				8E005F6916A5BB25004D2797 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +481,7 @@
 				8E72DDE91680C253008682AB /* MVGroup.mm in Sources */,
 				8E8204661682009100C734F8 /* MVCameraController.m in Sources */,
 				8E82046D16820AA700C734F8 /* MVScene.m in Sources */,
+				8E4294331684815A006E7829 /* MVMenuButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,7 +522,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PROVISIONING_PROFILE = "783B3563-049E-479F-A013-4AF89F132A31";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -523,7 +545,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "783B3563-049E-479F-A013-4AF89F132A31";
 				SDKROOT = iphoneos;

@@ -12,15 +12,20 @@
 
 @interface MVRadialMenuView : UIView
 
-@property (nonatomic,assign) NSInteger numberOfSegments;
+@property (nonatomic, weak) id<MVRadialMenuViewDelegate> delegate;
 
-@property (nonatomic,weak) id<MVRadialMenuViewDelegate> delegate;
+- (id)initWithFrame:(CGRect)frame segments:(NSArray *)segments;
+
+- (void)toggleAnimated:(BOOL)animated;
+- (void)showAnimated:(BOOL)animated;
+- (void)hideAnimated:(BOOL)animated;
 
 @end
 
 @protocol MVRadialMenuViewDelegate <NSObject>
 
 @required
+
 - (void)radialMenuView:(MVRadialMenuView *)radialMenuView didSelectIndex:(NSInteger)index;
 
 @end
