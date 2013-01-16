@@ -125,7 +125,7 @@
 }
 
 - (void)glkViewControllerUpdate:(GLKViewController *)controller {
-    GLKMatrix4 modelview = self.cameraController.cameraModelview;
+    GLKMatrix4 modelview = [self.cameraController getModelview];
     [self.scene setModelviewMatrix:modelview];
     [self.model setModelviewMatrix:modelview];
 }

@@ -10,11 +10,14 @@
 
 @interface MVCameraController ()<UIGestureRecognizerDelegate>
 
-@property (nonatomic, assign) GLKQuaternion quaternion;
+@property (nonatomic, assign) GLKQuaternion quaternion, slerpStart, slerpEnd;
 @property (nonatomic, assign) GLKVector3 lastPosition;
 @property (nonatomic, assign) CGFloat lastScale, scale;
 @property (nonatomic, assign) GLKMatrix4 cameraModelview;
 @property (nonatomic, weak) UIView *view;
+
+@property (nonatomic, assign) BOOL animating;
+@property (nonatomic, assign) NSInteger frames;
 
 @end
 
@@ -32,14 +35,40 @@
         UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
         pinchGesture.delegate = self;
         [self.view addGestureRecognizer:pinchGesture];
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+        tapGesture.delegate = self;
+        tapGesture.numberOfTapsRequired = 2;
+        [self.view addGestureRecognizer:tapGesture];
 
     }
     return self;
 }
 
+- (GLKMatrix4)getModelview {
+    [self processAnimation];
+    return _cameraModelview;
+}
+
+
+- (void)processAnimation {
+    if (!self.animating)
+        return;
+    const NSInteger targetFrames = 5;
+    if (++self.frames > targetFrames) {
+        self.animating = NO;
+        self.frames = 0.0f;
+    } else {
+        CGFloat amount = (CGFloat)self.frames / (CGFloat)targetFrames;
+        self.quaternion = GLKQuaternionSlerp(self.slerpStart, self.slerpEnd, amount);
+        [self updateCamera];
+    }
+}
+
 - (void)reset {
     self.quaternion = GLKQuaternionIdentity;
     self.scale = 1.0f;
+    self.animating = NO;
     [self updateCamera];
 }
 
@@ -47,6 +76,18 @@
     self.cameraModelview = GLKMatrix4MakeLookAt(0.75f, 0.75f, 0.75f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
     self.cameraModelview = GLKMatrix4Multiply(self.cameraModelview, GLKMatrix4MakeWithQuaternion(self.quaternion));
     self.cameraModelview = GLKMatrix4Scale(self.cameraModelview, self.scale, self.scale, self.scale);
+}
+
+- (void)rotateMatrixWithVector:(GLKVector3)delta {
+    const CGFloat rate = M_PI / 250.0f;
+	GLKVector3 up = GLKQuaternionRotateVector3(GLKQuaternionInvert(self.quaternion), GLKVector3Make(0.0f, 1.0f, 0.0f));
+	self.quaternion = GLKQuaternionMultiply(GLKQuaternionMakeWithAngleAndVector3Axis(delta.x * rate, up), self.quaternion);
+    GLKVector3 right = GLKQuaternionRotateVector3(GLKQuaternionInvert(self.quaternion), GLKVector3Make(1.0f, 0.0f, 0.0f));
+	self.quaternion = GLKQuaternionMultiply(GLKQuaternionMakeWithAngleAndVector3Axis(delta.y * rate, right), self.quaternion);
+    GLKVector3 front = GLKQuaternionRotateVector3(GLKQuaternionInvert(self.quaternion), GLKVector3Make(0.0f, 0.0f, -1.0f));
+    self.quaternion = GLKQuaternionMultiply(GLKQuaternionMakeWithAngleAndVector3Axis(delta.z * rate, front), self.quaternion);
+    [self updateCamera];
+    
 }
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -82,19 +123,12 @@
     self.lastScale = recognizer.scale;
 }
 
-- (void)rotateMatrixWithVector:(GLKVector3)delta {
-    const CGFloat rate = M_PI / 250.0f;
-	GLKVector3 up = GLKQuaternionRotateVector3(GLKQuaternionInvert(self.quaternion), GLKVector3Make(0.0f, 1.0f, 0.0f));
-	self.quaternion = GLKQuaternionMultiply(GLKQuaternionMakeWithAngleAndVector3Axis(delta.x * rate, up), self.quaternion);
-    GLKVector3 right = GLKQuaternionRotateVector3(GLKQuaternionInvert(self.quaternion), GLKVector3Make(1.0f, 0.0f, 0.0f));
-	self.quaternion = GLKQuaternionMultiply(GLKQuaternionMakeWithAngleAndVector3Axis(delta.y * rate, right), self.quaternion);
-    GLKVector3 front = GLKQuaternionRotateVector3(GLKQuaternionInvert(self.quaternion), GLKVector3Make(0.0f, 0.0f, -1.0f));
-    self.quaternion = GLKQuaternionMultiply(GLKQuaternionMakeWithAngleAndVector3Axis(delta.z * rate, front), self.quaternion);
-    [self updateCamera];
-
+- (void)handleDoubleTap:(UITapGestureRecognizer *)recognizer {
+    self.frames = 0;
+    self.slerpStart = self.quaternion;
+    self.slerpEnd = GLKQuaternionIdentity;
+    self.animating = YES;
 }
-
-
 
 
 @end

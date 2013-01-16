@@ -8,9 +8,9 @@
 
 @interface MVCameraController : NSObject
 
-@property (nonatomic, assign, readonly) GLKMatrix4 cameraModelview;
-
 - (id)initWithView:(UIView *)view;
 - (void)reset;
+
+- (GLKMatrix4)getModelview;
 
 @end
