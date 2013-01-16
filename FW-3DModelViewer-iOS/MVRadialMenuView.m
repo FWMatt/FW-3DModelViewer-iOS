@@ -26,7 +26,7 @@ const CGFloat ROTATION_ANGLE = M_PI_2;
 
         CGRect btnFrame = CGRectMake(.0f, .0f, frame.size.width, frame.size.height);
         for (NSInteger i = 0; i < segments.count; ++i) {
-            MVMenuSegment   *btn = [[MVMenuSegment alloc] initWithIndex:i count:segments.count title:segments[i]];
+            MVMenuSegment *btn = [[MVMenuSegment alloc] initWithIndex:i count:segments.count title:segments[i]];
             btn.frame = btnFrame;
             btn.tag = i;
             [btn addTarget:self action:@selector(didSelectSegment:) forControlEvents:UIControlEventTouchUpInside];
@@ -34,7 +34,6 @@ const CGFloat ROTATION_ANGLE = M_PI_2;
         }
         self.layer.anchorPoint = CGPointMake(0.0f, 1.0f);
         
-        self.layer.shouldRasterize = YES;
         self.layer.shadowRadius = 10.0f;
         self.layer.shadowOffset = CGSizeMake(0, 0);
         self.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -57,15 +56,10 @@ const CGFloat ROTATION_ANGLE = M_PI_2;
     self.visible = YES;
     if (animated) {
         self.transform = CGAffineTransformMakeRotation(ROTATION_ANGLE);
-        [UIView animateWithDuration:0.1f animations:^{
-            self.alpha = 1.0f;
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.4f animations:^{
-                self.transform = CGAffineTransformIdentity;
-            }];
+        [UIView animateWithDuration:0.4f animations:^{
+            self.transform = CGAffineTransformIdentity;
         }];
     } else {
-        self.alpha = 1.0f;
         self.transform = CGAffineTransformIdentity;
     }
 }
@@ -77,13 +71,8 @@ const CGFloat ROTATION_ANGLE = M_PI_2;
         self.transform = CGAffineTransformIdentity;
         [UIView animateWithDuration:0.4f animations:^{
             self.transform = CGAffineTransformMakeRotation(ROTATION_ANGLE);
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.1f animations:^{
-                self.alpha = 0.0f;
-            }];
         }];
     } else {
-        self.alpha = 0.0f;
         self.transform = CGAffineTransformMakeRotation(ROTATION_ANGLE);
     }
 }
