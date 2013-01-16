@@ -29,7 +29,7 @@
         
         UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
         panGesture.delegate = self;
-        panGesture.maximumNumberOfTouches = 2;
+        panGesture.maximumNumberOfTouches = 1;
         [self.view addGestureRecognizer:panGesture];
         
         UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];

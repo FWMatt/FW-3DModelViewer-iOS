@@ -27,5 +27,6 @@
 @required
 
 - (void)radialMenuView:(MVRadialMenuView *)radialMenuView didSelectIndex:(NSInteger)index;
+- (void)radialMenuViewWillHide:(MVRadialMenuView *)radialMenuView;
 
 @end

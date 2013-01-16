@@ -30,7 +30,6 @@
 		2269CA351666268A00681650 /* UIScrollView+FWT.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA311666268A00681650 /* UIScrollView+FWT.m */; };
 		2269CA381666271100681650 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA371666271100681650 /* CollectionViewCell.m */; };
 		2269CA48166650EE00681650 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2269CA47166650EE00681650 /* libz.1.2.5.dylib */; };
-		8E005F6916A5BB25004D2797 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E005F6816A5BB25004D2797 /* Icon@2x.png */; };
 		8E4294331684815A006E7829 /* MVMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4294321684815A006E7829 /* MVMenuButton.m */; };
 		8E43E6131678BB9200A95424 /* 3DModelViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E6111678BB9200A95424 /* 3DModelViewer.xcdatamodeld */; };
 		8E43E6481678BEBE00A95424 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E62D1678BEBE00A95424 /* ioapi.c */; };
@@ -43,6 +42,7 @@
 		8E43E64F1678BEBE00A95424 /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E63D1678BEBE00A95424 /* ZipReadStream.m */; settings = {COMPILER_FLAGS = "-fno-obj-arc"; }; };
 		8E43E6501678BEBE00A95424 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E63F1678BEBE00A95424 /* ZipWriteStream.m */; settings = {COMPILER_FLAGS = "-fno-obj-arc"; }; };
 		8E43E6541678BF1800A95424 /* MVModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E6531678BF1800A95424 /* MVModel.mm */; };
+		8E5C5DB416A6D31400020BE9 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E5C5DB316A6D31400020BE9 /* Icon-72@2x.png */; };
 		8E72DDE2168082F3008682AB /* MVVertex.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E72DDE1168082F3008682AB /* MVVertex.mm */; };
 		8E72DDE51680833C008682AB /* MVFace.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E72DDE41680833C008682AB /* MVFace.mm */; };
 		8E72DDE91680C253008682AB /* MVGroup.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E72DDE81680C253008682AB /* MVGroup.mm */; };
@@ -91,7 +91,6 @@
 		2269CA361666271100681650 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		2269CA371666271100681650 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		2269CA47166650EE00681650 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
-		8E005F6816A5BB25004D2797 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		8E4294311684815A006E7829 /* MVMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMenuButton.h; sourceTree = "<group>"; };
 		8E4294321684815A006E7829 /* MVMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVMenuButton.m; sourceTree = "<group>"; };
 		8E43E6121678BB9200A95424 /* 3DModelViewer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3DModelViewer.xcdatamodel; sourceTree = "<group>"; };
@@ -117,6 +116,7 @@
 		8E43E63F1678BEBE00A95424 /* ZipWriteStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipWriteStream.m; sourceTree = "<group>"; };
 		8E43E6521678BF1800A95424 /* MVModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVModel.h; sourceTree = "<group>"; };
 		8E43E6531678BF1800A95424 /* MVModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MVModel.mm; sourceTree = "<group>"; };
+		8E5C5DB316A6D31400020BE9 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		8E72DDDE16808273008682AB /* MVRadialMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVRadialMenuView.h; sourceTree = "<group>"; };
 		8E72DDE0168082F3008682AB /* MVVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVVertex.h; sourceTree = "<group>"; };
 		8E72DDE1168082F3008682AB /* MVVertex.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MVVertex.mm; sourceTree = "<group>"; };
@@ -160,8 +160,8 @@
 		22296DE4166538EA00779A11 /* Radial Menu */ = {
 			isa = PBXGroup;
 			children = (
-				22296DE7166538FC00779A11 /* MVRadialMenuView.m */,
 				8E72DDDE16808273008682AB /* MVRadialMenuView.h */,
+				22296DE7166538FC00779A11 /* MVRadialMenuView.m */,
 				8E4294311684815A006E7829 /* MVMenuButton.h */,
 				8E4294321684815A006E7829 /* MVMenuButton.m */,
 			);
@@ -171,7 +171,7 @@
 		2260002D165E960700F960C4 = {
 			isa = PBXGroup;
 			children = (
-				8E005F6816A5BB25004D2797 /* Icon@2x.png */,
+				8E5C5DB316A6D31400020BE9 /* Icon-72@2x.png */,
 				22600046165E960700F960C4 /* 3D Model Viewer */,
 				2260003B165E960700F960C4 /* Frameworks */,
 				22600039165E960700F960C4 /* Products */,
@@ -427,7 +427,7 @@
 				8EF8415D167A2F3400B6C83B /* SegoeWPN-Semilight.ttf in Resources */,
 				8EF84163167A3B2E00B6C83B /* remove-btn@2x.png in Resources */,
 				8EA97D731684C380008D4AB7 /* AndaleMono.ttf in Resources */,
-				8E005F6916A5BB25004D2797 /* Icon@2x.png in Resources */,
+				8E5C5DB416A6D31400020BE9 /* Icon-72@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,12 +559,15 @@
 			baseConfigurationReference = 902D08DB42D14F49914C2A6D /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kamil Kocemba (K29LCWCF47)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FW-3DModelViewer-iOS/3D Model Viewer-Prefix.pch";
 				INFOPLIST_FILE = "FW-3DModelViewer-iOS/3D Model Viewer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "3D Model Viewer";
-				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D867A851-5062-4A4D-B278-0B816B4A6F5A";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -579,8 +582,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FW-3DModelViewer-iOS/3D Model Viewer-Prefix.pch";
 				INFOPLIST_FILE = "FW-3DModelViewer-iOS/3D Model Viewer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "3D Model Viewer";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

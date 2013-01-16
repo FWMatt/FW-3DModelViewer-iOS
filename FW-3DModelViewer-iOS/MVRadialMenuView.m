@@ -56,6 +56,7 @@
 }
 
 - (void)hideAnimated:(BOOL)animated {
+    [self.delegate radialMenuViewWillHide:self];
     self.visible = NO;
     if (animated) {
         self.transform = CGAffineTransformIdentity;

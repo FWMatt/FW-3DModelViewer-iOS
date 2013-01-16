@@ -103,13 +103,21 @@
     [self.menuView toggleAnimated:YES];
 }
 
+- (void)favouriteModelSelected:(MVModel *)model {
+    [model load:NULL];
+    [model setProjectionMatrix:self.projection];
+    self.model = model;
+    [self.cameraController reset];
+}
+
+#pragma mark - MVRadialMenuViewDelegate 
+
 - (void)radialMenuView:(MVRadialMenuView *)radialMenuView didSelectIndex:(NSInteger)index {
     MVFavouriteMenuViewController *favouriteMenuViewController = [[MVFavouriteMenuViewController alloc] init];
-    favouriteMenuViewController.selectionDelegate = self;   
+    favouriteMenuViewController.selectionDelegate = self;
     self.selectedMenuViewController = favouriteMenuViewController;
-    self.selectedMenuViewController.view.frame = CGRectMake(-2.0f *kPopupSize, CGRectGetMaxY(self.view.bounds) - kPopupSize, CGRectGetWidth(self.view.bounds), kPopupSize);
     self.selectedMenuViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth| UIViewAutoresizingFlexibleTopMargin;
-
+    
     [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self.view addSubview:self.selectedMenuViewController.view];
         [self.view bringSubviewToFront:self.menuButton];
@@ -117,12 +125,15 @@
     } completion:nil];
 }
 
-- (void)favouriteModelSelected:(MVModel *)model {
-    [model load:NULL];
-    [model setProjectionMatrix:self.projection];
-    self.model = model;
-    [self.cameraController reset];
+- (void)radialMenuViewWillHide:(MVRadialMenuView *)radialMenuView {
+    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.selectedMenuViewController.view.frame = CGRectMake(-2.0f *kPopupSize, CGRectGetMaxY(self.view.bounds) - kPopupSize, CGRectGetWidth(self.view.bounds), kPopupSize);
+    } completion:^(BOOL successful){
+        [self.selectedMenuViewController.view removeFromSuperview];
+     }];
 }
+
+#pragma mark - GLKViewControllerDelegate
 
 - (void)glkViewControllerUpdate:(GLKViewController *)controller {
     GLKMatrix4 modelview = [self.cameraController getModelview];
@@ -134,6 +145,8 @@
     [self.scene draw];
     [self.model draw];
 }
+
+
 
 
 @end
