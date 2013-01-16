@@ -7,25 +7,15 @@
 //
 
 #import "MVGLModelViewController.h"
-#import "MVRadialMenuView.h"
-#import "MVFavouriteMenuViewController.h"
 #import "MVModel.h"
 #import "MVScene.h"
 #import "MVCameraController.h"
 
-#import "MVMenuButton.h"
-
 #import <QuartzCore/QuartzCore.h>
-
-#define kPopupSize 280.0f
-#define kMenuButtonSize 44.0f
 
 
 @interface MVGLModelViewController ()<GLKViewControllerDelegate>
 
-@property (nonatomic, strong) UIButton *menuButton;
-@property (nonatomic, strong) MVRadialMenuView *menuView;
-@property (nonatomic, strong) UIViewController *selectedMenuViewController;
 @property (nonatomic, strong) EAGLContext *context;
 @property (nonatomic, strong) MVCameraController *cameraController;
 
@@ -40,21 +30,7 @@
 - (void)loadView {
     [super loadView];
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
-    self.menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.menuButton.frame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - kMenuButtonSize, kMenuButtonSize, kMenuButtonSize);
-    [self.menuButton setBackgroundImage:[UIImage imageNamed:@"menu-btn"] forState:UIControlStateNormal];
-    [self.menuButton addTarget:self action:@selector(openMenu:) forControlEvents:UIControlEventTouchUpInside];
-    self.menuButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
-    
-    CGRect menuFrame = CGRectMake(-kPopupSize / 2.0f, CGRectGetMaxY(self.view.bounds) - kPopupSize * 1.5f, kPopupSize, kPopupSize);
-    MVRadialMenuView *menuView = [[MVRadialMenuView alloc] initWithFrame:menuFrame segments:@[@"Favorites", @"Download", @"Background", @"Share"]];
-    menuView.delegate = self;
-    menuView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
-    self.menuView = menuView;
-    [self.view addSubview:self.menuView];
-    
-    [self.view addSubview:self.menuButton];
+    self.view.opaque = NO;
 }
 
 - (void)viewDidLoad {
@@ -73,7 +49,6 @@
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     self.delegate = self;
-    [self.menuView hideAnimated:NO];
     [self setupGL];
 }
 
@@ -99,39 +74,13 @@
     [self.scene setProjectionMatrix:self.projection];
 }
 
-- (void)openMenu:(UIButton *)button {
-    [self.menuView toggleAnimated:YES];
-}
-
-- (void)favouriteModelSelected:(MVModel *)model {
+- (void)loadModel:(MVModel *)model {
     [model load:NULL];
     [model setProjectionMatrix:self.projection];
     self.model = model;
     [self.cameraController reset];
 }
 
-#pragma mark - MVRadialMenuViewDelegate 
-
-- (void)radialMenuView:(MVRadialMenuView *)radialMenuView didSelectIndex:(NSInteger)index {
-    MVFavouriteMenuViewController *favouriteMenuViewController = [[MVFavouriteMenuViewController alloc] init];
-    favouriteMenuViewController.selectionDelegate = self;
-    self.selectedMenuViewController = favouriteMenuViewController;
-    self.selectedMenuViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth| UIViewAutoresizingFlexibleTopMargin;
-    
-    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-        [self.view addSubview:self.selectedMenuViewController.view];
-        [self.view bringSubviewToFront:self.menuButton];
-        self.selectedMenuViewController.view.frame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - kPopupSize, CGRectGetWidth(self.view.bounds), kPopupSize);
-    } completion:nil];
-}
-
-- (void)radialMenuViewWillHide:(MVRadialMenuView *)radialMenuView {
-    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.selectedMenuViewController.view.frame = CGRectMake(-2.0f *kPopupSize, CGRectGetMaxY(self.view.bounds) - kPopupSize, CGRectGetWidth(self.view.bounds), kPopupSize);
-    } completion:^(BOOL successful){
-        [self.selectedMenuViewController.view removeFromSuperview];
-     }];
-}
 
 #pragma mark - GLKViewControllerDelegate
 

@@ -6,9 +6,10 @@
 //  Copyright (c) 2012 Future Workshops. All rights reserved.
 //
 
-#import "MVRadialMenuView.h"
-#import "MVFavouriteMenuViewController.h"
+@class MVModel;
 
-@interface MVGLModelViewController : GLKViewController <MVRadialMenuViewDelegate, MVFavouriteModelSelection>
+@interface MVGLModelViewController : GLKViewController
+
+- (void)loadModel:(MVModel *)model;
 
 @end

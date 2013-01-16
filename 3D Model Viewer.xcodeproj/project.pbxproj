@@ -30,7 +30,7 @@
 		2269CA351666268A00681650 /* UIScrollView+FWT.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA311666268A00681650 /* UIScrollView+FWT.m */; };
 		2269CA381666271100681650 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA371666271100681650 /* CollectionViewCell.m */; };
 		2269CA48166650EE00681650 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2269CA47166650EE00681650 /* libz.1.2.5.dylib */; };
-		8E4294331684815A006E7829 /* MVMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4294321684815A006E7829 /* MVMenuButton.m */; };
+		8E4294331684815A006E7829 /* MVMenuSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4294321684815A006E7829 /* MVMenuSegment.m */; };
 		8E43E6131678BB9200A95424 /* 3DModelViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E6111678BB9200A95424 /* 3DModelViewer.xcdatamodeld */; };
 		8E43E6481678BEBE00A95424 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E62D1678BEBE00A95424 /* ioapi.c */; };
 		8E43E6491678BEBE00A95424 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E62F1678BEBE00A95424 /* mztools.c */; };
@@ -48,10 +48,14 @@
 		8E72DDE91680C253008682AB /* MVGroup.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E72DDE81680C253008682AB /* MVGroup.mm */; };
 		8E8204661682009100C734F8 /* MVCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8204651682009100C734F8 /* MVCameraController.m */; };
 		8E82046D16820AA700C734F8 /* MVScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E82046C16820AA700C734F8 /* MVScene.m */; };
-		8EA97D731684C380008D4AB7 /* AndaleMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA97D721684C380008D4AB7 /* AndaleMono.ttf */; };
+		8EB8C59E16A6DF7300770E44 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8C59D16A6DF7300770E44 /* background@2x.png */; };
+		8EB8C5A116A6E41000770E44 /* MVRootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8C5A016A6E41000770E44 /* MVRootViewController.mm */; };
+		8EB8C5A316A6E6D700770E44 /* menu-btn-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8C5A216A6E6D700770E44 /* menu-btn-image@2x.png */; };
+		8EB8C5A516A6EB0700770E44 /* menu-btn-sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8C5A416A6EB0700770E44 /* menu-btn-sel@2x.png */; };
+		8EB8C5A816A6EC1500770E44 /* MVMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8C5A716A6EC1500770E44 /* MVMenuButton.m */; };
+		8EB8C5AA16A6FC1A00770E44 /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8C5A916A6FC1A00770E44 /* Avenir.ttc */; };
 		8EF84152167A206800B6C83B /* menu-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84151167A206800B6C83B /* menu-btn@2x.png */; };
 		8EF84154167A24F500B6C83B /* menu-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84153167A24F500B6C83B /* menu-bg@2x.png */; };
-		8EF8415D167A2F3400B6C83B /* SegoeWPN-Semilight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EF8415C167A2F3400B6C83B /* SegoeWPN-Semilight.ttf */; };
 		8EF84163167A3B2E00B6C83B /* remove-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84162167A3B2E00B6C83B /* remove-btn@2x.png */; };
 		E5ACAFDEEDB74CA7859A5EF4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E2BF7A019E4A058DF25BD7 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -91,8 +95,8 @@
 		2269CA361666271100681650 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		2269CA371666271100681650 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		2269CA47166650EE00681650 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
-		8E4294311684815A006E7829 /* MVMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMenuButton.h; sourceTree = "<group>"; };
-		8E4294321684815A006E7829 /* MVMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVMenuButton.m; sourceTree = "<group>"; };
+		8E4294311684815A006E7829 /* MVMenuSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMenuSegment.h; sourceTree = "<group>"; };
+		8E4294321684815A006E7829 /* MVMenuSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVMenuSegment.m; sourceTree = "<group>"; };
 		8E43E6121678BB9200A95424 /* 3DModelViewer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3DModelViewer.xcdatamodel; sourceTree = "<group>"; };
 		8E43E6171678BE4800A95424 /* SampleModels.xcappdata */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SampleModels.xcappdata; path = ../SampleModels.xcappdata; sourceTree = "<group>"; };
 		8E43E62C1678BEBE00A95424 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
@@ -129,10 +133,16 @@
 		8E82046B16820AA700C734F8 /* MVScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVScene.h; sourceTree = "<group>"; };
 		8E82046C16820AA700C734F8 /* MVScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVScene.m; sourceTree = "<group>"; };
 		8E82046E1682105F00C734F8 /* MVESObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVESObject.h; sourceTree = "<group>"; };
-		8EA97D721684C380008D4AB7 /* AndaleMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AndaleMono.ttf; sourceTree = "<group>"; };
+		8EB8C59D16A6DF7300770E44 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		8EB8C59F16A6E41000770E44 /* MVRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVRootViewController.h; sourceTree = "<group>"; };
+		8EB8C5A016A6E41000770E44 /* MVRootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MVRootViewController.mm; sourceTree = "<group>"; };
+		8EB8C5A216A6E6D700770E44 /* menu-btn-image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-btn-image@2x.png"; sourceTree = "<group>"; };
+		8EB8C5A416A6EB0700770E44 /* menu-btn-sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-btn-sel@2x.png"; sourceTree = "<group>"; };
+		8EB8C5A616A6EC1500770E44 /* MVMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMenuButton.h; sourceTree = "<group>"; };
+		8EB8C5A716A6EC1500770E44 /* MVMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVMenuButton.m; sourceTree = "<group>"; };
+		8EB8C5A916A6FC1A00770E44 /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = "<group>"; };
 		8EF84151167A206800B6C83B /* menu-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-btn@2x.png"; sourceTree = "<group>"; };
 		8EF84153167A24F500B6C83B /* menu-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bg@2x.png"; sourceTree = "<group>"; };
-		8EF8415C167A2F3400B6C83B /* SegoeWPN-Semilight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SegoeWPN-Semilight.ttf"; sourceTree = "<group>"; };
 		8EF84162167A3B2E00B6C83B /* remove-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove-btn@2x.png"; sourceTree = "<group>"; };
 		902D08DB42D14F49914C2A6D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B5E2BF7A019E4A058DF25BD7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,8 +172,10 @@
 			children = (
 				8E72DDDE16808273008682AB /* MVRadialMenuView.h */,
 				22296DE7166538FC00779A11 /* MVRadialMenuView.m */,
-				8E4294311684815A006E7829 /* MVMenuButton.h */,
-				8E4294321684815A006E7829 /* MVMenuButton.m */,
+				8E4294311684815A006E7829 /* MVMenuSegment.h */,
+				8E4294321684815A006E7829 /* MVMenuSegment.m */,
+				8EB8C5A616A6EC1500770E44 /* MVMenuButton.h */,
+				8EB8C5A716A6EC1500770E44 /* MVMenuButton.m */,
 			);
 			name = "Radial Menu";
 			sourceTree = "<group>";
@@ -244,6 +256,8 @@
 				8E8204651682009100C734F8 /* MVCameraController.m */,
 				2229A9B216638D8C00EBFA72 /* MVGLModelViewController.h */,
 				2229A9B316638D8C00EBFA72 /* MVGLModelViewController.mm */,
+				8EB8C59F16A6E41000770E44 /* MVRootViewController.h */,
+				8EB8C5A016A6E41000770E44 /* MVRootViewController.mm */,
 			);
 			name = "Model Viewer";
 			sourceTree = "<group>";
@@ -346,8 +360,7 @@
 		8EA97D751684C384008D4AB7 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				8EF8415C167A2F3400B6C83B /* SegoeWPN-Semilight.ttf */,
-				8EA97D721684C380008D4AB7 /* AndaleMono.ttf */,
+				8EB8C5A916A6FC1A00770E44 /* Avenir.ttc */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -355,8 +368,11 @@
 		8EF84150167A206800B6C83B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8EB8C5A216A6E6D700770E44 /* menu-btn-image@2x.png */,
+				8EB8C59D16A6DF7300770E44 /* background@2x.png */,
 				8EF84162167A3B2E00B6C83B /* remove-btn@2x.png */,
 				8EF84151167A206800B6C83B /* menu-btn@2x.png */,
+				8EB8C5A416A6EB0700770E44 /* menu-btn-sel@2x.png */,
 				8EF84153167A24F500B6C83B /* menu-bg@2x.png */,
 				8E43E6171678BE4800A95424 /* SampleModels.xcappdata */,
 			);
@@ -424,10 +440,12 @@
 				2260005B165E960700F960C4 /* Shader.vsh in Resources */,
 				8EF84152167A206800B6C83B /* menu-btn@2x.png in Resources */,
 				8EF84154167A24F500B6C83B /* menu-bg@2x.png in Resources */,
-				8EF8415D167A2F3400B6C83B /* SegoeWPN-Semilight.ttf in Resources */,
 				8EF84163167A3B2E00B6C83B /* remove-btn@2x.png in Resources */,
-				8EA97D731684C380008D4AB7 /* AndaleMono.ttf in Resources */,
 				8E5C5DB416A6D31400020BE9 /* Icon-72@2x.png in Resources */,
+				8EB8C59E16A6DF7300770E44 /* background@2x.png in Resources */,
+				8EB8C5A316A6E6D700770E44 /* menu-btn-image@2x.png in Resources */,
+				8EB8C5A516A6EB0700770E44 /* menu-btn-sel@2x.png in Resources */,
+				8EB8C5AA16A6FC1A00770E44 /* Avenir.ttc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,7 +499,9 @@
 				8E72DDE91680C253008682AB /* MVGroup.mm in Sources */,
 				8E8204661682009100C734F8 /* MVCameraController.m in Sources */,
 				8E82046D16820AA700C734F8 /* MVScene.m in Sources */,
-				8E4294331684815A006E7829 /* MVMenuButton.m in Sources */,
+				8E4294331684815A006E7829 /* MVMenuSegment.m in Sources */,
+				8EB8C5A116A6E41000770E44 /* MVRootViewController.mm in Sources */,
+				8EB8C5A816A6EC1500770E44 /* MVMenuButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

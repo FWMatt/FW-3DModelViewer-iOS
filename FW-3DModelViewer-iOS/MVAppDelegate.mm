@@ -8,7 +8,7 @@
 
 #import "MVAppDelegate.h"
 
-#import "MVGLModelViewController.h"
+#import "MVRootViewController.h"
 #import "MVModel.h"
 
 #define TEST_FILEWRITE NO
@@ -25,8 +25,9 @@
     [self seedDatabase];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.viewController = [[MVGLModelViewController alloc] init];
+    self.viewController = [[MVRootViewController alloc] init];
     self.window.rootViewController = self.viewController;
+    
     [self.window makeKeyAndVisible];
     
     return YES;

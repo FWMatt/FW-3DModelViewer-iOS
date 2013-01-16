@@ -7,7 +7,7 @@
 //
 
 #import "MVRadialMenuView.h"
-#import "MVMenuButton.h"
+#import "MVMenuSegment.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -19,18 +19,28 @@
 
 @implementation MVRadialMenuView
 
+const CGFloat ROTATION_ANGLE = M_PI_2;
+
 - (id)initWithFrame:(CGRect)frame segments:(NSArray *)segments {
     if ((self = [super initWithFrame:frame])) {
 
         CGRect btnFrame = CGRectMake(.0f, .0f, frame.size.width, frame.size.height);
         for (NSInteger i = 0; i < segments.count; ++i) {
-            MVMenuButton *btn = [[MVMenuButton alloc] initWithIndex:i count:segments.count title:segments[i]];
+            MVMenuSegment   *btn = [[MVMenuSegment alloc] initWithIndex:i count:segments.count title:segments[i]];
             btn.frame = btnFrame;
             btn.tag = i;
             [btn addTarget:self action:@selector(didSelectSegment:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:btn];
         }
         self.layer.anchorPoint = CGPointMake(0.0f, 1.0f);
+        
+        self.layer.shouldRasterize = YES;
+        self.layer.shadowRadius = 10.0f;
+        self.layer.shadowOffset = CGSizeMake(0, 0);
+        self.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.layer.shadowOpacity = 0.4f;
+        self.clipsToBounds = NO;
+        
         self.visible = YES;
     }
     return self;
@@ -46,11 +56,16 @@
 - (void)showAnimated:(BOOL)animated {
     self.visible = YES;
     if (animated) {
-        self.transform = CGAffineTransformMakeRotation(M_PI_2);
-        [UIView animateWithDuration:0.4f animations:^{
-            self.transform = CGAffineTransformIdentity;
+        self.transform = CGAffineTransformMakeRotation(ROTATION_ANGLE);
+        [UIView animateWithDuration:0.1f animations:^{
+            self.alpha = 1.0f;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.4f animations:^{
+                self.transform = CGAffineTransformIdentity;
+            }];
         }];
     } else {
+        self.alpha = 1.0f;
         self.transform = CGAffineTransformIdentity;
     }
 }
@@ -61,10 +76,15 @@
     if (animated) {
         self.transform = CGAffineTransformIdentity;
         [UIView animateWithDuration:0.4f animations:^{
-            self.transform = CGAffineTransformMakeRotation(M_PI_2);
+            self.transform = CGAffineTransformMakeRotation(ROTATION_ANGLE);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.1f animations:^{
+                self.alpha = 0.0f;
+            }];
         }];
     } else {
-        self.transform = CGAffineTransformMakeRotation(M_PI_2);
+        self.alpha = 0.0f;
+        self.transform = CGAffineTransformMakeRotation(ROTATION_ANGLE);
     }
 }
 

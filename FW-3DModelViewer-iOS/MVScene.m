@@ -32,43 +32,44 @@
 }
 
 - (void)draw {
-    glClearColor(.224f, .224f, .224f, 1.0);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     
     [self.effect prepareToDraw];
-    
-    static const GLfloat vertices[18] = {
-        1.0f, 0.0f, 0.0f,// X axis
-        0.0f, 0.0f, 0.0f,
-        0.0f, 0.0f, 0.0f,
-        0.0f, 1.0f, 0.0f, // Y axis
-        0.0f, 0.0f, 0.0f,
-        0.0f, 0.0f, 1.0f
-    }; // Z axis
-    
-    static const GLfloat colors[24] = {
-        1.0f, 0.0f, 0.0f, 1.0f, // x
-        1.0f, 0.0f, 0.0f, 1.0f,
-        0.0f, 1.0f, 0.0f, 1.0f, // y
-        0.0f, 1.0f, 0.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f, // z
-        0.0f, 0.0f, 1.0f, 1.0f
-    };
-    
     
     glEnable(GL_DEPTH_TEST);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glEnableVertexAttribArray(GLKVertexAttribColor);
-    
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, vertices);
-    glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, colors);
-    
-    glDrawArrays(GL_LINES, 0, 6);
-    
-    
-    glDisableVertexAttribArray(GLKVertexAttribPosition);
-    glDisableVertexAttribArray(GLKVertexAttribColor);
+//    static const GLfloat vertices[18] = {
+//        1.0f, 0.0f, 0.0f,// X axis
+//        0.0f, 0.0f, 0.0f,
+//        0.0f, 0.0f, 0.0f,
+//        0.0f, 1.0f, 0.0f, // Y axis
+//        0.0f, 0.0f, 0.0f,
+//        0.0f, 0.0f, 1.0f
+//    }; // Z axis
+//    
+//    static const GLfloat colors[24] = {
+//        1.0f, 0.0f, 0.0f, 1.0f, // x
+//        1.0f, 0.0f, 0.0f, 1.0f,
+//        0.0f, 1.0f, 0.0f, 1.0f, // y
+//        0.0f, 1.0f, 0.0f, 1.0f,
+//        0.0f, 0.0f, 1.0f, 1.0f, // z
+//        0.0f, 0.0f, 1.0f, 1.0f
+//    };
+//    
+//    
+//
+//    glEnableVertexAttribArray(GLKVertexAttribPosition);
+//    glEnableVertexAttribArray(GLKVertexAttribColor);
+//    
+//    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, vertices);
+//    glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, colors);
+//    
+//    glDrawArrays(GL_LINES, 0, 6);
+//    
+//    
+//    glDisableVertexAttribArray(GLKVertexAttribPosition);
+//    glDisableVertexAttribArray(GLKVertexAttribColor);
 }
 
 

@@ -6,14 +6,11 @@
 //  Copyright (c) 2012 Future Workshops. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@class MVGLModelViewController;
+@class MVRootViewController;
 
 @interface MVAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) MVGLModelViewController *viewController;
+@property (strong, nonatomic) MVRootViewController *viewController;
 
 @end
