@@ -14,6 +14,7 @@
 @interface MVRadialMenuView ()
 
 @property (nonatomic, assign) BOOL visible;
+@property (nonatomic, strong) NSMutableArray *segments;
 
 @end
 
@@ -24,25 +25,68 @@ const CGFloat ROTATION_ANGLE = -M_PI_2;
 - (id)initWithFrame:(CGRect)frame segments:(NSArray *)segments {
     if ((self = [super initWithFrame:frame])) {
 
-        CGRect btnFrame = CGRectMake(.0f, .0f, frame.size.width, frame.size.height);
+        self.segments = [NSMutableArray array];
+        CGRect btnFrame = CGRectMake(-CGRectGetWidth(frame) / 2.0f, CGRectGetHeight(frame) / 2.0f, CGRectGetWidth(frame), CGRectGetHeight(frame));
         for (NSInteger i = 0; i < segments.count; ++i) {
             MVMenuSegment *btn = [[MVMenuSegment alloc] initWithIndex:i count:segments.count title:segments[i]];
             btn.frame = btnFrame;
             btn.tag = i;
+            btn.layer.anchorPoint = CGPointMake(0.0f, 1.0f);
             [btn addTarget:self action:@selector(didSelectSegment:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:btn];
+            [self sendSubviewToBack:btn];
+            [self.segments addObject:btn];
         }
-        self.layer.anchorPoint = CGPointMake(0.0f, 1.0f);
         
         self.layer.shadowRadius = 10.0f;
         self.layer.shadowOffset = CGSizeMake(0, 0);
         self.layer.shadowColor = [UIColor blackColor].CGColor;
         self.layer.shadowOpacity = 0.4f;
         self.clipsToBounds = NO;
-        
+                
         self.visible = YES;
     }
     return self;
+}
+
+- (void)rotateByAngle:(CGFloat)angle animated:(BOOL)animated {
+    
+    void (^alignSegments)(void) = ^{
+        [self.segments enumerateObjectsUsingBlock:^(MVMenuSegment *segment, NSUInteger i, BOOL *stop) {
+            segment.layer.transform = CATransform3DRotate(segment.layer.transform, (i + 1) * 1.0f /  self.segments.count * angle, 0.0f, 0.0f, 1.0f);
+        }];
+    };
+    
+    if (animated) {
+        
+        [CATransaction begin];
+        [CATransaction setValue:[NSNumber numberWithFloat:0.4f] forKey:kCATransactionAnimationDuration];
+        
+        NSMutableArray *keyTimes = [NSMutableArray arrayWithCapacity:self.segments.count];
+        for (NSInteger i = 0; i <= self.segments.count; ++i) {
+            [keyTimes addObject:@(i * 1.0f / self.segments.count)];
+        }
+        [self.segments enumerateObjectsUsingBlock:^(MVMenuSegment *segment, NSUInteger i, BOOL *stop) {
+            CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+            animation.keyTimes = keyTimes;
+            NSMutableArray *values = [NSMutableArray arrayWithCapacity:self.segments.count];
+            for (NSInteger j = 0; j <= self.segments.count; ++j) {
+                NSInteger x = j + i + 1 - self.segments.count;
+                if (x < 0)
+                    x = 0;
+                CGFloat a = x * 1.0f / self.segments.count * angle;
+                CATransform3D transform = CATransform3DRotate(segment.layer.transform, a, 0.0f, 0.0f, 1.0f);
+                [values addObject:[NSValue valueWithCATransform3D:transform]];
+            }
+            animation.values = values;
+            [segment.layer addAnimation:animation forKey:@"rotation"];
+        }];
+        [CATransaction setCompletionBlock:alignSegments];
+        [CATransaction commit];
+
+    } else {
+        alignSegments();
+    }
 }
 
 - (void)toggleAnimated:(BOOL)animated {
@@ -56,14 +100,7 @@ const CGFloat ROTATION_ANGLE = -M_PI_2;
     if (self.visible)
         return;
     self.visible = YES;
-    if (animated) {
-        self.transform = CGAffineTransformMakeRotation(ROTATION_ANGLE);
-        [UIView animateWithDuration:0.4f animations:^{
-            self.transform = CGAffineTransformIdentity;
-        }];
-    } else {
-        self.transform = CGAffineTransformIdentity;
-    }
+    [self rotateByAngle:-ROTATION_ANGLE animated:animated];
 }
 
 - (void)hideAnimated:(BOOL)animated {
@@ -71,14 +108,7 @@ const CGFloat ROTATION_ANGLE = -M_PI_2;
     if (!self.visible)
         return;
     self.visible = NO;
-    if (animated) {
-        self.transform = CGAffineTransformIdentity;
-        [UIView animateWithDuration:0.4f animations:^{
-            self.transform = CGAffineTransformMakeRotation(ROTATION_ANGLE);
-        }];
-    } else {
-        self.transform = CGAffineTransformMakeRotation(ROTATION_ANGLE);
-    }
+    [self rotateByAngle:ROTATION_ANGLE animated:animated];
 }
 
 - (void)didSelectSegment:(UIButton *)sender {

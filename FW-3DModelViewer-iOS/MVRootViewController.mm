@@ -42,13 +42,8 @@
     [self.view addSubview:vc.view];
     self.modelViewController = vc;
     
-    const CGSize buttonSize = CGSizeMake(48.0f, 48.0f);
-    self.menuButton = [[MVMenuButton alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - buttonSize.height, buttonSize.width, buttonSize.height)];
-    [self.menuButton addTarget:self action:@selector(menuAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.menuButton];
-    
     CGSize menuSize = CGSizeMake(255.0f, 255.0f);
-    CGRect menuFrame = CGRectMake(menuSize.width / 2.0f, CGRectGetMaxY(self.view.bounds) - 0.5f * menuSize.height, menuSize.width, menuSize.height);
+    CGRect menuFrame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - menuSize.height, menuSize.width, menuSize.height);
     MVRadialMenuView *menuView = [[MVRadialMenuView alloc] initWithFrame:menuFrame segments:@[@"Favorites", @"Download", @"Background", @"Share"]];
     menuView.delegate = self;
     menuView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
@@ -56,7 +51,12 @@
     [self.view addSubview:self.menuView];
     
     [self.menuView hideAnimated:NO];
-
+    
+    const CGSize buttonSize = CGSizeMake(48.0f, 48.0f);
+    self.menuButton = [[MVMenuButton alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - buttonSize.height, buttonSize.width, buttonSize.height)];
+    [self.menuButton addTarget:self action:@selector(menuAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.menuButton];
+    
 }
 
 - (void)menuAction:(UIButton *)button {
