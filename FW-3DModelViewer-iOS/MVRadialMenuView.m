@@ -68,12 +68,23 @@ const CGFloat ROTATION_ANGLE = -M_PI_2;
         }
         [self.segments enumerateObjectsUsingBlock:^(MVMenuSegment *segment, NSUInteger i, BOOL *stop) {
             CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+            animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
             animation.keyTimes = keyTimes;
             NSMutableArray *values = [NSMutableArray arrayWithCapacity:self.segments.count];
             for (NSInteger j = 0; j <= self.segments.count; ++j) {
-                NSInteger x = j + i + 1 - self.segments.count;
-                if (x < 0)
-                    x = 0;
+                NSInteger x;
+                if (angle < 0.0f) {
+                    x = j + i + 1 - self.segments.count;
+                    if (x < 0)
+                        x = 0;
+                } else {
+                    if (j == 0)
+                        x = 0;
+                    else if (j > i + 1)
+                        x = i + 1;
+                    else
+                        x = j;
+                }
                 CGFloat a = x * 1.0f / self.segments.count * angle;
                 CATransform3D transform = CATransform3DRotate(segment.layer.transform, a, 0.0f, 0.0f, 1.0f);
                 [values addObject:[NSValue valueWithCATransform3D:transform]];
