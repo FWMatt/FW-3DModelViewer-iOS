@@ -20,8 +20,8 @@
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         
-        [self setBackgroundImage:[UIImage imageNamed:@"menu-btn"] forState:UIControlStateNormal];
-        [self setBackgroundImage:[UIImage imageNamed:@"menu-btn-sel"] forState:UIControlStateHighlighted];
+        [self setImage:[UIImage imageNamed:@"menu-btn"] forState:UIControlStateNormal];
+        [self setImage:[UIImage imageNamed:@"menu-btn-sel"] forState:UIControlStateHighlighted];
         
         self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
         UIImageView *buttonImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu-btn-image"]];

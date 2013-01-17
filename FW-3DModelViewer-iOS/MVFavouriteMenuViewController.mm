@@ -30,9 +30,9 @@
 
 @implementation MVFavouriteMenuViewController
 
+
 - (id)init {
-    self = [super init];
-    if (self) {
+    if (self = [super init]) {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"MVModel"];
         fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"modelName" ascending:YES]];
         NSManagedObjectContext *context = [RKObjectManager sharedManager].objectStore.managedObjectContextForCurrentThread;
@@ -43,11 +43,15 @@
     return self;
 }
 
+- (void)loadView {
+    [super loadView];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"menu-bg"]];
+}
+
 - (void)viewDidLoad {
 
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor colorWithRed:0.0f green:108.0f / 255.0f blue:108.0f / 255.0f alpha:1.0f];
+        
     BOOL isiPad = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
     self.collectionView.frame = CGRectInset(self.view.bounds, isiPad ? 60.0f : 20.0f, isiPad ? 30.0f : 20.0f);
     self.collectionView.backgroundColor = [UIColor clearColor];

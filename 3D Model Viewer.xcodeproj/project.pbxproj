@@ -54,6 +54,8 @@
 		8EB8C5A516A6EB0700770E44 /* menu-btn-sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8C5A416A6EB0700770E44 /* menu-btn-sel@2x.png */; };
 		8EB8C5A816A6EC1500770E44 /* MVMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8C5A716A6EC1500770E44 /* MVMenuButton.m */; };
 		8EB8C5AA16A6FC1A00770E44 /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8C5A916A6FC1A00770E44 /* Avenir.ttc */; };
+		8EB8C5BD16A8231E00770E44 /* MVImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8C5BC16A8231E00770E44 /* MVImageButton.m */; };
+		8EB8C5C116A8257D00770E44 /* menu-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8C5C016A8257D00770E44 /* menu-bg@2x.png */; };
 		8EF84152167A206800B6C83B /* menu-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84151167A206800B6C83B /* menu-btn@2x.png */; };
 		8EF84154167A24F500B6C83B /* menu-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84153167A24F500B6C83B /* menu-bg@2x.png */; };
 		8EF84163167A3B2E00B6C83B /* remove-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84162167A3B2E00B6C83B /* remove-btn@2x.png */; };
@@ -141,6 +143,9 @@
 		8EB8C5A616A6EC1500770E44 /* MVMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMenuButton.h; sourceTree = "<group>"; };
 		8EB8C5A716A6EC1500770E44 /* MVMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVMenuButton.m; sourceTree = "<group>"; };
 		8EB8C5A916A6FC1A00770E44 /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = "<group>"; };
+		8EB8C5BB16A8231E00770E44 /* MVImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVImageButton.h; sourceTree = "<group>"; };
+		8EB8C5BC16A8231E00770E44 /* MVImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVImageButton.m; sourceTree = "<group>"; };
+		8EB8C5C016A8257D00770E44 /* menu-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bg@2x.png"; sourceTree = "<group>"; };
 		8EF84151167A206800B6C83B /* menu-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-btn@2x.png"; sourceTree = "<group>"; };
 		8EF84153167A24F500B6C83B /* menu-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bg@2x.png"; sourceTree = "<group>"; };
 		8EF84162167A3B2E00B6C83B /* remove-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove-btn@2x.png"; sourceTree = "<group>"; };
@@ -223,6 +228,7 @@
 				2269CA1D1666236500681650 /* Favourites */,
 				22296DE4166538EA00779A11 /* Radial Menu */,
 				2260006F165E983400F960C4 /* Model Viewer */,
+				8EB8C5BF16A8232400770E44 /* UI Components */,
 				8E1D750F167F323800108FC1 /* 3D Model */,
 				8E43E6511678BECD00A95424 /* Shaders */,
 				8E43E6191678BEBE00A95424 /* Vendor */,
@@ -365,9 +371,19 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		8EB8C5BF16A8232400770E44 /* UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				8EB8C5BB16A8231E00770E44 /* MVImageButton.h */,
+				8EB8C5BC16A8231E00770E44 /* MVImageButton.m */,
+			);
+			name = "UI Components";
+			sourceTree = "<group>";
+		};
 		8EF84150167A206800B6C83B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8EB8C5C016A8257D00770E44 /* menu-bg@2x.png */,
 				8EB8C5A216A6E6D700770E44 /* menu-btn-image@2x.png */,
 				8EB8C59D16A6DF7300770E44 /* background@2x.png */,
 				8EF84162167A3B2E00B6C83B /* remove-btn@2x.png */,
@@ -446,6 +462,7 @@
 				8EB8C5A316A6E6D700770E44 /* menu-btn-image@2x.png in Resources */,
 				8EB8C5A516A6EB0700770E44 /* menu-btn-sel@2x.png in Resources */,
 				8EB8C5AA16A6FC1A00770E44 /* Avenir.ttc in Resources */,
+				8EB8C5C116A8257D00770E44 /* menu-bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +519,7 @@
 				8E4294331684815A006E7829 /* MVMenuSegment.m in Sources */,
 				8EB8C5A116A6E41000770E44 /* MVRootViewController.mm in Sources */,
 				8EB8C5A816A6EC1500770E44 /* MVMenuButton.m in Sources */,
+				8EB8C5BD16A8231E00770E44 /* MVImageButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,14 @@
 
 @protocol MVRadialMenuViewDelegate;
 
+
+typedef enum {
+    MVMenuSegmentIndexFavorites = 0,
+    MVMenuSegmentIndexDownload = 1,
+    MVMenuSegmentIndexBackgrounds = 2,
+    MVMenuSegmentIndexShare = 3
+} MVMenuSegmentIndex;
+
 @interface MVRadialMenuView : UIView
 
 @property (nonatomic, weak) id<MVRadialMenuViewDelegate> delegate;
@@ -22,11 +30,12 @@
 
 @end
 
+
 @protocol MVRadialMenuViewDelegate <NSObject>
 
 @required
 
-- (void)radialMenuView:(MVRadialMenuView *)radialMenuView didSelectIndex:(NSInteger)index;
+- (void)radialMenuView:(MVRadialMenuView *)radialMenuView didSelectIndex:(MVMenuSegmentIndex)index;
 - (void)radialMenuViewWillHide:(MVRadialMenuView *)radialMenuView;
 
 @end

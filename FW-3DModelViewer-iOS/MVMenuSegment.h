@@ -6,8 +6,9 @@
 //  Copyright (c) 2012 Future Workshops. All rights reserved.
 //
 
+#import "MVImageButton.h"
 
-@interface MVMenuSegment : UIButton
+@interface MVMenuSegment : MVImageButton
 
 - (id)initWithIndex:(NSInteger)index count:(NSInteger)count title:(NSString *)title;
 

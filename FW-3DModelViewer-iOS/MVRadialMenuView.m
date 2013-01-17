@@ -19,7 +19,7 @@
 
 @implementation MVRadialMenuView
 
-const CGFloat ROTATION_ANGLE = M_PI_2;
+const CGFloat ROTATION_ANGLE = -M_PI_2;
 
 - (id)initWithFrame:(CGRect)frame segments:(NSArray *)segments {
     if ((self = [super initWithFrame:frame])) {
@@ -53,6 +53,8 @@ const CGFloat ROTATION_ANGLE = M_PI_2;
 }
 
 - (void)showAnimated:(BOOL)animated {
+    if (self.visible)
+        return;
     self.visible = YES;
     if (animated) {
         self.transform = CGAffineTransformMakeRotation(ROTATION_ANGLE);
@@ -66,6 +68,8 @@ const CGFloat ROTATION_ANGLE = M_PI_2;
 
 - (void)hideAnimated:(BOOL)animated {
     [self.delegate radialMenuViewWillHide:self];
+    if (!self.visible)
+        return;
     self.visible = NO;
     if (animated) {
         self.transform = CGAffineTransformIdentity;
