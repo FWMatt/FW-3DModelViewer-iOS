@@ -46,7 +46,7 @@
 - (void)toggleAnimated:(BOOL)animated {
     CGAffineTransform t = (self.rotated) ? CGAffineTransformIdentity : CGAffineTransformMakeRotation(M_PI_4);
     if (animated)
-        [UIView animateWithDuration:0.3f animations:^{
+        [UIView animateWithDuration:0.4f animations:^{
             self.buttonImage.transform = t;
         }];
     else

@@ -12,6 +12,7 @@
 @interface MVMenuSegment ()
 
 @property (nonatomic, assign) const UInt8 *pixelData;
+@property (nonatomic, assign) NSUInteger bytesPerRow;
 
 @end
 
@@ -32,7 +33,7 @@
     UIGraphicsBeginImageContext(size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
-    
+        
     CGFloat w[3] = {
         130.0f * scale, 90.0f * scale, 30.0f * scale
     };
@@ -62,16 +63,21 @@
     CGContextTranslateCTM(context, transX, transY + 20);
     CGContextRotateCTM(context, -M_PI_2 + angle);
 
-    UIFont *font = [UIFont fontWithName:@"Avenir-Roman" size:20];
+    const CGFloat fontSize = 10.0f * scale;
+    UIFont *font = [UIFont fontWithName:@"Avenir-Roman" size:fontSize];
     [[UIColor whiteColor] set];
     NSString *text = [title uppercaseString];
     CGSize textSize = [text sizeWithFont:font];
-    [text drawAtPoint:CGPointMake((w[1] - textSize.width) / 2 + 5, -textSize.height / 2) forWidth:400 withFont:font fontSize:20 lineBreakMode:NSLineBreakByClipping baselineAdjustment:UIBaselineAdjustmentAlignCenters];
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    CGFloat offset = 2.5 * scale;
+    [text drawAtPoint:CGPointMake((w[1] - textSize.width) / 2.0 + offset, -textSize.height / 2.0) forWidth:200 * scale withFont:font fontSize:fontSize lineBreakMode:NSLineBreakByClipping baselineAdjustment:UIBaselineAdjustmentAlignCenters];
+        
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();    
     CFDataRef pixelData = CGDataProviderCopyData(CGImageGetDataProvider(image.CGImage));
-    self.pixelData = CFDataGetBytePtr(pixelData);
+    size_t length = CFDataGetLength(pixelData);
+    self.bytesPerRow = length / image.size.height / 4;
+    self.pixelData = (const UInt8 *)CFDataGetBytePtr(pixelData);
     UIGraphicsEndImageContext();
+    
     return image;
 }
 
@@ -84,7 +90,7 @@
 - (BOOL)point:(CGPoint)point visibleForImage:(UIImage *)image {
     point.x *= image.size.width / self.bounds.size.width;
     point.y *= image.size.height / self.bounds.size.height;
-    NSInteger idx = ((image.size.width * point.y) + point.x) * 4;
+    NSInteger idx = ((self.bytesPerRow * point.y) + point.x) * 4;
     UInt8 alpha = self.pixelData[idx + 3];
     const CGFloat threshold = 10;
     return alpha >= threshold;
@@ -94,6 +100,7 @@
     if (![super pointInside:point withEvent:event]) {
         return NO;
     }
+    
     UIImage *image = [self imageForState:UIControlStateNormal];
     return ([self point:point visibleForImage:image]);
 }

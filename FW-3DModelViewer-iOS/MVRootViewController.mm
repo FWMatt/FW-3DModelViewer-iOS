@@ -14,7 +14,7 @@
 
 #import "MVModel.h"
 
-#define kPopupSize 280.0f
+#define kPopupSize 255.0f
 
 
 @interface MVRootViewController ()<MVRadialMenuViewDelegate, MVFavouriteModelSelection>
