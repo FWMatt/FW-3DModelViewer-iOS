@@ -10,11 +10,8 @@
 @protocol DeleteCollectionViewDataSource <UICollectionViewDataSource>
 @end
 
-@interface CollectionViewCell : UICollectionViewCell {
-    UIImageView *_imageView;
-}
+@interface CollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, assign) BOOL showDeleteButton;
 
 @property (nonatomic, assign) NSObject *informOnDeletion;

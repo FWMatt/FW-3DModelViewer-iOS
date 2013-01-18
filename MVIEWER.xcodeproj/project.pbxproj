@@ -56,6 +56,7 @@
 		8EB8C5AA16A6FC1A00770E44 /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8C5A916A6FC1A00770E44 /* Avenir.ttc */; };
 		8EB8C5BD16A8231E00770E44 /* MVImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8C5BC16A8231E00770E44 /* MVImageButton.m */; };
 		8EB8C5C516A84D6300770E44 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8C5C416A84D6300770E44 /* Icon-72@2x.png */; };
+		8EC543CC16A9B95A0055308D /* edit-btn-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EC543CB16A9B95A0055308D /* edit-btn-bg@2x.png */; };
 		8EF84152167A206800B6C83B /* menu-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84151167A206800B6C83B /* menu-btn@2x.png */; };
 		8EF84154167A24F500B6C83B /* menu-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84153167A24F500B6C83B /* menu-bg@2x.png */; };
 		8EF84163167A3B2E00B6C83B /* remove-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84162167A3B2E00B6C83B /* remove-btn@2x.png */; };
@@ -147,6 +148,7 @@
 		8EB8C5BC16A8231E00770E44 /* MVImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVImageButton.m; sourceTree = "<group>"; };
 		8EB8C5C016A8257D00770E44 /* menu-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bg@2x.png"; sourceTree = "<group>"; };
 		8EB8C5C416A84D6300770E44 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "../Icon-72@2x.png"; sourceTree = "<group>"; };
+		8EC543CB16A9B95A0055308D /* edit-btn-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-btn-bg@2x.png"; sourceTree = "<group>"; };
 		8EF84151167A206800B6C83B /* menu-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-btn@2x.png"; sourceTree = "<group>"; };
 		8EF84153167A24F500B6C83B /* menu-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bg@2x.png"; sourceTree = "<group>"; };
 		8EF84162167A3B2E00B6C83B /* remove-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove-btn@2x.png"; sourceTree = "<group>"; };
@@ -234,8 +236,7 @@
 				8E43E6191678BEBE00A95424 /* Vendor */,
 				22600047165E960700F960C4 /* Supporting Files */,
 			);
-			name = MVIEWER;
-			path = "MVIEWER";
+			path = MVIEWER;
 			sourceTree = "<group>";
 		};
 		22600047165E960700F960C4 /* Supporting Files */ = {
@@ -383,6 +384,7 @@
 		8EF84150167A206800B6C83B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8EC543CB16A9B95A0055308D /* edit-btn-bg@2x.png */,
 				8E88039A16A99DFE00DFE2DE /* list-item-bg-sel@2x.png */,
 				8E88039B16A99DFE00DFE2DE /* list-item-bg@2x.png */,
 				8EB8C5C016A8257D00770E44 /* menu-bg@2x.png */,
@@ -414,7 +416,7 @@
 			dependencies = (
 			);
 			name = MVIEWER;
-			productName = "MVIEWER";
+			productName = MVIEWER;
 			productReference = 22600038165E960700F960C4 /* MVIEWER.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -465,6 +467,7 @@
 				8E88039916A9904300DFE2DE /* Default-Portrait@2x~ipad.png in Resources */,
 				8E88039C16A99DFE00DFE2DE /* list-item-bg-sel@2x.png in Resources */,
 				8E88039D16A99DFE00DFE2DE /* list-item-bg@2x.png in Resources */,
+				8EC543CC16A9B95A0055308D /* edit-btn-bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

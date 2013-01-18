@@ -45,24 +45,28 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
     
     [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:cellIdentifier];
 
+    UIFont *buttonFont = [UIFont fontWithName:@"Avenir-Light" size:20.0f];
+    UIColor *lightGrayColor = [UIColor colorWithRed:222.0f / 255.0f green:222.0f / 255.0f blue:222.0f / 255.0f alpha:1.0f];
+    
     UIButton *editButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [editButton setBackgroundColor:[UIColor colorWithRed:48.0f / 255.0f green:48.0f / 255.0f blue:48.0f / 255.0f alpha:1.0f]];
-    [editButton setTitle:[@"Edit" uppercaseString] forState:UIControlStateNormal];
-    [editButton setTitle:[@"Done" uppercaseString] forState:UIControlStateSelected];
+    [editButton setTitleColor:lightGrayColor forState:UIControlStateNormal];
+    editButton.titleLabel.font =  buttonFont;
+    UIImage *buttonImage = [[UIImage imageNamed:@"edit-btn-bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(6.0f, 5.0f, 6.0f, 5.0f)];
+    [editButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [editButton setTitle:@"edit" forState:UIControlStateNormal];
+    [editButton setTitle:@"done" forState:UIControlStateSelected];
     [editButton addTarget:self action:@selector(editButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [editButton sizeToFit];
-    CGSize offset = CGSizeMake(10.0f, -10.0f);
-    editButton.frame = CGRectInset(editButton.frame, -20.0f, -10.0f);
-    editButton.frame = CGRectMake(CGRectGetMaxX(self.view.bounds) - editButton.frame.size.width - offset.width,
-                                  CGRectGetMinY(self.view.bounds) - offset.height,
-                                  editButton.frame.size.width,
-                                  editButton.frame.size.height);
-    editButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+    
+    editButton.frame = CGRectMake(CGRectGetHeight(self.view.bounds) - 140.0f, 26.0f, 120.0f, 46.0f);
     [self.view addSubview:editButton];
 
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
-    titleLabel.backgroundColor = [UIColor colorWithRed:222.0f / 255.0f green:222.0f / 255.0f blue:222.0f / 255.0f alpha:1.0f];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(36.0f, -10.0f, 120.0f, 40)];
+    titleLabel.backgroundColor = lightGrayColor;
     titleLabel.textColor = [UIColor colorWithRed:44.0f / 255.0f green:41.0f / 255.0f blue:41.0f / 255.0f alpha:1.0f];
+    titleLabel.text = @"FAVORITES";
+    titleLabel.font = buttonFont;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:titleLabel];
 }
 
 - (void)viewDidLoad {
