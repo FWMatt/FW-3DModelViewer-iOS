@@ -41,7 +41,7 @@ const CGFloat ROTATION_ANGLE = -M_PI_2;
         self.layer.shadowRadius = 10.0f;
         self.layer.shadowOffset = CGSizeMake(0, 0);
         self.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.layer.shadowOpacity = 0.4f;
+        self.layer.shadowOpacity = 0.5f;
         self.clipsToBounds = NO;
                 
         self.visible = YES;

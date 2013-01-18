@@ -63,6 +63,7 @@
     if (self.selectedMenuViewController) {
         [self.menuView hideAnimated:YES];
     } else {
+        [self.view bringSubviewToFront:self.menuView];
         [self.menuView toggleAnimated:YES];
         [self.view bringSubviewToFront:self.menuButton];
     }
@@ -90,13 +91,13 @@
             
             self.selectedMenuViewController = favouriteMenuViewController;
             self.selectedMenuViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth| UIViewAutoresizingFlexibleTopMargin;
-            [self.view addSubview:self.selectedMenuViewController.view];
-            [self.view bringSubviewToFront:self.menuButton];
+            [self.view insertSubview:self.selectedMenuViewController.view belowSubview:self.menuView];
             
-            
-            self.selectedMenuViewController.view.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(self.view.bounds), 0.0f);
-            [UIView animateWithDuration:0.4f animations:^{
+            self.selectedMenuViewController.view.transform = CGAffineTransformMakeTranslation(-CGRectGetWidth(self.view.bounds), 0.0f);
+            [UIView animateWithDuration:0.6f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
                 self.selectedMenuViewController.view.transform = CGAffineTransformIdentity;
+            } completion:^(BOOL finished) {
+                [self.view sendSubviewToBack:self.menuView];
             }];
         }
     }
@@ -104,8 +105,8 @@
 
 - (void)radialMenuViewWillHide:(MVRadialMenuView *)radialMenuView {
     if (self.selectedMenuViewController) {    
-        [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-            self.selectedMenuViewController.view.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(self.view.bounds), 0.0f);
+        [UIView animateWithDuration:0.6f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+            self.selectedMenuViewController.view.transform = CGAffineTransformMakeTranslation(-CGRectGetWidth(self.view.bounds), 0.0f);
         } completion:^(BOOL successful){
             [self.selectedMenuViewController.view removeFromSuperview];
             self.selectedMenuViewController = nil;

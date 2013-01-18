@@ -12,24 +12,17 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-@interface MutableOrderedCollectionViewController (Known)
-
-@property (nonatomic, assign) CGFloat autoscrollDistance;
-
-- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer;
-
-@end
-
 @interface MVFavouriteMenuViewController ()<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, assign) BOOL editing;
-@property (nonatomic, assign) UICollectionViewScrollDirection scrollDirection;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
+
 @implementation MVFavouriteMenuViewController
 
+static NSString * const cellIdentifier = @"MVFavoriteCell";
 
 - (id)init {
     if (self = [super init]) {
@@ -38,7 +31,6 @@
         NSManagedObjectContext *context = [RKObjectManager sharedManager].objectStore.managedObjectContextForCurrentThread;
         self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
         self.fetchedResultsController.delegate = self;
-        self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     }
     return self;
 }
@@ -46,17 +38,13 @@
 - (void)loadView {
     [super loadView];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"menu-bg"]];
-}
 
-- (void)viewDidLoad {
-
-    [super viewDidLoad];
-        
-    BOOL isiPad = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
-    self.collectionView.frame = CGRectInset(self.view.bounds, isiPad ? 60.0f : 20.0f, isiPad ? 30.0f : 20.0f);
+    self.collectionView.frame = CGRectOffset(self.view.bounds, 0.0f, 26.0f);
     self.collectionView.backgroundColor = [UIColor clearColor];
-    [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
+    self.collectionView.contentInset = UIEdgeInsetsMake(0.0, 30.0f, 0.0f, 30.0f);
     
+    [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:cellIdentifier];
+
     UIButton *editButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [editButton setBackgroundColor:[UIColor colorWithRed:48.0f / 255.0f green:48.0f / 255.0f blue:48.0f / 255.0f alpha:1.0f]];
     [editButton setTitle:[@"Edit" uppercaseString] forState:UIControlStateNormal];
@@ -71,9 +59,15 @@
                                   editButton.frame.size.height);
     editButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     [self.view addSubview:editButton];
-    
-    [self.fetchedResultsController performFetch:NULL];
 
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+    titleLabel.backgroundColor = [UIColor colorWithRed:222.0f / 255.0f green:222.0f / 255.0f blue:222.0f / 255.0f alpha:1.0f];
+    titleLabel.textColor = [UIColor colorWithRed:44.0f / 255.0f green:41.0f / 255.0f blue:41.0f / 255.0f alpha:1.0f];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.fetchedResultsController performFetch:NULL];
 }
 
 - (void)editButtonTapped:(UIButton *)editButton {
@@ -125,16 +119,8 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    MVModel *model = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.label.text = [model.modelName uppercaseString];
-    cell.label.font = [UIFont fontWithName:@"SegoeWPN-SemiLight" size:22.0f];
-    cell.label.adjustsFontSizeToFitWidth = YES;
-    cell.label.textColor = [UIColor blackColor];
-    cell.decoratorView.layer.borderWidth = 4.0f;
-    CGColorRef color = CGColorRetain([self colorForIndex:indexPath.row].CGColor);
-    cell.decoratorView.layer.borderColor = color;
-    CGColorRelease(color);
+    CollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+//    MVModel *model = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.showDeleteButton = self.editing;
     cell.informOnDeletion = self;
     cell.deleteMethod = @selector(deleteModelForCollectionViewCell:);
@@ -157,9 +143,8 @@
     dispatch_once(&onceToken, ^{
 
         MutableOrderedCollectionViewFlowLayout *l0 = [[MutableOrderedCollectionViewFlowLayout alloc] init];
-        l0.itemSize = CGSizeMake(160, 120);
+        l0.itemSize = CGSizeMake(208, 161);
         l0.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        l0.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
         l0.minimumInteritemSpacing = .0f;
         _array = @[l0];
     });

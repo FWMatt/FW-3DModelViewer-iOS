@@ -18,9 +18,6 @@
 		2260004B165E960700F960C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22600049165E960700F960C4 /* InfoPlist.strings */; };
 		2260004D165E960700F960C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260004C165E960700F960C4 /* main.m */; };
 		22600051165E960700F960C4 /* MVAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22600050165E960700F960C4 /* MVAppDelegate.mm */; };
-		22600053165E960700F960C4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 22600052165E960700F960C4 /* Default.png */; };
-		22600055165E960700F960C4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22600054165E960700F960C4 /* Default@2x.png */; };
-		22600057165E960700F960C4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22600056165E960700F960C4 /* Default-568h@2x.png */; };
 		22600059165E960700F960C4 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 22600058165E960700F960C4 /* Shader.fsh */; };
 		2260005B165E960700F960C4 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2260005A165E960700F960C4 /* Shader.vsh */; };
 		2269CA281666258500681650 /* MVFavouriteMenuViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA271666258500681650 /* MVFavouriteMenuViewController.mm */; };
@@ -31,7 +28,7 @@
 		2269CA381666271100681650 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA371666271100681650 /* CollectionViewCell.m */; };
 		2269CA48166650EE00681650 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2269CA47166650EE00681650 /* libz.1.2.5.dylib */; };
 		8E4294331684815A006E7829 /* MVMenuSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4294321684815A006E7829 /* MVMenuSegment.m */; };
-		8E43E6131678BB9200A95424 /* 3DModelViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E6111678BB9200A95424 /* 3DModelViewer.xcdatamodeld */; };
+		8E43E6131678BB9200A95424 /* MVIEWER.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E6111678BB9200A95424 /* MVIEWER.xcdatamodeld */; };
 		8E43E6481678BEBE00A95424 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E62D1678BEBE00A95424 /* ioapi.c */; };
 		8E43E6491678BEBE00A95424 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E62F1678BEBE00A95424 /* mztools.c */; };
 		8E43E64A1678BEBE00A95424 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E6311678BEBE00A95424 /* unzip.c */; };
@@ -47,6 +44,10 @@
 		8E72DDE91680C253008682AB /* MVGroup.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E72DDE81680C253008682AB /* MVGroup.mm */; };
 		8E8204661682009100C734F8 /* MVCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8204651682009100C734F8 /* MVCameraController.m */; };
 		8E82046D16820AA700C734F8 /* MVScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E82046C16820AA700C734F8 /* MVScene.m */; };
+		8E88039716A9903800DFE2DE /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E88039616A9903800DFE2DE /* Default-Landscape@2x~ipad.png */; };
+		8E88039916A9904300DFE2DE /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E88039816A9904300DFE2DE /* Default-Portrait@2x~ipad.png */; };
+		8E88039C16A99DFE00DFE2DE /* list-item-bg-sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E88039A16A99DFE00DFE2DE /* list-item-bg-sel@2x.png */; };
+		8E88039D16A99DFE00DFE2DE /* list-item-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E88039B16A99DFE00DFE2DE /* list-item-bg@2x.png */; };
 		8EB8C59E16A6DF7300770E44 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8C59D16A6DF7300770E44 /* background@2x.png */; };
 		8EB8C5A116A6E41000770E44 /* MVRootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8C5A016A6E41000770E44 /* MVRootViewController.mm */; };
 		8EB8C5A316A6E6D700770E44 /* menu-btn-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8C5A216A6E6D700770E44 /* menu-btn-image@2x.png */; };
@@ -66,21 +67,18 @@
 		2229A9B0166386FB00EBFA72 /* QuartzCore.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2229A9B216638D8C00EBFA72 /* MVGLModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVGLModelViewController.h; sourceTree = "<group>"; };
 		2229A9B316638D8C00EBFA72 /* MVGLModelViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MVGLModelViewController.mm; sourceTree = "<group>"; };
-		22600038165E960700F960C4 /* 3D Model Viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "3D Model Viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22600038165E960700F960C4 /* MVIEWER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVIEWER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2260003C165E960700F960C4 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2260003E165E960700F960C4 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22600040165E960700F960C4 /* CoreGraphics.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		22600042165E960700F960C4 /* GLKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		22600044165E960700F960C4 /* OpenGLES.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		22600048165E960700F960C4 /* 3D Model Viewer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "3D Model Viewer-Info.plist"; sourceTree = "<group>"; };
+		22600048165E960700F960C4 /* MVIEWER-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MVIEWER-Info.plist"; sourceTree = "<group>"; };
 		2260004A165E960700F960C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2260004C165E960700F960C4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2260004E165E960700F960C4 /* 3D Model Viewer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "3D Model Viewer-Prefix.pch"; sourceTree = "<group>"; };
+		2260004E165E960700F960C4 /* MVIEWER-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MVIEWER-Prefix.pch"; sourceTree = "<group>"; };
 		2260004F165E960700F960C4 /* MVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVAppDelegate.h; sourceTree = "<group>"; };
 		22600050165E960700F960C4 /* MVAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MVAppDelegate.mm; sourceTree = "<group>"; };
-		22600052165E960700F960C4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		22600054165E960700F960C4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		22600056165E960700F960C4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		22600058165E960700F960C4 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
 		2260005A165E960700F960C4 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
 		2269CA261666258500681650 /* MVFavouriteMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVFavouriteMenuViewController.h; sourceTree = "<group>"; };
@@ -98,7 +96,7 @@
 		2269CA47166650EE00681650 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		8E4294311684815A006E7829 /* MVMenuSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMenuSegment.h; sourceTree = "<group>"; };
 		8E4294321684815A006E7829 /* MVMenuSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVMenuSegment.m; sourceTree = "<group>"; };
-		8E43E6121678BB9200A95424 /* 3DModelViewer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3DModelViewer.xcdatamodel; sourceTree = "<group>"; };
+		8E43E6121678BB9200A95424 /* MVIEWER.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MVIEWER.xcdatamodel; sourceTree = "<group>"; };
 		8E43E6171678BE4800A95424 /* SampleModels.xcappdata */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SampleModels.xcappdata; path = ../SampleModels.xcappdata; sourceTree = "<group>"; };
 		8E43E62C1678BEBE00A95424 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		8E43E62D1678BEBE00A95424 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
@@ -133,6 +131,10 @@
 		8E82046B16820AA700C734F8 /* MVScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVScene.h; sourceTree = "<group>"; };
 		8E82046C16820AA700C734F8 /* MVScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVScene.m; sourceTree = "<group>"; };
 		8E82046E1682105F00C734F8 /* MVESObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVESObject.h; sourceTree = "<group>"; };
+		8E88039616A9903800DFE2DE /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "../Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		8E88039816A9904300DFE2DE /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "../Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		8E88039A16A99DFE00DFE2DE /* list-item-bg-sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-item-bg-sel@2x.png"; sourceTree = "<group>"; };
+		8E88039B16A99DFE00DFE2DE /* list-item-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-item-bg@2x.png"; sourceTree = "<group>"; };
 		8EB8C59D16A6DF7300770E44 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		8EB8C59F16A6E41000770E44 /* MVRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVRootViewController.h; sourceTree = "<group>"; };
 		8EB8C5A016A6E41000770E44 /* MVRootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MVRootViewController.mm; sourceTree = "<group>"; };
@@ -144,7 +146,7 @@
 		8EB8C5BB16A8231E00770E44 /* MVImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVImageButton.h; sourceTree = "<group>"; };
 		8EB8C5BC16A8231E00770E44 /* MVImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVImageButton.m; sourceTree = "<group>"; };
 		8EB8C5C016A8257D00770E44 /* menu-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bg@2x.png"; sourceTree = "<group>"; };
-		8EB8C5C416A84D6300770E44 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		8EB8C5C416A84D6300770E44 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "../Icon-72@2x.png"; sourceTree = "<group>"; };
 		8EF84151167A206800B6C83B /* menu-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-btn@2x.png"; sourceTree = "<group>"; };
 		8EF84153167A24F500B6C83B /* menu-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bg@2x.png"; sourceTree = "<group>"; };
 		8EF84162167A3B2E00B6C83B /* remove-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove-btn@2x.png"; sourceTree = "<group>"; };
@@ -187,8 +189,7 @@
 		2260002D165E960700F960C4 = {
 			isa = PBXGroup;
 			children = (
-				8EB8C5C416A84D6300770E44 /* Icon-72@2x.png */,
-				22600046165E960700F960C4 /* 3D Model Viewer */,
+				22600046165E960700F960C4 /* MVIEWER */,
 				2260003B165E960700F960C4 /* Frameworks */,
 				22600039165E960700F960C4 /* Products */,
 				902D08DB42D14F49914C2A6D /* Pods.xcconfig */,
@@ -198,7 +199,7 @@
 		22600039165E960700F960C4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				22600038165E960700F960C4 /* 3D Model Viewer.app */,
+				22600038165E960700F960C4 /* MVIEWER.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -218,7 +219,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		22600046165E960700F960C4 /* 3D Model Viewer */ = {
+		22600046165E960700F960C4 /* MVIEWER */ = {
 			isa = PBXGroup;
 			children = (
 				2260004F165E960700F960C4 /* MVAppDelegate.h */,
@@ -233,23 +234,23 @@
 				8E43E6191678BEBE00A95424 /* Vendor */,
 				22600047165E960700F960C4 /* Supporting Files */,
 			);
-			name = "3D Model Viewer";
-			path = "FW-3DModelViewer-iOS";
+			name = MVIEWER;
+			path = "MVIEWER";
 			sourceTree = "<group>";
 		};
 		22600047165E960700F960C4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8E43E6111678BB9200A95424 /* 3DModelViewer.xcdatamodeld */,
+				8E43E6111678BB9200A95424 /* MVIEWER.xcdatamodeld */,
 				8EF84150167A206800B6C83B /* Images */,
 				8EA97D751684C384008D4AB7 /* Fonts */,
-				22600048165E960700F960C4 /* 3D Model Viewer-Info.plist */,
+				22600048165E960700F960C4 /* MVIEWER-Info.plist */,
 				22600049165E960700F960C4 /* InfoPlist.strings */,
 				2260004C165E960700F960C4 /* main.m */,
-				2260004E165E960700F960C4 /* 3D Model Viewer-Prefix.pch */,
-				22600052165E960700F960C4 /* Default.png */,
-				22600054165E960700F960C4 /* Default@2x.png */,
-				22600056165E960700F960C4 /* Default-568h@2x.png */,
+				2260004E165E960700F960C4 /* MVIEWER-Prefix.pch */,
+				8E88039816A9904300DFE2DE /* Default-Portrait@2x~ipad.png */,
+				8E88039616A9903800DFE2DE /* Default-Landscape@2x~ipad.png */,
+				8EB8C5C416A84D6300770E44 /* Icon-72@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -382,6 +383,8 @@
 		8EF84150167A206800B6C83B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8E88039A16A99DFE00DFE2DE /* list-item-bg-sel@2x.png */,
+				8E88039B16A99DFE00DFE2DE /* list-item-bg@2x.png */,
 				8EB8C5C016A8257D00770E44 /* menu-bg@2x.png */,
 				8EB8C5A216A6E6D700770E44 /* menu-btn-image@2x.png */,
 				8EB8C59D16A6DF7300770E44 /* background@2x.png */,
@@ -397,9 +400,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		22600037165E960700F960C4 /* 3D Model Viewer */ = {
+		22600037165E960700F960C4 /* MVIEWER */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 22600064165E960700F960C4 /* Build configuration list for PBXNativeTarget "3D Model Viewer" */;
+			buildConfigurationList = 22600064165E960700F960C4 /* Build configuration list for PBXNativeTarget "MVIEWER" */;
 			buildPhases = (
 				22600034165E960700F960C4 /* Sources */,
 				22600035165E960700F960C4 /* Frameworks */,
@@ -410,9 +413,9 @@
 			);
 			dependencies = (
 			);
-			name = "3D Model Viewer";
-			productName = "FW-3DModelViewer-iOS";
-			productReference = 22600038165E960700F960C4 /* 3D Model Viewer.app */;
+			name = MVIEWER;
+			productName = "MVIEWER";
+			productReference = 22600038165E960700F960C4 /* MVIEWER.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -425,7 +428,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Future Workshops";
 			};
-			buildConfigurationList = 22600032165E960700F960C4 /* Build configuration list for PBXProject "3D Model Viewer" */;
+			buildConfigurationList = 22600032165E960700F960C4 /* Build configuration list for PBXProject "MVIEWER" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -437,7 +440,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				22600037165E960700F960C4 /* 3D Model Viewer */,
+				22600037165E960700F960C4 /* MVIEWER */,
 			);
 		};
 /* End PBXProject section */
@@ -448,9 +451,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2260004B165E960700F960C4 /* InfoPlist.strings in Resources */,
-				22600053165E960700F960C4 /* Default.png in Resources */,
-				22600055165E960700F960C4 /* Default@2x.png in Resources */,
-				22600057165E960700F960C4 /* Default-568h@2x.png in Resources */,
 				22600059165E960700F960C4 /* Shader.fsh in Resources */,
 				2260005B165E960700F960C4 /* Shader.vsh in Resources */,
 				8EF84152167A206800B6C83B /* menu-btn@2x.png in Resources */,
@@ -461,6 +461,10 @@
 				8EB8C5A516A6EB0700770E44 /* menu-btn-sel@2x.png in Resources */,
 				8EB8C5AA16A6FC1A00770E44 /* Avenir.ttc in Resources */,
 				8EB8C5C516A84D6300770E44 /* Icon-72@2x.png in Resources */,
+				8E88039716A9903800DFE2DE /* Default-Landscape@2x~ipad.png in Resources */,
+				8E88039916A9904300DFE2DE /* Default-Portrait@2x~ipad.png in Resources */,
+				8E88039C16A99DFE00DFE2DE /* list-item-bg-sel@2x.png in Resources */,
+				8E88039D16A99DFE00DFE2DE /* list-item-bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,7 +502,7 @@
 				2269CA341666268A00681650 /* UICollectionView+FWT.m in Sources */,
 				2269CA351666268A00681650 /* UIScrollView+FWT.m in Sources */,
 				2269CA381666271100681650 /* CollectionViewCell.m in Sources */,
-				8E43E6131678BB9200A95424 /* 3DModelViewer.xcdatamodeld in Sources */,
+				8E43E6131678BB9200A95424 /* MVIEWER.xcdatamodeld in Sources */,
 				8E43E6481678BEBE00A95424 /* ioapi.c in Sources */,
 				8E43E6491678BEBE00A95424 /* mztools.c in Sources */,
 				8E43E64A1678BEBE00A95424 /* unzip.c in Sources */,
@@ -544,7 +548,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Timothy Chilvers (L35A5QGYSF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -559,7 +563,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PROVISIONING_PROFILE = "783B3563-049E-479F-A013-4AF89F132A31";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -574,7 +578,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Timothy Chilvers (L35A5QGYSF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -583,7 +587,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "783B3563-049E-479F-A013-4AF89F132A31";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -598,13 +602,13 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kamil Kocemba (K29LCWCF47)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FW-3DModelViewer-iOS/3D Model Viewer-Prefix.pch";
-				INFOPLIST_FILE = "FW-3DModelViewer-iOS/3D Model Viewer-Info.plist";
+				GCC_PREFIX_HEADER = "MVIEWER/MVIEWER-Prefix.pch";
+				INFOPLIST_FILE = "MVIEWER/MVIEWER-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "3D Model Viewer";
+				PRODUCT_NAME = MVIEWER;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D867A851-5062-4A4D-B278-0B816B4A6F5A";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -616,13 +620,13 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FW-3DModelViewer-iOS/3D Model Viewer-Prefix.pch";
-				INFOPLIST_FILE = "FW-3DModelViewer-iOS/3D Model Viewer-Info.plist";
+				GCC_PREFIX_HEADER = "MVIEWER/MVIEWER-Prefix.pch";
+				INFOPLIST_FILE = "MVIEWER/MVIEWER-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "3D Model Viewer";
+				PRODUCT_NAME = MVIEWER;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -630,7 +634,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		22600032165E960700F960C4 /* Build configuration list for PBXProject "3D Model Viewer" */ = {
+		22600032165E960700F960C4 /* Build configuration list for PBXProject "MVIEWER" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22600062165E960700F960C4 /* Debug */,
@@ -639,7 +643,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		22600064165E960700F960C4 /* Build configuration list for PBXNativeTarget "3D Model Viewer" */ = {
+		22600064165E960700F960C4 /* Build configuration list for PBXNativeTarget "MVIEWER" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22600065165E960700F960C4 /* Debug */,
@@ -651,13 +655,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8E43E6111678BB9200A95424 /* 3DModelViewer.xcdatamodeld */ = {
+		8E43E6111678BB9200A95424 /* MVIEWER.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8E43E6121678BB9200A95424 /* 3DModelViewer.xcdatamodel */,
+				8E43E6121678BB9200A95424 /* MVIEWER.xcdatamodel */,
 			);
-			currentVersion = 8E43E6121678BB9200A95424 /* 3DModelViewer.xcdatamodel */;
-			path = 3DModelViewer.xcdatamodeld;
+			currentVersion = 8E43E6121678BB9200A95424 /* MVIEWER.xcdatamodel */;
+			path = MVIEWER.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -18,7 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     NSManagedObjectModel *mom = [NSManagedObjectModel mergedModelFromBundles:@[[NSBundle mainBundle]]];
-    NSString *storeFileName = @"3DModelViewer.sqlite";
+    NSString *storeFileName = @"MVIEWER.sqlite";
     RKObjectManager *objectManager = [[RKObjectManager alloc] init];
     objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:storeFileName usingSeedDatabaseName:nil managedObjectModel:mom delegate:nil];
     
