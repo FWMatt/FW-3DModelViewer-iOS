@@ -67,10 +67,12 @@
 - (void)setupGL {
     [EAGLContext setCurrentContext:self.context];
     
-    const GLfloat znear = 1.0f, zfar = 51.0f;
+    const GLfloat znear = 0.1f, zfar = 40.0f;
     GLfloat aspect = self.view.bounds.size.width / self.view.bounds.size.height;
-    GLfloat top = tanf(M_PI_2 * 0.5f) * znear;
-    self.projection = GLKMatrix4Translate(GLKMatrix4MakeFrustum(aspect * -top, aspect * top, -top, top, znear, zfar), .0f, .0f, -1.0f);
+    
+    self.projection = GLKMatrix4MakePerspective(120, aspect, znear, zfar);
+//    self.projection = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, 0, self.view.bounds.size.height, znear, zfar);
+    
     [self.scene setProjectionMatrix:self.projection];
 }
 

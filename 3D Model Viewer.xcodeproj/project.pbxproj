@@ -54,7 +54,6 @@
 		8EB8C5A816A6EC1500770E44 /* MVMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8C5A716A6EC1500770E44 /* MVMenuButton.m */; };
 		8EB8C5AA16A6FC1A00770E44 /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8C5A916A6FC1A00770E44 /* Avenir.ttc */; };
 		8EB8C5BD16A8231E00770E44 /* MVImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8C5BC16A8231E00770E44 /* MVImageButton.m */; };
-		8EB8C5C116A8257D00770E44 /* menu-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8C5C016A8257D00770E44 /* menu-bg@2x.png */; };
 		8EB8C5C516A84D6300770E44 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8C5C416A84D6300770E44 /* Icon-72@2x.png */; };
 		8EF84152167A206800B6C83B /* menu-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84151167A206800B6C83B /* menu-btn@2x.png */; };
 		8EF84154167A24F500B6C83B /* menu-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84153167A24F500B6C83B /* menu-bg@2x.png */; };
@@ -455,13 +454,12 @@
 				22600059165E960700F960C4 /* Shader.fsh in Resources */,
 				2260005B165E960700F960C4 /* Shader.vsh in Resources */,
 				8EF84152167A206800B6C83B /* menu-btn@2x.png in Resources */,
-				8EF84154167A24F500B6C83B /* menu-bg@2x.png in Resources */,
 				8EF84163167A3B2E00B6C83B /* remove-btn@2x.png in Resources */,
 				8EB8C59E16A6DF7300770E44 /* background@2x.png in Resources */,
+				8EF84154167A24F500B6C83B /* menu-bg@2x.png in Resources */,
 				8EB8C5A316A6E6D700770E44 /* menu-btn-image@2x.png in Resources */,
 				8EB8C5A516A6EB0700770E44 /* menu-btn-sel@2x.png in Resources */,
 				8EB8C5AA16A6FC1A00770E44 /* Avenir.ttc in Resources */,
-				8EB8C5C116A8257D00770E44 /* menu-bg@2x.png in Resources */,
 				8EB8C5C516A84D6300770E44 /* Icon-72@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

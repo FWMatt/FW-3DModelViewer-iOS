@@ -10,14 +10,11 @@
 
 @interface MVCameraController ()<UIGestureRecognizerDelegate>
 
-@property (nonatomic, assign) GLKQuaternion quaternion, slerpStart, slerpEnd;
-@property (nonatomic, assign) GLKVector3 lastPosition;
+@property (nonatomic, assign) GLKQuaternion quaternion, slerp;
+@property (nonatomic, assign) CGPoint lastPosition;
 @property (nonatomic, assign) CGFloat lastScale, scale;
 @property (nonatomic, assign) GLKMatrix4 cameraModelview;
 @property (nonatomic, weak) UIView *view;
-
-@property (nonatomic, assign) BOOL animating;
-@property (nonatomic, assign) NSInteger frames;
 
 @end
 
@@ -52,42 +49,38 @@
 
 
 - (void)processAnimation {
-    if (!self.animating)
-        return;
-    const NSInteger targetFrames = 5;
-    if (++self.frames > targetFrames) {
-        self.animating = NO;
-        self.frames = 0.0f;
-    } else {
-        CGFloat amount = (CGFloat)self.frames / (CGFloat)targetFrames;
-        self.quaternion = GLKQuaternionSlerp(self.slerpStart, self.slerpEnd, amount);
-        [self updateCamera];
-    }
+    const CGFloat rate = 1.0f / 5.0f;
+    self.quaternion = GLKQuaternionSlerp(self.quaternion, self.slerp, rate);
+    [self updateCamera];
 }
 
 - (void)reset {
     self.quaternion = GLKQuaternionIdentity;
+    self.slerp = GLKQuaternionIdentity;
     self.scale = 1.0f;
-    self.animating = NO;
     [self updateCamera];
 }
 
 - (void)updateCamera {
-    self.cameraModelview = GLKMatrix4MakeLookAt(0.75f, 0.75f, 0.75f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    self.cameraModelview = GLKMatrix4MakeTranslation(0.0, 0.0f, -3.5f);
     self.cameraModelview = GLKMatrix4Multiply(self.cameraModelview, GLKMatrix4MakeWithQuaternion(self.quaternion));
     self.cameraModelview = GLKMatrix4Scale(self.cameraModelview, self.scale, self.scale, self.scale);
 }
 
-- (void)rotateMatrixWithVector:(GLKVector3)delta {
+- (void)rotateMatrixWithDelta:(CGPoint)delta {
     const CGFloat rate = M_PI / 250.0f;
-	GLKVector3 up = GLKQuaternionRotateVector3(GLKQuaternionInvert(self.quaternion), GLKVector3Make(0.0f, 1.0f, 0.0f));
-	self.quaternion = GLKQuaternionMultiply(GLKQuaternionMakeWithAngleAndVector3Axis(delta.x * rate, up), self.quaternion);
-    GLKVector3 right = GLKQuaternionRotateVector3(GLKQuaternionInvert(self.quaternion), GLKVector3Make(1.0f, 0.0f, 0.0f));
-	self.quaternion = GLKQuaternionMultiply(GLKQuaternionMakeWithAngleAndVector3Axis(delta.y * rate, right), self.quaternion);
-    GLKVector3 front = GLKQuaternionRotateVector3(GLKQuaternionInvert(self.quaternion), GLKVector3Make(0.0f, 0.0f, -1.0f));
-    self.quaternion = GLKQuaternionMultiply(GLKQuaternionMakeWithAngleAndVector3Axis(delta.z * rate, front), self.quaternion);
-    [self updateCamera];
     
+    GLKVector3 up = GLKVector3Make(0.0f, 1.0f, 0.0f), right = GLKVector3Make(-1.0f, 0.0f, 0.0f);
+    GLKQuaternion inverseQuaternion = GLKQuaternionInvert(self.quaternion);
+    
+    GLKQuaternion upQ = GLKQuaternionMultiply(inverseQuaternion, GLKQuaternionMultiply(GLKQuaternionMakeWithVector3(up, 1.0f), self.quaternion));
+    self.quaternion = GLKQuaternionMultiply(self.quaternion, GLKQuaternionMakeWithAngleAndVector3Axis(delta.x * rate, upQ.v));
+    
+    inverseQuaternion = GLKQuaternionInvert(self.quaternion);
+    GLKQuaternion rightQ = GLKQuaternionMultiply(inverseQuaternion, GLKQuaternionMultiply(GLKQuaternionMakeWithVector3(right, 1.0f), self.quaternion));
+    self.quaternion = GLKQuaternionMultiply(self.quaternion, GLKQuaternionMakeWithAngleAndVector3Axis(delta.y * rate, rightQ.v));
+
+    self.slerp = self.quaternion;
 }
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -97,23 +90,17 @@
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer {
-    CGPoint location = [recognizer translationInView:self.view];
-    GLKVector3 position;
-    if (recognizer.state == UIGestureRecognizerStateCancelled || recognizer.state == UIGestureRecognizerStateEnded)
-        return;
-    if (recognizer.numberOfTouches == 2)
-        position = GLKVector3Make(self.lastPosition.x, self.lastPosition.y, location.y);
-    else
-        position = GLKVector3Make(location.x, location.y, self.lastPosition.z);
+    CGPoint position = [recognizer translationInView:self.view];
     if (recognizer.state == UIGestureRecognizerStateBegan)
         self.lastPosition = position;
-
-    [self rotateMatrixWithVector:GLKVector3Subtract(position, self.lastPosition)];
+    
+    CGPoint delta = CGPointMake(position.x - self.lastPosition.x, self.lastPosition.y - position.y);
     self.lastPosition = position;
+    [self rotateMatrixWithDelta:delta];
 }
 
 - (void)handlePinch:(UIPinchGestureRecognizer *)recognizer {
-    const CGFloat minScale = 0.25f, maxScale = 2.0f, factor = 0.3f;
+    const CGFloat minScale = 0.125f, maxScale = 2.0f, factor = 0.5f;
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.lastScale = 1.0f;
     }
@@ -124,10 +111,7 @@
 }
 
 - (void)handleDoubleTap:(UITapGestureRecognizer *)recognizer {
-    self.frames = 0;
-    self.slerpStart = self.quaternion;
-    self.slerpEnd = GLKQuaternionIdentity;
-    self.animating = YES;
+    self.slerp = GLKQuaternionIdentity;
 }
 
 
