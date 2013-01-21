@@ -49,7 +49,7 @@ using namespace std;
 
 @implementation MVModel
 
-@dynamic objPath, thumbPath;
+@dynamic objPath, thumbnail;
 @dynamic modelName, modelDirectory;
 
 @synthesize defaultEffect = _defaultEffect, effects = _effects;

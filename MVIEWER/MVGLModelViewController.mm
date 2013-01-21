@@ -71,8 +71,6 @@
     GLfloat aspect = self.view.bounds.size.width / self.view.bounds.size.height;
     
     self.projection = GLKMatrix4MakePerspective(120, aspect, znear, zfar);
-//    self.projection = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, 0, self.view.bounds.size.height, znear, zfar);
-    
     [self.scene setProjectionMatrix:self.projection];
 }
 
@@ -81,6 +79,14 @@
     [model setProjectionMatrix:self.projection];
     self.model = model;
     [self.cameraController reset];
+    [self glkViewControllerUpdate:self];
+    if (!model.thumbnail) {
+        UIImage *image = [(GLKView *)self.view snapshot];
+        model.thumbnail = UIImagePNGRepresentation(image);
+        NSError *error;
+        [model.managedObjectContext save:&error];
+        NSLog(@"%@", [error localizedDescription]);
+    }
 }
 
 

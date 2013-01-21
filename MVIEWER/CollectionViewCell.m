@@ -24,6 +24,8 @@
         self.layer.shadowRadius = 3.0f;
         self.layer.shadowOffset = CGSizeZero;
         
+        self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        [self addSubview:self.imageView];
         self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"list-item-bg"]];
         self.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"list-item-bg-sel"]];
     }
@@ -38,8 +40,9 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-        self.layer.shadowPath = [UIBezierPath bezierPathWithRect: CGRectInset(self.bounds, 10.0f, 10.0f)].CGPath;
+    self.layer.shadowPath = [UIBezierPath bezierPathWithRect: CGRectInset(self.bounds, 10.0f, 10.0f)].CGPath;
 
+    self.imageView.frame = self.bounds;
     if (self.showDeleteButton) {
         self.deleteButton.frame = CGRectMake(CGRectGetMaxX(self.contentView.bounds) - 26.0f, -5.0f, 32.0f, 32.0f);
         [self.contentView addSubview:self.deleteButton];

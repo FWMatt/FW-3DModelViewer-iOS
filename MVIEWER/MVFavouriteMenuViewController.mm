@@ -9,6 +9,7 @@
 #import "MVFavouriteMenuViewController.h"
 #import "CollectionViewCell.h"
 #import "MVModel.h"
+#import "MVAppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -28,7 +29,8 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
     if (self = [super init]) {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"MVModel"];
         fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"modelName" ascending:YES]];
-        NSManagedObjectContext *context = [RKObjectManager sharedManager].objectStore.managedObjectContextForCurrentThread;
+        RKManagedObjectStore *store = [(MVAppDelegate *)[UIApplication sharedApplication].delegate store];
+        NSManagedObjectContext *context = store.managedObjectContextForCurrentThread;
         self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
         self.fetchedResultsController.delegate = self;
     }
@@ -124,7 +126,9 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-//    MVModel *model = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    MVModel *model = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.imageView.image = [UIImage imageWithData:model.thumbnail];
+//    cell.imageView.image = [UIImage imageNamed:@"edit-btn-bg"];
     cell.showDeleteButton = self.editing;
     cell.informOnDeletion = self;
     cell.deleteMethod = @selector(deleteModelForCollectionViewCell:);

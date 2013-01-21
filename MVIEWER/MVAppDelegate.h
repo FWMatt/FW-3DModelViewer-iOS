@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) MVRootViewController *viewController;
+@property (nonatomic, strong) RKManagedObjectStore *store;
 
 @end

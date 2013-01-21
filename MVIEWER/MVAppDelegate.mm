@@ -21,6 +21,7 @@
     NSString *storeFileName = @"MVIEWER.sqlite";
     RKObjectManager *objectManager = [[RKObjectManager alloc] init];
     objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:storeFileName usingSeedDatabaseName:nil managedObjectModel:mom delegate:nil];
+    self.store = objectManager.objectStore;
     
     [self seedDatabase];
     
@@ -39,7 +40,7 @@
     if ([defaults valueForKey:seededKey])
         return;
     
-    NSManagedObjectContext *context = [RKObjectManager sharedManager].objectStore.managedObjectContextForCurrentThread;
+    NSManagedObjectContext *context = self.store.managedObjectContextForCurrentThread;
     NSString *modelDir = [[self documentsDirectory] stringByAppendingPathComponent:@"Models"];
     
     
@@ -112,9 +113,7 @@
     
     [context save:NULL];
     [defaults setBool:YES forKey:seededKey];
-    [defaults synchronize];
-
-    
+    [defaults synchronize];    
 }
 
 - (NSString *)documentsDirectory {

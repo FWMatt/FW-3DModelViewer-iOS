@@ -14,6 +14,8 @@
 
 #import "MVModel.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 #define kPopupSize 255.0f
 
 
@@ -56,7 +58,6 @@
     self.menuButton = [[MVMenuButton alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - buttonSize.height, buttonSize.width, buttonSize.height)];
     [self.menuButton addTarget:self action:@selector(menuAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.menuButton];
-    
 }
 
 - (void)menuAction:(UIButton *)button {
