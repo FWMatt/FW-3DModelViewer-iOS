@@ -120,8 +120,7 @@
 }
 
 - (void)showAxes:(id)sender {
-    [self.axisTimer invalidate];
-    self.axisTimer = nil;
+
     [UIView animateWithDuration:1.0f animations:^{
         self.axisBgView.alpha = 1.0f;
     } completion:^(BOOL finished) {
@@ -141,6 +140,8 @@
         if (self.axesVisible)
             self.axisTimer = [NSTimer scheduledTimerWithTimeInterval:4.0f target:self selector:@selector(hideAxes:) userInfo:nil repeats:NO];
     } else {
+        [self.axisTimer invalidate];
+        self.axisTimer = nil;
         if (!self.axesVisible)
             [self showAxes:nil];
     }

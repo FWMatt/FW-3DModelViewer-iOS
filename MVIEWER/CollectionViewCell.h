@@ -13,7 +13,7 @@
 @interface CollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, assign) BOOL showDeleteButton;
+@property (nonatomic, strong) UIButton *deleteButton;
 
 @property (nonatomic, assign) NSObject *informOnDeletion;
 @property (nonatomic, assign) SEL deleteMethod;

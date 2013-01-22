@@ -11,8 +11,6 @@
 
 @interface CollectionViewCell ()
 
-@property (nonatomic, strong) UIButton *deleteButton;
-
 @end
 
 @implementation CollectionViewCell
@@ -28,6 +26,8 @@
         [self addSubview:self.imageView];
         self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"list-item-bg"]];
         self.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"list-item-bg-sel"]];
+        
+        [self.contentView addSubview:self.deleteButton];
     }
     return self;
 }
@@ -43,12 +43,7 @@
     self.layer.shadowPath = [UIBezierPath bezierPathWithRect: CGRectInset(self.bounds, 10.0f, 10.0f)].CGPath;
 
     self.imageView.frame = self.bounds;
-    if (self.showDeleteButton) {
-        self.deleteButton.frame = CGRectMake(CGRectGetMaxX(self.contentView.bounds) - 26.0f, -5.0f, 32.0f, 32.0f);
-        [self.contentView addSubview:self.deleteButton];
-    } else {
-        [self->_deleteButton removeFromSuperview];
-    }
+    self.deleteButton.frame = CGRectMake(CGRectGetMaxX(self.contentView.bounds) - 26.0f, -5.0f, 32.0f, 32.0f);
 }
 
 - (UIView *)deleteButton {

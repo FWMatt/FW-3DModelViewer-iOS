@@ -16,6 +16,7 @@
 @interface MVFavouriteMenuViewController ()<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, assign) BOOL editing;
+@property (nonatomic, strong) NSManagedObjectContext *context;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
@@ -30,8 +31,8 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"MVModel"];
         fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"modelName" ascending:YES]];
         RKManagedObjectStore *store = [(MVAppDelegate *)[UIApplication sharedApplication].delegate store];
-        NSManagedObjectContext *context = store.managedObjectContextForCurrentThread;
-        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+        self.context = store.managedObjectContextForCurrentThread;
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];
         self.fetchedResultsController.delegate = self;
     }
     return self;
@@ -79,11 +80,11 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
 - (void)editButtonTapped:(UIButton *)editButton {
     editButton.selected = !editButton.selected;
     self.editing = editButton.selected;
-    for (CollectionViewCell *cell in [self.collectionView visibleCells]) {
-        cell.showDeleteButton = editButton.selected;
-        [cell setNeedsLayout];
-    }
-
+//    for (CollectionViewCell *cell in [self.collectionView visibleCells]) {
+//        cell.showDeleteButton = editButton.selected;
+//        [cell setNeedsLayout];
+//    }
+    [self.collectionView reloadData];
 }
 
 - (UIColor *)colorForIndex:(NSInteger)index {
@@ -128,7 +129,18 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
     CollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     MVModel *model = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.imageView.image = model.thumbnail;
-    cell.showDeleteButton = self.editing;
+    cell.deleteButton.hidden = !self.editing;
+    if (self.editing) {
+        CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+        CGFloat angle = M_PI / 48.0f;
+        anim.toValue = @(angle);
+        anim.fromValue = @(-angle);
+        anim.duration = 0.15f;
+        anim.timeOffset = anim.duration * (CGFloat)indexPath.row / (CGFloat)[self collectionView:self.collectionView numberOfItemsInSection:indexPath.section];
+        anim.repeatCount = NSUIntegerMax;
+        anim.autoreverses = YES;
+        [cell.layer addAnimation:anim forKey:@"MVShakeAnimation"];
+    }
     cell.informOnDeletion = self;
     cell.deleteMethod = @selector(deleteModelForCollectionViewCell:);
     return cell;
@@ -137,6 +149,14 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     MVModel *model = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [self.selectionDelegate favouriteModelSelected:model];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    switch(type) {
+        case NSFetchedResultsChangeDelete:
+            [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+            break;
+    }
 }
 
 #pragma mark - Overridden
@@ -161,19 +181,10 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
 
 
 - (void)deleteModelForCollectionViewCell:(CollectionViewCell *)cell {
-//    NSIndexPath *deletePath = [self.collectionView indexPathForCell:cell];
-//    FWMVFavouriteModelMeta *modelData = [self.modelDataArray objectAtIndex:deletePath.row];
-//
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    
-//    NSString *modelDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Models"]; // Get documents folder
-//    NSError *error = nil;
-//    
-//    [fileManager removeItemAtPath:[modelDirectory stringByAppendingPathComponent:modelData.filePath] error:&error];
-//    [self.modelDataArray removeObjectAtIndex:deletePath.row];
-//    [self updateFilesToReflectModelArray];
-//    [self.collectionView deleteItemsAtIndexPaths:@[deletePath]];
-
+    NSIndexPath *deletePath = [self.collectionView indexPathForCell:cell];
+    MVModel *model = [self.fetchedResultsController objectAtIndexPath:deletePath];
+    [self.context deleteObject:model];
+    [self.context save:NULL];
 }
+
 @end

@@ -19,6 +19,7 @@
     
     NSManagedObjectModel *mom = [NSManagedObjectModel mergedModelFromBundles:@[[NSBundle mainBundle]]];
     NSString *storeFileName = @"MVIEWER.sqlite";
+        
     RKObjectManager *objectManager = [[RKObjectManager alloc] init];
     objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:storeFileName usingSeedDatabaseName:nil managedObjectModel:mom delegate:nil];
     self.store = objectManager.objectStore;
@@ -37,7 +38,7 @@
 - (void)seedDatabase {
     NSString *seededKey = @"MVStoreSeeded";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults valueForKey:seededKey])
+    if ([[defaults valueForKey:seededKey] boolValue])
         return;
     
     NSManagedObjectContext *context = self.store.managedObjectContextForCurrentThread;
