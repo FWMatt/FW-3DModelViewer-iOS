@@ -46,6 +46,17 @@
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     self.delegate = self;
     [self setupGL];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"MVModel"];
+    NSManagedObjectContext *context = [RKObjectManager sharedManager].objectStore.managedObjectContextForCurrentThread;
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
+    fetchRequest.sortDescriptors = @[sortDescriptor];
+    NSArray *models = [context executeFetchRequest:fetchRequest error:NULL];
+    if (models.count)
+        [self loadModel:models[0]];
 }
 
 - (void)viewWillLayoutSubviews {
