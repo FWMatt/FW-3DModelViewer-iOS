@@ -82,6 +82,10 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
 #pragma mark - UICollectionViewDataSource
 
 - (void)collectionView:(UICollectionView *)collectionView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    for (NSInteger i = sourceIndexPath.row + 1; i <= destinationIndexPath.row; ++i) {
+        MVModel *model = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        --model.index;
+    }
     MVModel *model = [self.fetchedResultsController objectAtIndexPath:sourceIndexPath];
     model.index = destinationIndexPath.row;
     [self.context save:NULL];
@@ -96,6 +100,7 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
     CollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     MVModel *model = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.imageView.image = model.thumbnail;
+    cell.imageView.frame = cell.bounds;
     cell.deleteButton.hidden = !self.editing;
     if (self.editing) {
         CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];

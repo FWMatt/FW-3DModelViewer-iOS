@@ -58,6 +58,7 @@ static NSString * const cellIdentifier = @"MVBackgroundsMenuCell";
     NSString *imageName = self.backgrounds[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:imageName];
     cell.deleteButton.hidden = YES;
+    cell.imageView.frame = CGRectInset(cell.bounds, 10.0f, 10.0f);
     return cell;
 }
 

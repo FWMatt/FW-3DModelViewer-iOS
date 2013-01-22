@@ -37,7 +37,7 @@
 		73AA529816AEFC1800FD15AC /* Lemon Yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA528E16AEFC1800FD15AC /* Lemon Yellow@2x.png */; };
 		73AA529916AEFC1800FD15AC /* Orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA528F16AEFC1800FD15AC /* Orange@2x.png */; };
 		73AA529A16AEFC1800FD15AC /* Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA529016AEFC1800FD15AC /* Red@2x.png */; };
-		73AA529B16AEFC1800FD15AC /* Sea@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 73AA529116AEFC1800FD15AC /* Sea@2x.jpg */; };
+		73AA529B16AEFC1800FD15AC /* Sea@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA529116AEFC1800FD15AC /* Sea@2x.png */; };
 		73AA529C16AEFC1800FD15AC /* Sky Blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA529216AEFC1800FD15AC /* Sky Blue@2x.png */; };
 		73AA529D16AEFC1800FD15AC /* Skyscraper@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA529316AEFC1800FD15AC /* Skyscraper@2x.png */; };
 		73AA529E16AEFC1800FD15AC /* Snowy White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA529416AEFC1800FD15AC /* Snowy White@2x.png */; };
@@ -121,7 +121,7 @@
 		73AA528E16AEFC1800FD15AC /* Lemon Yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Lemon Yellow@2x.png"; sourceTree = "<group>"; };
 		73AA528F16AEFC1800FD15AC /* Orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Orange@2x.png"; sourceTree = "<group>"; };
 		73AA529016AEFC1800FD15AC /* Red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red@2x.png"; sourceTree = "<group>"; };
-		73AA529116AEFC1800FD15AC /* Sea@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Sea@2x.jpg"; sourceTree = "<group>"; };
+		73AA529116AEFC1800FD15AC /* Sea@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sea@2x.png"; sourceTree = "<group>"; };
 		73AA529216AEFC1800FD15AC /* Sky Blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sky Blue@2x.png"; sourceTree = "<group>"; };
 		73AA529316AEFC1800FD15AC /* Skyscraper@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Skyscraper@2x.png"; sourceTree = "<group>"; };
 		73AA529416AEFC1800FD15AC /* Snowy White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Snowy White@2x.png"; sourceTree = "<group>"; };
@@ -338,7 +338,7 @@
 				73AA528E16AEFC1800FD15AC /* Lemon Yellow@2x.png */,
 				73AA528F16AEFC1800FD15AC /* Orange@2x.png */,
 				73AA529016AEFC1800FD15AC /* Red@2x.png */,
-				73AA529116AEFC1800FD15AC /* Sea@2x.jpg */,
+				73AA529116AEFC1800FD15AC /* Sea@2x.png */,
 				73AA529216AEFC1800FD15AC /* Sky Blue@2x.png */,
 				73AA529316AEFC1800FD15AC /* Skyscraper@2x.png */,
 				73AA529416AEFC1800FD15AC /* Snowy White@2x.png */,
@@ -527,7 +527,7 @@
 				73AA529816AEFC1800FD15AC /* Lemon Yellow@2x.png in Resources */,
 				73AA529916AEFC1800FD15AC /* Orange@2x.png in Resources */,
 				73AA529A16AEFC1800FD15AC /* Red@2x.png in Resources */,
-				73AA529B16AEFC1800FD15AC /* Sea@2x.jpg in Resources */,
+				73AA529B16AEFC1800FD15AC /* Sea@2x.png in Resources */,
 				73AA529C16AEFC1800FD15AC /* Sky Blue@2x.png in Resources */,
 				73AA529D16AEFC1800FD15AC /* Skyscraper@2x.png in Resources */,
 				73AA529E16AEFC1800FD15AC /* Snowy White@2x.png in Resources */,
