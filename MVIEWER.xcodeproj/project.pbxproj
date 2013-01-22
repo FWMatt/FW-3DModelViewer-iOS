@@ -27,6 +27,8 @@
 		2269CA351666268A00681650 /* UIScrollView+FWT.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA311666268A00681650 /* UIScrollView+FWT.m */; };
 		2269CA381666271100681650 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CA371666271100681650 /* CollectionViewCell.m */; };
 		2269CA48166650EE00681650 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2269CA47166650EE00681650 /* libz.1.2.5.dylib */; };
+		73068FBF16AEA2D900CE4F6E /* axis-box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73068FBE16AEA2D900CE4F6E /* axis-box@2x.png */; };
+		73068FC316AEA3A500CE4F6E /* MVAxisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73068FC216AEA3A500CE4F6E /* MVAxisViewController.m */; };
 		8E4294331684815A006E7829 /* MVMenuSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4294321684815A006E7829 /* MVMenuSegment.m */; };
 		8E43E6131678BB9200A95424 /* MVIEWER.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E6111678BB9200A95424 /* MVIEWER.xcdatamodeld */; };
 		8E43E6481678BEBE00A95424 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E62D1678BEBE00A95424 /* ioapi.c */; };
@@ -43,7 +45,6 @@
 		8E72DDE51680833C008682AB /* MVFace.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E72DDE41680833C008682AB /* MVFace.mm */; };
 		8E72DDE91680C253008682AB /* MVGroup.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E72DDE81680C253008682AB /* MVGroup.mm */; };
 		8E8204661682009100C734F8 /* MVCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8204651682009100C734F8 /* MVCameraController.m */; };
-		8E82046D16820AA700C734F8 /* MVScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E82046C16820AA700C734F8 /* MVScene.m */; };
 		8E88039716A9903800DFE2DE /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E88039616A9903800DFE2DE /* Default-Landscape@2x~ipad.png */; };
 		8E88039916A9904300DFE2DE /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E88039816A9904300DFE2DE /* Default-Portrait@2x~ipad.png */; };
 		8E88039C16A99DFE00DFE2DE /* list-item-bg-sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E88039A16A99DFE00DFE2DE /* list-item-bg-sel@2x.png */; };
@@ -95,6 +96,9 @@
 		2269CA361666271100681650 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		2269CA371666271100681650 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		2269CA47166650EE00681650 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		73068FBE16AEA2D900CE4F6E /* axis-box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "axis-box@2x.png"; sourceTree = "<group>"; };
+		73068FC116AEA3A500CE4F6E /* MVAxisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVAxisViewController.h; sourceTree = "<group>"; };
+		73068FC216AEA3A500CE4F6E /* MVAxisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVAxisViewController.m; sourceTree = "<group>"; };
 		8E4294311684815A006E7829 /* MVMenuSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMenuSegment.h; sourceTree = "<group>"; };
 		8E4294321684815A006E7829 /* MVMenuSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVMenuSegment.m; sourceTree = "<group>"; };
 		8E43E6121678BB9200A95424 /* MVIEWER.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MVIEWER.xcdatamodel; sourceTree = "<group>"; };
@@ -129,8 +133,6 @@
 		8E72DDE81680C253008682AB /* MVGroup.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MVGroup.mm; sourceTree = "<group>"; };
 		8E8204641682009100C734F8 /* MVCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVCameraController.h; sourceTree = "<group>"; };
 		8E8204651682009100C734F8 /* MVCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVCameraController.m; sourceTree = "<group>"; };
-		8E82046B16820AA700C734F8 /* MVScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVScene.h; sourceTree = "<group>"; };
-		8E82046C16820AA700C734F8 /* MVScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVScene.m; sourceTree = "<group>"; };
 		8E82046E1682105F00C734F8 /* MVESObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVESObject.h; sourceTree = "<group>"; };
 		8E88039616A9903800DFE2DE /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "../Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		8E88039816A9904300DFE2DE /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "../Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
@@ -265,6 +267,8 @@
 				2229A9B316638D8C00EBFA72 /* MVGLModelViewController.mm */,
 				8EB8C59F16A6E41000770E44 /* MVRootViewController.h */,
 				8EB8C5A016A6E41000770E44 /* MVRootViewController.mm */,
+				73068FC116AEA3A500CE4F6E /* MVAxisViewController.h */,
+				73068FC216AEA3A500CE4F6E /* MVAxisViewController.m */,
 			);
 			name = "Model Viewer";
 			sourceTree = "<group>";
@@ -299,8 +303,6 @@
 			isa = PBXGroup;
 			children = (
 				8E82046E1682105F00C734F8 /* MVESObject.h */,
-				8E82046B16820AA700C734F8 /* MVScene.h */,
-				8E82046C16820AA700C734F8 /* MVScene.m */,
 				8E72DDE71680C253008682AB /* MVGroup.h */,
 				8E72DDE81680C253008682AB /* MVGroup.mm */,
 				8E72DDE0168082F3008682AB /* MVVertex.h */,
@@ -384,6 +386,7 @@
 		8EF84150167A206800B6C83B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				73068FBE16AEA2D900CE4F6E /* axis-box@2x.png */,
 				8EC543CB16A9B95A0055308D /* edit-btn-bg@2x.png */,
 				8E88039A16A99DFE00DFE2DE /* list-item-bg-sel@2x.png */,
 				8E88039B16A99DFE00DFE2DE /* list-item-bg@2x.png */,
@@ -468,6 +471,7 @@
 				8E88039C16A99DFE00DFE2DE /* list-item-bg-sel@2x.png in Resources */,
 				8E88039D16A99DFE00DFE2DE /* list-item-bg@2x.png in Resources */,
 				8EC543CC16A9B95A0055308D /* edit-btn-bg@2x.png in Resources */,
+				73068FBF16AEA2D900CE4F6E /* axis-box@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,11 +524,11 @@
 				8E72DDE51680833C008682AB /* MVFace.mm in Sources */,
 				8E72DDE91680C253008682AB /* MVGroup.mm in Sources */,
 				8E8204661682009100C734F8 /* MVCameraController.m in Sources */,
-				8E82046D16820AA700C734F8 /* MVScene.m in Sources */,
 				8E4294331684815A006E7829 /* MVMenuSegment.m in Sources */,
 				8EB8C5A116A6E41000770E44 /* MVRootViewController.mm in Sources */,
 				8EB8C5A816A6EC1500770E44 /* MVMenuButton.m in Sources */,
 				8EB8C5BD16A8231E00770E44 /* MVImageButton.m in Sources */,
+				73068FC316AEA3A500CE4F6E /* MVAxisViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -358,8 +358,6 @@ using namespace std;
 #pragma mark Drawing
 
 - (void)draw {
-        
-    glEnable(GL_DEPTH_TEST);
 
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glEnableVertexAttribArray(GLKVertexAttribNormal);

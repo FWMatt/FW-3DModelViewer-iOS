@@ -7,6 +7,7 @@
 //
 
 #import "MVCameraController.h"
+#import "MVAxisViewController.h"
 
 @interface MVCameraController ()<UIGestureRecognizerDelegate>
 
@@ -16,11 +17,16 @@
 @property (nonatomic, assign) GLKMatrix4 cameraModelview;
 @property (nonatomic, weak) UIView *view;
 
+@property (nonatomic, strong) UIView *axisBgView;
+@property (nonatomic, strong) MVAxisViewController *axisViewController;
+@property (nonatomic, assign) BOOL axesVisible;
+@property (nonatomic, strong) NSTimer *axisTimer;
+
 @end
 
 @implementation MVCameraController
 
-- (id)initWithView:(UIView *)view {
+- (id)initWithView:(UIView *)view context:(EAGLContext *)context {
     if ((self = [super init])) {
         self.view = view;
         
@@ -38,6 +44,20 @@
         tapGesture.numberOfTapsRequired = 2;
         [self.view addGestureRecognizer:tapGesture];
 
+        
+        self.axisBgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"axis-box"]];
+        self.axisBgView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
+        [self.view addSubview:self.axisBgView];
+        CGSize size = self.axisBgView.bounds.size;
+        self.axisBgView.frame = CGRectMake(CGRectGetWidth(self.view.bounds) - size.width, 0.0f, size.width, size.height);
+        
+        self.axisViewController = [[MVAxisViewController alloc] init];
+        [(GLKView *)self.axisViewController.view setContext:context];
+        self.axisViewController.view.frame = self.axisBgView.bounds;
+        [self.axisBgView addSubview:self.axisViewController.view];
+        
+        self.axisBgView.alpha = 0.0f;
+        self.axesVisible = NO;
     }
     return self;
 }
@@ -62,8 +82,16 @@
 }
 
 - (void)updateCamera {
+    const CGFloat axisScale = 0.7f;
+    const CGFloat axisTranslation = 0.0f;
     self.cameraModelview = GLKMatrix4MakeTranslation(0.0, 0.0f, -3.5f);
-    self.cameraModelview = GLKMatrix4Multiply(self.cameraModelview, GLKMatrix4MakeWithQuaternion(self.quaternion));
+    GLKMatrix4 axisMatrix = GLKMatrix4Translate(self.cameraModelview, axisTranslation, 0.15f, 0.0f);
+    GLKMatrix4 rotation = GLKMatrix4MakeWithQuaternion(self.quaternion);
+    self.cameraModelview = GLKMatrix4Multiply(self.cameraModelview, rotation);
+    axisMatrix = GLKMatrix4Multiply(axisMatrix, rotation);
+    axisMatrix = GLKMatrix4Scale(axisMatrix, axisScale, axisScale, axisScale);
+    [self.axisViewController setCameraModelView:axisMatrix];
+    
     self.cameraModelview = GLKMatrix4Scale(self.cameraModelview, self.scale, self.scale, self.scale);
 }
 
@@ -83,6 +111,24 @@
     self.slerp = self.quaternion;
 }
 
+- (void)hideAxes:(NSTimer *)timer {
+    [UIView animateWithDuration:1.0f animations:^{
+        self.axisBgView.alpha = 0.0f;
+    } completion:^(BOOL finished) {
+        self.axesVisible = NO;
+    }];
+}
+
+- (void)showAxes:(id)sender {
+    [self.axisTimer invalidate];
+    self.axisTimer = nil;
+    [UIView animateWithDuration:1.0f animations:^{
+        self.axisBgView.alpha = 1.0f;
+    } completion:^(BOOL finished) {
+        self.axesVisible = YES;
+    }];
+}
+
 #pragma mark - UIGestureRecognizerDelegate
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -90,6 +136,15 @@
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer {
+    
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        if (self.axesVisible)
+            self.axisTimer = [NSTimer scheduledTimerWithTimeInterval:4.0f target:self selector:@selector(hideAxes:) userInfo:nil repeats:NO];
+    } else {
+        if (!self.axesVisible)
+            [self showAxes:nil];
+    }
+    
     CGPoint position = [recognizer translationInView:self.view];
     if (recognizer.state == UIGestureRecognizerStateBegan)
         self.lastPosition = position;

@@ -8,7 +8,7 @@
 
 @interface MVCameraController : NSObject
 
-- (id)initWithView:(UIView *)view;
+- (id)initWithView:(UIView *)view context:(EAGLContext *)context;
 - (void)reset;
 
 - (GLKMatrix4)getModelview;

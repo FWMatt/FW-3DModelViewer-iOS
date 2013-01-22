@@ -8,7 +8,6 @@
 
 #import "MVGLModelViewController.h"
 #import "MVModel.h"
-#import "MVScene.h"
 #import "MVCameraController.h"
 
 #import <QuartzCore/QuartzCore.h>
@@ -20,7 +19,6 @@
 @property (nonatomic, strong) MVCameraController *cameraController;
 
 @property (nonatomic, strong) MVModel *model;
-@property (nonatomic, strong) MVScene *scene;
 @property (nonatomic, assign) GLKMatrix4 projection;
 
 @end
@@ -39,10 +37,8 @@
     if (!self.context) {
         NSLog(@"Failed to create ES context");
     }
-    
-    self.scene = [[MVScene alloc] init];
-    
-    self.cameraController = [[MVCameraController alloc] initWithView:self.view];
+        
+    self.cameraController = [[MVCameraController alloc] initWithView:self.view context:self.context];
     [self.cameraController reset];
 
     GLKView *view = (GLKView *)self.view;
@@ -71,7 +67,6 @@
     GLfloat aspect = self.view.bounds.size.width / self.view.bounds.size.height;
     
     self.projection = GLKMatrix4MakePerspective(120, aspect, znear, zfar);
-    [self.scene setProjectionMatrix:self.projection];
 }
 
 - (void)loadModel:(MVModel *)model {
@@ -91,12 +86,14 @@
 
 - (void)glkViewControllerUpdate:(GLKViewController *)controller {
     GLKMatrix4 modelview = [self.cameraController getModelview];
-    [self.scene setModelviewMatrix:modelview];
     [self.model setModelviewMatrix:modelview];
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
-    [self.scene draw];
+    glEnable(GL_DEPTH_TEST);
+    
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     [self.model draw];
 }
 
