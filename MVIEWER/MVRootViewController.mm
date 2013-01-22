@@ -10,7 +10,9 @@
 #import "MVGLModelViewController.h"
 #import "MVRadialMenuView.h"
 #import "MVMenuButton.h"
+
 #import "MVFavouriteMenuViewController.h"
+#import "MVBackgroundsMenuViewController.h"
 
 #import "MVModel.h"
 
@@ -19,7 +21,7 @@
 #define kPopupSize 255.0f
 
 
-@interface MVRootViewController ()<MVRadialMenuViewDelegate, MVFavouriteModelSelection>
+@interface MVRootViewController ()<MVRadialMenuViewDelegate, MVFavouriteModelSelection, MVBackgroundSelection>
 
 @property (nonatomic, strong) UIImageView *backgroundView;
 @property (nonatomic, strong) MVMenuButton *menuButton;
@@ -33,7 +35,7 @@
 
 - (void)loadView {
     [super loadView];
-    self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
+    self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default"]];
     [self.view addSubview:self.backgroundView];
 }
 
@@ -46,7 +48,7 @@
     
     CGSize menuSize = CGSizeMake(255.0f, 255.0f);
     CGRect menuFrame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - menuSize.height, menuSize.width, menuSize.height);
-    MVRadialMenuView *menuView = [[MVRadialMenuView alloc] initWithFrame:menuFrame segments:@[@"Favorites", @"Download", @"Background", @"Share"]];
+    MVRadialMenuView *menuView = [[MVRadialMenuView alloc] initWithFrame:menuFrame segments:@[@"Favorites", @"Download", @"Backgrounds", @"Share"]];
     menuView.delegate = self;
     menuView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
     self.menuView = menuView;
@@ -70,37 +72,54 @@
     }
 }
 
+#pragma mark - Selection Delegate Methods
+
 - (void)favouriteModelSelected:(MVModel *)model {
     [self.modelViewController loadModel:model];
 }
 
+- (void)backgroundSelected:(UIImage *)image {
+    self.backgroundView.image = image;
+}
+
 #pragma mark - MVRadialMenuViewDelegate
 
+
+- (void)showMenuViewController {
+        
+    CGSize menuViewSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 269.0f);
+    self.selectedMenuViewController.view.frame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - menuViewSize.height, menuViewSize.width, menuViewSize.height);
+    self.selectedMenuViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth| UIViewAutoresizingFlexibleTopMargin;
+    [self.view insertSubview:self.selectedMenuViewController.view belowSubview:self.menuView];
+            
+    self.selectedMenuViewController.view.transform = CGAffineTransformMakeTranslation(-CGRectGetWidth(self.view.bounds), 0.0f);
+    [UIView animateWithDuration:0.6f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.selectedMenuViewController.view.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+        [self.view sendSubviewToBack:self.menuView];
+    }];
+}
+
 - (void)radialMenuView:(MVRadialMenuView *)radialMenuView didSelectIndex:(MVMenuSegmentIndex)index {
+    if (self.selectedMenuViewController) {
+        return;
+    }
     
+    UIViewController *mvc;
     if (index == MVMenuSegmentIndexFavorites) {
-        
-        if (!self.selectedMenuViewController) {
-        
-            CGSize menuViewSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 269.0f);
-            MVFavouriteMenuViewController *favouriteMenuViewController = [[MVFavouriteMenuViewController alloc] init];
-            favouriteMenuViewController.selectionDelegate = self;
-            favouriteMenuViewController.view.frame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - menuViewSize.height, menuViewSize.width, menuViewSize.height);
-            
-            
-            [self.menuView hideAnimated:YES];
-            
-            self.selectedMenuViewController = favouriteMenuViewController;
-            self.selectedMenuViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth| UIViewAutoresizingFlexibleTopMargin;
-            [self.view insertSubview:self.selectedMenuViewController.view belowSubview:self.menuView];
-            
-            self.selectedMenuViewController.view.transform = CGAffineTransformMakeTranslation(-CGRectGetWidth(self.view.bounds), 0.0f);
-            [UIView animateWithDuration:0.6f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-                self.selectedMenuViewController.view.transform = CGAffineTransformIdentity;
-            } completion:^(BOOL finished) {
-                [self.view sendSubviewToBack:self.menuView];
-            }];
-        }
+        MVFavouriteMenuViewController *vc = [[MVFavouriteMenuViewController alloc] init];
+        vc.selectionDelegate = self;
+        mvc = vc;
+    } else if (index == MVMenuSegmentIndexBackgrounds) {
+        MVBackgroundsMenuViewController *vc = [[MVBackgroundsMenuViewController alloc] init];
+        vc.selectionDelegate = self;
+        mvc = vc;
+    }
+    
+    if (mvc) {
+        [self.menuView hideAnimated:YES];
+        self.selectedMenuViewController = mvc;
+        [self showMenuViewController];
     }
 }
 

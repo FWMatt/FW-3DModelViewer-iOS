@@ -6,19 +6,23 @@
 //  Copyright (c) 2012 Future Workshops. All rights reserved.
 //
 
-#import "MutableOrderedCollectionViewController.h"
+#import "MVSlidingMenuViewController.h"
 
 @class MVModel;
 
 @protocol MVFavouriteModelSelection <NSObject>
 
 @required
+
 - (void)favouriteModelSelected:(MVModel *)model;
 
 @end
 
-@interface MVFavouriteMenuViewController : MutableOrderedCollectionViewController
 
-@property (nonatomic,assign) id <MVFavouriteModelSelection> selectionDelegate;
+@interface MVFavouriteMenuViewController : MVSlidingMenuViewController
+
+@property (nonatomic, weak) id <MVFavouriteModelSelection> selectionDelegate;
 
 @end
+
+

@@ -13,7 +13,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-@interface MVFavouriteMenuViewController ()<NSFetchedResultsControllerDelegate, MutableOrderedCollectionViewDataSource>
+@interface MVFavouriteMenuViewController ()<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, assign) BOOL editing;
 @property (nonatomic, strong) NSManagedObjectContext *context;
@@ -40,13 +40,7 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
 
 - (void)loadView {
     [super loadView];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"menu-bg"]];
 
-    self.collectionView.frame = CGRectOffset(self.view.bounds, 0.0f, 26.0f);
-    self.collectionView.backgroundColor = [UIColor clearColor];
-    self.collectionView.contentInset = UIEdgeInsetsMake(0.0, 30.0f, 0.0f, 30.0f);
-    self.collectionView.dataSource = self;
-    
     [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:cellIdentifier];
 
     UIFont *buttonFont = [UIFont fontWithName:@"Avenir-Light" size:20.0f];
@@ -64,13 +58,7 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
     editButton.frame = CGRectMake(CGRectGetHeight(self.view.bounds) - 140.0f, 26.0f, 120.0f, 46.0f);
     [self.view addSubview:editButton];
 
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(36.0f, -10.0f, 120.0f, 40)];
-    titleLabel.backgroundColor = lightGrayColor;
-    titleLabel.textColor = [UIColor colorWithRed:44.0f / 255.0f green:41.0f / 255.0f blue:41.0f / 255.0f alpha:1.0f];
-    titleLabel.text = @"FAVORITES";
-    titleLabel.font = buttonFont;
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:titleLabel];
+    self.titleLabel.text = @"FAVORITES";
 }
 
 - (void)viewDidLoad {
@@ -137,27 +125,6 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
             break;
     }
 }
-
-#pragma mark - Overridden
-+ (MutableOrderedCollectionViewFlowLayout *)defaultCollectionViewFlowLayout {
-    return [[[self class] layoutsArray] objectAtIndex:0];
-}
-
-+ (NSArray *)layoutsArray {
-    static NSArray *_array = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-
-        MutableOrderedCollectionViewFlowLayout *l0 = [[MutableOrderedCollectionViewFlowLayout alloc] init];
-        l0.itemSize = CGSizeMake(208, 161);
-        l0.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        l0.minimumInteritemSpacing = .0f;
-        _array = @[l0];
-    });
-    
-    return _array;
-}
-
 
 - (void)deleteModelForCollectionViewCell:(CollectionViewCell *)cell {
     NSIndexPath *deletePath = [self.collectionView indexPathForCell:cell];
