@@ -20,6 +20,7 @@
 
 @property (nonatomic, strong) NSString *modelDirectory,  *modelName;
 @property (nonatomic, strong) NSString *objPath;
+@property (nonatomic, assign) NSInteger index;
 
 @property (nonatomic, strong) UIImage *thumbnail;
 

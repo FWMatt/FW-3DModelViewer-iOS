@@ -14,7 +14,10 @@
 @end
 
 @interface MutableOrderedCollectionView : UICollectionView
+
 @property (nonatomic, weak) id <MutableOrderedCollectionViewDataSource> dataSource;
+@property (nonatomic, assign) BOOL allowsReordering;
+
 @end
 
 @interface MutableOrderedCollectionViewController : UIViewController

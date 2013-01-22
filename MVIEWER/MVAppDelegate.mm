@@ -47,69 +47,80 @@
     
     {
         MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
-        m.modelName = @"Soho Centro";
-        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"009_soho_centro"];
-        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"Soho Centro.obj"];
-    }
-    {
-        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
-        m.modelName = @"Yasmin Solo";
-        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"010_yasmin_solo"];
-        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"Yasmin Solo.obj"];
-    }
-    {
-        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
-        m.modelName = @"Yasmin Tranquillo";
-        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"011_yasmin_tranquillo"];
-        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"Yasmin Tranquillo.obj"];
-    }
-    {
-        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
         m.modelName = @"Chair";
         m.modelDirectory = [modelDir stringByAppendingPathComponent:@"001_chair"];
         m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"chair.obj"];
+        m.index = 0;
     }
     {
         MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
         m.modelName = @"Office Chair";
         m.modelDirectory = [modelDir stringByAppendingPathComponent:@"002_office_chair"];
         m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"office_chair.obj"];
+        m.index = 1;
     }
     {
         MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
         m.modelName = @"Pitcher";
         m.modelDirectory = [modelDir stringByAppendingPathComponent:@"003_pitcher"];
         m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"pitcher.obj"];
+        m.index = 2;
     }
     {
         MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
         m.modelName = @"Spaceship";
         m.modelDirectory = [modelDir stringByAppendingPathComponent:@"004_ship"];
         m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"ship.obj"];
+        m.index = 3;
     }
     {
         MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
         m.modelName = @"Sofa";
         m.modelDirectory = [modelDir stringByAppendingPathComponent:@"005_sofa"];
         m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"sofa.obj"];
+        m.index = 4;
     }
     {
         MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
         m.modelName = @"Knot";
         m.modelDirectory = [modelDir stringByAppendingPathComponent:@"006_knot"];
         m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"knot.obj"];
+        m.index = 5;
     }
     {
         MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
         m.modelName = @"Cube";
         m.modelDirectory = [modelDir stringByAppendingPathComponent:@"007_cube"];
         m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"cube.obj"];
+        m.index = 6;
     }
     {
         MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
         m.modelName = @"Sofa";
         m.modelDirectory = [modelDir stringByAppendingPathComponent:@"008_sofa"];
         m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"sofa_OBJ.obj"];
+        m.index = 7;
+    }
+    {
+        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
+        m.modelName = @"Soho Centro";
+        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"009_soho_centro"];
+        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"Soho Centro.obj"];
+        m.index = 8;
+    }
+    {
+        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
+        m.modelName = @"Yasmin Solo";
+        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"010_yasmin_solo"];
+        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"Yasmin Solo.obj"];
+        m.index = 9;
+    }
+    {
+        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
+        m.modelName = @"Yasmin Tranquillo";
+        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"011_yasmin_tranquillo"];
+        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"Yasmin Tranquillo.obj"];
+        m.index = 10;
     }
     
     [context save:NULL];

@@ -13,7 +13,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-@interface MVFavouriteMenuViewController ()<NSFetchedResultsControllerDelegate>
+@interface MVFavouriteMenuViewController ()<NSFetchedResultsControllerDelegate, MutableOrderedCollectionViewDataSource>
 
 @property (nonatomic, assign) BOOL editing;
 @property (nonatomic, strong) NSManagedObjectContext *context;
@@ -29,7 +29,7 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
 - (id)init {
     if (self = [super init]) {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"MVModel"];
-        fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"modelName" ascending:YES]];
+        fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES]];
         RKManagedObjectStore *store = [(MVAppDelegate *)[UIApplication sharedApplication].delegate store];
         self.context = store.managedObjectContextForCurrentThread;
         self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];
@@ -45,6 +45,7 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
     self.collectionView.frame = CGRectOffset(self.view.bounds, 0.0f, 26.0f);
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.contentInset = UIEdgeInsetsMake(0.0, 30.0f, 0.0f, 30.0f);
+    self.collectionView.dataSource = self;
     
     [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:cellIdentifier];
 
@@ -80,10 +81,7 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
 - (void)editButtonTapped:(UIButton *)editButton {
     editButton.selected = !editButton.selected;
     self.editing = editButton.selected;
-//    for (CollectionViewCell *cell in [self.collectionView visibleCells]) {
-//        cell.showDeleteButton = editButton.selected;
-//        [cell setNeedsLayout];
-//    }
+    self.collectionView.allowsReordering = self.editing;
     [self.collectionView reloadData];
 }
 
@@ -93,33 +91,14 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
     return [UIColor colorWithHue:(CGFloat)index / (CGFloat)count saturation:saturation brightness:brightness alpha:1.0f];
 }
 
-//- (void)updateFilesToReflectModelArray {
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    
-//    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-//    [formatter setMinimumIntegerDigits:3];
-//    
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    
-//    NSString *modelDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Models"]; // Get documents folder
-//
-//    for (MVFavouriteModelMeta *data in self.modelDataArray) {
-//        NSString *oldFilePath = [modelDirectory stringByAppendingPathComponent:data.filePath];
-//        NSInteger index = [self.modelDataArray indexOfObject:data];
-//        NSString *newFilePath = [[oldFilePath stringByDeletingLastPathComponent] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@",[formatter stringFromNumber:[NSNumber numberWithInteger:index]],[[oldFilePath lastPathComponent] substringFromIndex:4]]];
-//        if (![newFilePath isEqualToString:oldFilePath]) {
-//            data.filePath = [newFilePath lastPathComponent];
-//            NSError *error = nil;
-//            [fileManager moveItemAtPath:oldFilePath toPath:newFilePath error:&error];
-//            if (error) {
-//                NSLog(@"Moving error %@ for old path %@ to new path %@",error,oldFilePath,newFilePath);
-//            }
-//        
-//        }        
-//    }
-//}
-
 #pragma mark - UICollectionViewDataSource
+
+- (void)collectionView:(UICollectionView *)collectionView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    MVModel *model = [self.fetchedResultsController objectAtIndexPath:sourceIndexPath];
+    model.index = destinationIndexPath.row;
+    [self.context save:NULL];
+}
+
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultsController.sections[section];
     return [sectionInfo numberOfObjects];

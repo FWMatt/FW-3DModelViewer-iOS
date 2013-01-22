@@ -50,6 +50,7 @@ using namespace std;
 @implementation MVModel
 
 @dynamic objPath;
+@dynamic index;
 @dynamic modelName, modelDirectory;
 
 @synthesize defaultEffect = _defaultEffect, effects = _effects;

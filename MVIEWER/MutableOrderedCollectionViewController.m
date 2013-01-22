@@ -129,6 +129,8 @@ UIImage* (^MMImageFromLayerBlock)(CALayer *, BOOL, CGFloat) = ^(CALayer *layer, 
 #pragma mark - Gesture handler
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
+    if (!self.collectionView.allowsReordering)
+        return;
     switch (gestureRecognizer.state)
     {
         case UIGestureRecognizerStatePossible:
@@ -238,12 +240,10 @@ UIImage* (^MMImageFromLayerBlock)(CALayer *, BOOL, CGFloat) = ^(CALayer *layer, 
         
         //
         self.touchPoint = touchCenterPoint;
-        
         //
         UIImage *image = MMImageFromLayerBlock(cell.layer, NO, .0f);
-        if (!self.panImageView) self.panImageView = [[UIImageView alloc] init];
-        self.panImageView.image = image;
-        self.panImageView.frame = CGRectMake(.0f, .0f, image.size.width, image.size.height);
+        if (!self.panImageView)
+            self.panImageView = [[UIImageView alloc] initWithImage:image];
         self.panImageView.center = cellCenterPoint;
         [self.view addSubview:self.panImageView];
         [UIView animateWithDuration:.15f
@@ -271,11 +271,8 @@ UIImage* (^MMImageFromLayerBlock)(CALayer *, BOOL, CGFloat) = ^(CALayer *layer, 
     }
 }
 
-- (void)_moveDataObjectAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath
-{
+- (void)_moveDataObjectAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath {
     if (indexPath.row == newIndexPath.row) return;
-   
-    NSLog(@"_moveDataObjectAtIndexPath:%@ toIndexPath:%@", indexPath, newIndexPath);
     [self.collectionView.dataSource collectionView:self.collectionView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
 }
 
