@@ -49,13 +49,15 @@ using namespace std;
 
 @implementation MVModel
 
-@dynamic objPath, thumbnail;
+@dynamic objPath;
 @dynamic modelName, modelDirectory;
 
 @synthesize defaultEffect = _defaultEffect, effects = _effects;
 @synthesize scale = _scale, translation = _translation;
 @synthesize textures = _textures;
 @synthesize numberFormatter = _numberFormatter;
+
+@synthesize thumbnail = _thumbnail;
 
 #pragma mark -
 #pragma mark Loading
@@ -321,6 +323,21 @@ using namespace std;
 }
 
 #pragma mark - Object Lifecycle
+
+- (void)setThumbnail:(UIImage *)thumbnail {
+    NSString *path = [self.modelDirectory stringByAppendingPathComponent:@"thumbnail.png"];
+    NSData *data = UIImagePNGRepresentation(thumbnail);
+    [data writeToFile:path atomically:YES];
+    self->_thumbnail = thumbnail;
+}
+
+- (UIImage *)thumbnail {
+    if (!self->_thumbnail) {
+        NSString *path = [self.modelDirectory stringByAppendingPathComponent:@"thumbnail.png"];
+        self->_thumbnail = [UIImage imageWithContentsOfFile:path];
+    }
+    return self->_thumbnail;
+}
 
 - (void)didTurnIntoFault {
     glDeleteBuffers(1, &geometryVBO);

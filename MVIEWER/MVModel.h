@@ -20,7 +20,8 @@
 
 @property (nonatomic, strong) NSString *modelDirectory,  *modelName;
 @property (nonatomic, strong) NSString *objPath;
-@property (nonatomic, strong) NSData *thumbnail;
+
+@property (nonatomic, strong) UIImage *thumbnail;
 
 - (BOOL)load:(NSError * __autoreleasing *)error;
 

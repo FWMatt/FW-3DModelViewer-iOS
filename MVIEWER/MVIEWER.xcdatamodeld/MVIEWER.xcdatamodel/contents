@@ -4,9 +4,8 @@
         <attribute name="modelDirectory" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modelName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="objPath" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="thumbnail" optional="YES" attributeType="Binary" valueTransformerName="MVImageTransformer" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MVModel" positionX="-2952" positionY="-2007" width="128" height="105"/>
+        <element name="MVModel" positionX="-2952" positionY="-2007" width="128" height="90"/>
     </elements>
 </model>

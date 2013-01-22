@@ -82,10 +82,7 @@
     [self glkViewControllerUpdate:self];
     if (!model.thumbnail) {
         UIImage *image = [(GLKView *)self.view snapshot];
-        model.thumbnail = UIImagePNGRepresentation(image);
-        NSError *error;
-        [model.managedObjectContext save:&error];
-        NSLog(@"%@", [error localizedDescription]);
+        model.thumbnail = image;
     }
 }
 

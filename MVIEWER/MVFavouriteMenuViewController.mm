@@ -127,8 +127,7 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     MVModel *model = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.imageView.image = [UIImage imageWithData:model.thumbnail];
-//    cell.imageView.image = [UIImage imageNamed:@"edit-btn-bg"];
+    cell.imageView.image = model.thumbnail;
     cell.showDeleteButton = self.editing;
     cell.informOnDeletion = self;
     cell.deleteMethod = @selector(deleteModelForCollectionViewCell:);
