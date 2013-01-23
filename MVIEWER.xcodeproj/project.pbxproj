@@ -30,17 +30,7 @@
 		73068FBF16AEA2D900CE4F6E /* axis-box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73068FBE16AEA2D900CE4F6E /* axis-box@2x.png */; };
 		73068FC316AEA3A500CE4F6E /* MVAxisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73068FC216AEA3A500CE4F6E /* MVAxisViewController.m */; };
 		73AA528516AEF3B600FD15AC /* MVSlidingMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73AA528416AEF3B600FD15AC /* MVSlidingMenuViewController.m */; };
-		73AA528916AEF59D00FD15AC /* MVBackgroundsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73AA528816AEF59D00FD15AC /* MVBackgroundsMenuViewController.m */; };
-		73AA529516AEFC1800FD15AC /* Deep Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA528B16AEFC1800FD15AC /* Deep Purple@2x.png */; };
-		73AA529616AEFC1800FD15AC /* Deep Sea@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA528C16AEFC1800FD15AC /* Deep Sea@2x.png */; };
-		73AA529716AEFC1800FD15AC /* Green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA528D16AEFC1800FD15AC /* Green@2x.png */; };
-		73AA529816AEFC1800FD15AC /* Lemon Yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA528E16AEFC1800FD15AC /* Lemon Yellow@2x.png */; };
-		73AA529916AEFC1800FD15AC /* Orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA528F16AEFC1800FD15AC /* Orange@2x.png */; };
-		73AA529A16AEFC1800FD15AC /* Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA529016AEFC1800FD15AC /* Red@2x.png */; };
-		73AA529B16AEFC1800FD15AC /* Sea@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA529116AEFC1800FD15AC /* Sea@2x.png */; };
-		73AA529C16AEFC1800FD15AC /* Sky Blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA529216AEFC1800FD15AC /* Sky Blue@2x.png */; };
-		73AA529D16AEFC1800FD15AC /* Skyscraper@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA529316AEFC1800FD15AC /* Skyscraper@2x.png */; };
-		73AA529E16AEFC1800FD15AC /* Snowy White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AA529416AEFC1800FD15AC /* Snowy White@2x.png */; };
+		73AA528916AEF59D00FD15AC /* MVBackgroundsMenuViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 73AA528816AEF59D00FD15AC /* MVBackgroundsMenuViewController.mm */; };
 		8E4294331684815A006E7829 /* MVMenuSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4294321684815A006E7829 /* MVMenuSegment.m */; };
 		8E43E6131678BB9200A95424 /* MVIEWER.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E6111678BB9200A95424 /* MVIEWER.xcdatamodeld */; };
 		8E43E6481678BEBE00A95424 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E43E62D1678BEBE00A95424 /* ioapi.c */; };
@@ -73,6 +63,27 @@
 		8EF84152167A206800B6C83B /* menu-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84151167A206800B6C83B /* menu-btn@2x.png */; };
 		8EF84154167A24F500B6C83B /* menu-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84153167A24F500B6C83B /* menu-bg@2x.png */; };
 		8EF84163167A3B2E00B6C83B /* remove-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF84162167A3B2E00B6C83B /* remove-btn@2x.png */; };
+		8EF846E016B00A320080DCC2 /* Deep Sea-thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846CC16B00A320080DCC2 /* Deep Sea-thumb@2x.png */; };
+		8EF846E116B00A320080DCC2 /* Deep Sea@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846CD16B00A320080DCC2 /* Deep Sea@2x.png */; };
+		8EF846E216B00A320080DCC2 /* Green-thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846CE16B00A320080DCC2 /* Green-thumb@2x.png */; };
+		8EF846E316B00A320080DCC2 /* Green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846CF16B00A320080DCC2 /* Green@2x.png */; };
+		8EF846E416B00A320080DCC2 /* Lemon Yellow-thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846D016B00A320080DCC2 /* Lemon Yellow-thumb@2x.png */; };
+		8EF846E516B00A320080DCC2 /* Lemon Yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846D116B00A320080DCC2 /* Lemon Yellow@2x.png */; };
+		8EF846E616B00A320080DCC2 /* Orange-thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846D216B00A320080DCC2 /* Orange-thumb@2x.png */; };
+		8EF846E716B00A320080DCC2 /* Orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846D316B00A320080DCC2 /* Orange@2x.png */; };
+		8EF846E816B00A320080DCC2 /* Red-thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846D416B00A320080DCC2 /* Red-thumb@2x.png */; };
+		8EF846E916B00A320080DCC2 /* Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846D516B00A320080DCC2 /* Red@2x.png */; };
+		8EF846EA16B00A320080DCC2 /* Sea-thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846D616B00A320080DCC2 /* Sea-thumb@2x.png */; };
+		8EF846EB16B00A320080DCC2 /* Sea@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846D716B00A320080DCC2 /* Sea@2x.png */; };
+		8EF846EC16B00A320080DCC2 /* Sky Blue-thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846D816B00A320080DCC2 /* Sky Blue-thumb@2x.png */; };
+		8EF846ED16B00A320080DCC2 /* Sky Blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846D916B00A320080DCC2 /* Sky Blue@2x.png */; };
+		8EF846EE16B00A320080DCC2 /* Skyscraper-thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846DA16B00A320080DCC2 /* Skyscraper-thumb@2x.png */; };
+		8EF846EF16B00A320080DCC2 /* Skyscraper@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846DB16B00A320080DCC2 /* Skyscraper@2x.png */; };
+		8EF846F016B00A320080DCC2 /* Snowy White-thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846DC16B00A320080DCC2 /* Snowy White-thumb@2x.png */; };
+		8EF846F116B00A320080DCC2 /* Snowy White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846DD16B00A320080DCC2 /* Snowy White@2x.png */; };
+		8EF846F216B00A320080DCC2 /* Stellar Sky-thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846DE16B00A320080DCC2 /* Stellar Sky-thumb@2x.png */; };
+		8EF846F316B00A320080DCC2 /* Stellar Sky@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846DF16B00A320080DCC2 /* Stellar Sky@2x.png */; };
+		8EF846F616B00B5C0080DCC2 /* MVBackgroundMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF846F516B00B5C0080DCC2 /* MVBackgroundMenuCell.m */; };
 		E5ACAFDEEDB74CA7859A5EF4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E2BF7A019E4A058DF25BD7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -114,17 +125,7 @@
 		73AA528316AEF3B500FD15AC /* MVSlidingMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVSlidingMenuViewController.h; sourceTree = "<group>"; };
 		73AA528416AEF3B600FD15AC /* MVSlidingMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVSlidingMenuViewController.m; sourceTree = "<group>"; };
 		73AA528716AEF59D00FD15AC /* MVBackgroundsMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVBackgroundsMenuViewController.h; sourceTree = "<group>"; };
-		73AA528816AEF59D00FD15AC /* MVBackgroundsMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVBackgroundsMenuViewController.m; sourceTree = "<group>"; };
-		73AA528B16AEFC1800FD15AC /* Deep Purple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Deep Purple@2x.png"; sourceTree = "<group>"; };
-		73AA528C16AEFC1800FD15AC /* Deep Sea@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Deep Sea@2x.png"; sourceTree = "<group>"; };
-		73AA528D16AEFC1800FD15AC /* Green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green@2x.png"; sourceTree = "<group>"; };
-		73AA528E16AEFC1800FD15AC /* Lemon Yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Lemon Yellow@2x.png"; sourceTree = "<group>"; };
-		73AA528F16AEFC1800FD15AC /* Orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Orange@2x.png"; sourceTree = "<group>"; };
-		73AA529016AEFC1800FD15AC /* Red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red@2x.png"; sourceTree = "<group>"; };
-		73AA529116AEFC1800FD15AC /* Sea@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sea@2x.png"; sourceTree = "<group>"; };
-		73AA529216AEFC1800FD15AC /* Sky Blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sky Blue@2x.png"; sourceTree = "<group>"; };
-		73AA529316AEFC1800FD15AC /* Skyscraper@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Skyscraper@2x.png"; sourceTree = "<group>"; };
-		73AA529416AEFC1800FD15AC /* Snowy White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Snowy White@2x.png"; sourceTree = "<group>"; };
+		73AA528816AEF59D00FD15AC /* MVBackgroundsMenuViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MVBackgroundsMenuViewController.mm; sourceTree = "<group>"; };
 		8E4294311684815A006E7829 /* MVMenuSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMenuSegment.h; sourceTree = "<group>"; };
 		8E4294321684815A006E7829 /* MVMenuSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVMenuSegment.m; sourceTree = "<group>"; };
 		8E43E6121678BB9200A95424 /* MVIEWER.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MVIEWER.xcdatamodel; sourceTree = "<group>"; };
@@ -180,6 +181,28 @@
 		8EF84151167A206800B6C83B /* menu-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-btn@2x.png"; sourceTree = "<group>"; };
 		8EF84153167A24F500B6C83B /* menu-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bg@2x.png"; sourceTree = "<group>"; };
 		8EF84162167A3B2E00B6C83B /* remove-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove-btn@2x.png"; sourceTree = "<group>"; };
+		8EF846CC16B00A320080DCC2 /* Deep Sea-thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Deep Sea-thumb@2x.png"; path = "MVIEWER/Images/Backgrounds/Deep Sea-thumb@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846CD16B00A320080DCC2 /* Deep Sea@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Deep Sea@2x.png"; path = "MVIEWER/Images/Backgrounds/Deep Sea@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846CE16B00A320080DCC2 /* Green-thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Green-thumb@2x.png"; path = "MVIEWER/Images/Backgrounds/Green-thumb@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846CF16B00A320080DCC2 /* Green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Green@2x.png"; path = "MVIEWER/Images/Backgrounds/Green@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846D016B00A320080DCC2 /* Lemon Yellow-thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Lemon Yellow-thumb@2x.png"; path = "MVIEWER/Images/Backgrounds/Lemon Yellow-thumb@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846D116B00A320080DCC2 /* Lemon Yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Lemon Yellow@2x.png"; path = "MVIEWER/Images/Backgrounds/Lemon Yellow@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846D216B00A320080DCC2 /* Orange-thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-thumb@2x.png"; path = "MVIEWER/Images/Backgrounds/Orange-thumb@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846D316B00A320080DCC2 /* Orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange@2x.png"; path = "MVIEWER/Images/Backgrounds/Orange@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846D416B00A320080DCC2 /* Red-thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-thumb@2x.png"; path = "MVIEWER/Images/Backgrounds/Red-thumb@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846D516B00A320080DCC2 /* Red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red@2x.png"; path = "MVIEWER/Images/Backgrounds/Red@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846D616B00A320080DCC2 /* Sea-thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sea-thumb@2x.png"; path = "MVIEWER/Images/Backgrounds/Sea-thumb@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846D716B00A320080DCC2 /* Sea@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sea@2x.png"; path = "MVIEWER/Images/Backgrounds/Sea@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846D816B00A320080DCC2 /* Sky Blue-thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sky Blue-thumb@2x.png"; path = "MVIEWER/Images/Backgrounds/Sky Blue-thumb@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846D916B00A320080DCC2 /* Sky Blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sky Blue@2x.png"; path = "MVIEWER/Images/Backgrounds/Sky Blue@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846DA16B00A320080DCC2 /* Skyscraper-thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Skyscraper-thumb@2x.png"; path = "MVIEWER/Images/Backgrounds/Skyscraper-thumb@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846DB16B00A320080DCC2 /* Skyscraper@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Skyscraper@2x.png"; path = "MVIEWER/Images/Backgrounds/Skyscraper@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846DC16B00A320080DCC2 /* Snowy White-thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Snowy White-thumb@2x.png"; path = "MVIEWER/Images/Backgrounds/Snowy White-thumb@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846DD16B00A320080DCC2 /* Snowy White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Snowy White@2x.png"; path = "MVIEWER/Images/Backgrounds/Snowy White@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846DE16B00A320080DCC2 /* Stellar Sky-thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Stellar Sky-thumb@2x.png"; path = "MVIEWER/Images/Backgrounds/Stellar Sky-thumb@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846DF16B00A320080DCC2 /* Stellar Sky@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Stellar Sky@2x.png"; path = "MVIEWER/Images/Backgrounds/Stellar Sky@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846F416B00B5C0080DCC2 /* MVBackgroundMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVBackgroundMenuCell.h; sourceTree = "<group>"; };
+		8EF846F516B00B5C0080DCC2 /* MVBackgroundMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVBackgroundMenuCell.m; sourceTree = "<group>"; };
 		902D08DB42D14F49914C2A6D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B5E2BF7A019E4A058DF25BD7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -255,7 +278,7 @@
 				2260004F165E960700F960C4 /* MVAppDelegate.h */,
 				22600050165E960700F960C4 /* MVAppDelegate.mm */,
 				2269CA291666266D00681650 /* Collection View */,
-				2269CA1D1666236500681650 /* Favourites */,
+				2269CA1D1666236500681650 /* Menu View Controllers */,
 				22296DE4166538EA00779A11 /* Radial Menu */,
 				2260006F165E983400F960C4 /* Model Viewer */,
 				8EB8C5BF16A8232400770E44 /* UI Components */,
@@ -299,19 +322,21 @@
 			name = "Model Viewer";
 			sourceTree = "<group>";
 		};
-		2269CA1D1666236500681650 /* Favourites */ = {
+		2269CA1D1666236500681650 /* Menu View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				2269CA361666271100681650 /* CollectionViewCell.h */,
 				2269CA371666271100681650 /* CollectionViewCell.m */,
+				8EF846F416B00B5C0080DCC2 /* MVBackgroundMenuCell.h */,
+				8EF846F516B00B5C0080DCC2 /* MVBackgroundMenuCell.m */,
 				73AA528316AEF3B500FD15AC /* MVSlidingMenuViewController.h */,
 				73AA528416AEF3B600FD15AC /* MVSlidingMenuViewController.m */,
 				2269CA261666258500681650 /* MVFavouriteMenuViewController.h */,
 				2269CA271666258500681650 /* MVFavouriteMenuViewController.mm */,
 				73AA528716AEF59D00FD15AC /* MVBackgroundsMenuViewController.h */,
-				73AA528816AEF59D00FD15AC /* MVBackgroundsMenuViewController.m */,
+				73AA528816AEF59D00FD15AC /* MVBackgroundsMenuViewController.mm */,
 			);
-			name = Favourites;
+			name = "Menu View Controllers";
 			sourceTree = "<group>";
 		};
 		2269CA291666266D00681650 /* Collection View */ = {
@@ -332,16 +357,26 @@
 		73AA528A16AEFC1800FD15AC /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
-				73AA528B16AEFC1800FD15AC /* Deep Purple@2x.png */,
-				73AA528C16AEFC1800FD15AC /* Deep Sea@2x.png */,
-				73AA528D16AEFC1800FD15AC /* Green@2x.png */,
-				73AA528E16AEFC1800FD15AC /* Lemon Yellow@2x.png */,
-				73AA528F16AEFC1800FD15AC /* Orange@2x.png */,
-				73AA529016AEFC1800FD15AC /* Red@2x.png */,
-				73AA529116AEFC1800FD15AC /* Sea@2x.png */,
-				73AA529216AEFC1800FD15AC /* Sky Blue@2x.png */,
-				73AA529316AEFC1800FD15AC /* Skyscraper@2x.png */,
-				73AA529416AEFC1800FD15AC /* Snowy White@2x.png */,
+				8EF846CC16B00A320080DCC2 /* Deep Sea-thumb@2x.png */,
+				8EF846CD16B00A320080DCC2 /* Deep Sea@2x.png */,
+				8EF846CE16B00A320080DCC2 /* Green-thumb@2x.png */,
+				8EF846CF16B00A320080DCC2 /* Green@2x.png */,
+				8EF846D016B00A320080DCC2 /* Lemon Yellow-thumb@2x.png */,
+				8EF846D116B00A320080DCC2 /* Lemon Yellow@2x.png */,
+				8EF846D216B00A320080DCC2 /* Orange-thumb@2x.png */,
+				8EF846D316B00A320080DCC2 /* Orange@2x.png */,
+				8EF846D416B00A320080DCC2 /* Red-thumb@2x.png */,
+				8EF846D516B00A320080DCC2 /* Red@2x.png */,
+				8EF846D616B00A320080DCC2 /* Sea-thumb@2x.png */,
+				8EF846D716B00A320080DCC2 /* Sea@2x.png */,
+				8EF846D816B00A320080DCC2 /* Sky Blue-thumb@2x.png */,
+				8EF846D916B00A320080DCC2 /* Sky Blue@2x.png */,
+				8EF846DA16B00A320080DCC2 /* Skyscraper-thumb@2x.png */,
+				8EF846DB16B00A320080DCC2 /* Skyscraper@2x.png */,
+				8EF846DC16B00A320080DCC2 /* Snowy White-thumb@2x.png */,
+				8EF846DD16B00A320080DCC2 /* Snowy White@2x.png */,
+				8EF846DE16B00A320080DCC2 /* Stellar Sky-thumb@2x.png */,
+				8EF846DF16B00A320080DCC2 /* Stellar Sky@2x.png */,
 				8EB8C59D16A6DF7300770E44 /* Default@2x.png */,
 			);
 			name = Backgrounds;
@@ -521,16 +556,26 @@
 				8E88039D16A99DFE00DFE2DE /* list-item-bg@2x.png in Resources */,
 				8EC543CC16A9B95A0055308D /* edit-btn-bg@2x.png in Resources */,
 				73068FBF16AEA2D900CE4F6E /* axis-box@2x.png in Resources */,
-				73AA529516AEFC1800FD15AC /* Deep Purple@2x.png in Resources */,
-				73AA529616AEFC1800FD15AC /* Deep Sea@2x.png in Resources */,
-				73AA529716AEFC1800FD15AC /* Green@2x.png in Resources */,
-				73AA529816AEFC1800FD15AC /* Lemon Yellow@2x.png in Resources */,
-				73AA529916AEFC1800FD15AC /* Orange@2x.png in Resources */,
-				73AA529A16AEFC1800FD15AC /* Red@2x.png in Resources */,
-				73AA529B16AEFC1800FD15AC /* Sea@2x.png in Resources */,
-				73AA529C16AEFC1800FD15AC /* Sky Blue@2x.png in Resources */,
-				73AA529D16AEFC1800FD15AC /* Skyscraper@2x.png in Resources */,
-				73AA529E16AEFC1800FD15AC /* Snowy White@2x.png in Resources */,
+				8EF846E016B00A320080DCC2 /* Deep Sea-thumb@2x.png in Resources */,
+				8EF846E116B00A320080DCC2 /* Deep Sea@2x.png in Resources */,
+				8EF846E216B00A320080DCC2 /* Green-thumb@2x.png in Resources */,
+				8EF846E316B00A320080DCC2 /* Green@2x.png in Resources */,
+				8EF846E416B00A320080DCC2 /* Lemon Yellow-thumb@2x.png in Resources */,
+				8EF846E516B00A320080DCC2 /* Lemon Yellow@2x.png in Resources */,
+				8EF846E616B00A320080DCC2 /* Orange-thumb@2x.png in Resources */,
+				8EF846E716B00A320080DCC2 /* Orange@2x.png in Resources */,
+				8EF846E816B00A320080DCC2 /* Red-thumb@2x.png in Resources */,
+				8EF846E916B00A320080DCC2 /* Red@2x.png in Resources */,
+				8EF846EA16B00A320080DCC2 /* Sea-thumb@2x.png in Resources */,
+				8EF846EB16B00A320080DCC2 /* Sea@2x.png in Resources */,
+				8EF846EC16B00A320080DCC2 /* Sky Blue-thumb@2x.png in Resources */,
+				8EF846ED16B00A320080DCC2 /* Sky Blue@2x.png in Resources */,
+				8EF846EE16B00A320080DCC2 /* Skyscraper-thumb@2x.png in Resources */,
+				8EF846EF16B00A320080DCC2 /* Skyscraper@2x.png in Resources */,
+				8EF846F016B00A320080DCC2 /* Snowy White-thumb@2x.png in Resources */,
+				8EF846F116B00A320080DCC2 /* Snowy White@2x.png in Resources */,
+				8EF846F216B00A320080DCC2 /* Stellar Sky-thumb@2x.png in Resources */,
+				8EF846F316B00A320080DCC2 /* Stellar Sky@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,7 +634,8 @@
 				8EB8C5BD16A8231E00770E44 /* MVImageButton.m in Sources */,
 				73068FC316AEA3A500CE4F6E /* MVAxisViewController.m in Sources */,
 				73AA528516AEF3B600FD15AC /* MVSlidingMenuViewController.m in Sources */,
-				73AA528916AEF59D00FD15AC /* MVBackgroundsMenuViewController.m in Sources */,
+				73AA528916AEF59D00FD15AC /* MVBackgroundsMenuViewController.mm in Sources */,
+				8EF846F616B00B5C0080DCC2 /* MVBackgroundMenuCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

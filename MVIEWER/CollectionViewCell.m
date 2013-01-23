@@ -41,6 +41,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.layer.shadowPath = [UIBezierPath bezierPathWithRect: CGRectInset(self.bounds, 10.0f, 10.0f)].CGPath;
+    self.imageView.frame = self.bounds;
     self.deleteButton.frame = CGRectMake(CGRectGetMaxX(self.contentView.bounds) - 26.0f, -5.0f, 32.0f, 32.0f);
 }
 

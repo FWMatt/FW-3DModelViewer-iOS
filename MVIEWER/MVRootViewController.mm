@@ -112,6 +112,7 @@
         mvc = vc;
     } else if (index == MVMenuSegmentIndexBackgrounds) {
         MVBackgroundsMenuViewController *vc = [[MVBackgroundsMenuViewController alloc] init];
+        vc.model = self.modelViewController.model;
         vc.selectionDelegate = self;
         mvc = vc;
     }

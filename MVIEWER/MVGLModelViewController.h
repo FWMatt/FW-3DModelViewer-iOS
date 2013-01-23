@@ -10,6 +10,8 @@
 
 @interface MVGLModelViewController : GLKViewController
 
+@property (nonatomic, strong, readonly) MVModel *model;
+
 - (void)loadModel:(MVModel *)model;
 
 @end

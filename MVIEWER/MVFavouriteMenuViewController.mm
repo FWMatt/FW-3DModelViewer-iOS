@@ -100,7 +100,6 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
     CollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     MVModel *model = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.imageView.image = model.thumbnail;
-    cell.imageView.frame = cell.bounds;
     cell.deleteButton.hidden = !self.editing;
     if (self.editing) {
         CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];

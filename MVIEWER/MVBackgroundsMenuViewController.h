@@ -16,8 +16,11 @@
 
 @end
 
+@class MVModel;
+
 @interface MVBackgroundsMenuViewController : MVSlidingMenuViewController
 
 @property (nonatomic, weak) id<MVBackgroundSelection> selectionDelegate;
+@property (nonatomic, weak) MVModel *model;
 
 @end
