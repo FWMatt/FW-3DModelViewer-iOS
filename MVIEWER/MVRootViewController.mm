@@ -47,7 +47,7 @@
     self.modelViewController = vc;
     
     CGSize menuSize = CGSizeMake(255.0f, 255.0f);
-    CGRect menuFrame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - menuSize.height, menuSize.width, menuSize.height);
+    CGRect menuFrame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - menuSize.height + 1.0f, menuSize.width, menuSize.height);
     MVRadialMenuView *menuView = [[MVRadialMenuView alloc] initWithFrame:menuFrame segments:@[@"Favorites", @"Download", @"Backgrounds", @"Share"]];
     menuView.delegate = self;
     menuView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
@@ -88,7 +88,7 @@
 - (void)showMenuViewController {
         
     CGSize menuViewSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 269.0f);
-    self.selectedMenuViewController.view.frame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - menuViewSize.height, menuViewSize.width, menuViewSize.height);
+    self.selectedMenuViewController.view.frame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - menuViewSize.height + 1.0f, menuViewSize.width, menuViewSize.height);
     self.selectedMenuViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth| UIViewAutoresizingFlexibleTopMargin;
     [self.view insertSubview:self.selectedMenuViewController.view belowSubview:self.menuView];
             
@@ -115,6 +115,8 @@
         vc.model = self.modelViewController.model;
         vc.selectionDelegate = self;
         mvc = vc;
+    } else if (index == MVMenuSegmentIndexShare) {
+        [self.menuView showSubmenuAnimated:YES];
     }
     
     if (mvc) {

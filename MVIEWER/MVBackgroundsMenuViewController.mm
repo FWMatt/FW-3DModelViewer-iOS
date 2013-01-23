@@ -9,11 +9,14 @@
 #import "MVBackgroundsMenuViewController.h"
 #import "MVBackgroundMenuCell.h"
 #import "MVModel.h"
+#import "MVPopoverBackground.h"
 
-@interface MVBackgroundsMenuViewController ()
+@interface MVBackgroundsMenuViewController ()<UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) NSArray *backgrounds;
 @property (nonatomic, strong) UIImage *modelThumbnail;
+@property (nonatomic, strong) UIPopoverController *popover;
+@property (nonatomic, strong) UIButton *cameraButton;
 
 @end
 
@@ -22,11 +25,23 @@
 static NSString * const cellIdentifier = @"MVBackgroundsMenuCell";
 
 @synthesize model = _model;
+@synthesize popover = _popover;
 
 
 - (void)setModel:(MVModel *)model {
     self.modelThumbnail = model.thumbnail;
     self->_model = model;
+}
+
+- (UIPopoverController *)popover {
+    if (!self->_popover) {
+        UIViewController *vc = [[UIViewController alloc] init];
+        UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:vc];
+        popover.delegate = self;
+        popover.popoverBackgroundViewClass = [MVPopoverBackground class];
+        self->_popover = popover;
+    }
+    return self->_popover;
 }
 
 - (void)loadView {
@@ -36,6 +51,15 @@ static NSString * const cellIdentifier = @"MVBackgroundsMenuCell";
     CGSize size = frame.size;
     self.titleLabel.frame = CGRectMake(frame.origin.x, frame.origin.y, size.width + 60.0f, size.height);
     self.titleLabel.text = @"BACKGROUNDS";
+
+    UIButton *cameraButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetHeight(self.view.bounds) - 140.0f, 26.0f, 128.0f, 43.0f)];
+    [cameraButton setImage:[UIImage imageNamed:@"camera-btn"] forState:UIControlStateNormal];
+    [cameraButton setImage:[UIImage imageNamed:@"camera-btn-sel"] forState:UIControlStateSelected];
+
+
+    [cameraButton addTarget:self action:@selector(presentImagePickerPopover:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:cameraButton];
+    self.cameraButton = cameraButton;
     
     [self.collectionView registerClass:[MVBackgroundMenuCell class] forCellWithReuseIdentifier:cellIdentifier];
 }
@@ -45,16 +69,27 @@ static NSString * const cellIdentifier = @"MVBackgroundsMenuCell";
     self.backgrounds = @[
         @"Default",
         @"Stellar Sky",
-        @"Deep Sea",
-        @"Green",
+        @"Skyscraper",
+        @"Sea",
+        @"Snowy White",
         @"Lemon Yellow",
         @"Orange",
         @"Red",
-        @"Sea",
         @"Sky Blue",
-        @"Skyscraper",
-        @"Snowy White"
+        @"Deep Sea",
+        @"Green"
     ];
+}
+
+- (void)presentImagePickerPopover:(UIButton *)sender {
+//    [self.popover presentPopoverFromRect:sender.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
+//    self.cameraButton.selected = YES;
+}
+
+#pragma mark - UIPopoverControllerDelegate
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    self.cameraButton.selected = NO;
 }
 
 #pragma mark - UICollectionViewDataSource

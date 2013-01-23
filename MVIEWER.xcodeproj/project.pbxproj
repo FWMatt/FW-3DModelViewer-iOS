@@ -84,6 +84,10 @@
 		8EF846F216B00A320080DCC2 /* Stellar Sky-thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846DE16B00A320080DCC2 /* Stellar Sky-thumb@2x.png */; };
 		8EF846F316B00A320080DCC2 /* Stellar Sky@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846DF16B00A320080DCC2 /* Stellar Sky@2x.png */; };
 		8EF846F616B00B5C0080DCC2 /* MVBackgroundMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF846F516B00B5C0080DCC2 /* MVBackgroundMenuCell.m */; };
+		8EF846F816B0168B0080DCC2 /* camera-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846F716B0168B0080DCC2 /* camera-btn@2x.png */; };
+		8EF846FA16B017320080DCC2 /* camera-btn-sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846F916B017320080DCC2 /* camera-btn-sel@2x.png */; };
+		8EF846FD16B01AFD0080DCC2 /* MVPopoverBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF846FC16B01AFD0080DCC2 /* MVPopoverBackground.m */; };
+		8EF846FF16B028990080DCC2 /* done-btn-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF846FE16B028990080DCC2 /* done-btn-bg@2x.png */; };
 		E5ACAFDEEDB74CA7859A5EF4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E2BF7A019E4A058DF25BD7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -203,6 +207,11 @@
 		8EF846DF16B00A320080DCC2 /* Stellar Sky@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Stellar Sky@2x.png"; path = "MVIEWER/Images/Backgrounds/Stellar Sky@2x.png"; sourceTree = SOURCE_ROOT; };
 		8EF846F416B00B5C0080DCC2 /* MVBackgroundMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVBackgroundMenuCell.h; sourceTree = "<group>"; };
 		8EF846F516B00B5C0080DCC2 /* MVBackgroundMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVBackgroundMenuCell.m; sourceTree = "<group>"; };
+		8EF846F716B0168B0080DCC2 /* camera-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera-btn@2x.png"; path = "MVIEWER/Images/camera-btn@2x.png"; sourceTree = SOURCE_ROOT; };
+		8EF846F916B017320080DCC2 /* camera-btn-sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-btn-sel@2x.png"; sourceTree = "<group>"; };
+		8EF846FB16B01AFD0080DCC2 /* MVPopoverBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVPopoverBackground.h; sourceTree = "<group>"; };
+		8EF846FC16B01AFD0080DCC2 /* MVPopoverBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVPopoverBackground.m; sourceTree = "<group>"; };
+		8EF846FE16B028990080DCC2 /* done-btn-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done-btn-bg@2x.png"; sourceTree = "<group>"; };
 		902D08DB42D14F49914C2A6D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B5E2BF7A019E4A058DF25BD7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -463,6 +472,8 @@
 			children = (
 				8EB8C5BB16A8231E00770E44 /* MVImageButton.h */,
 				8EB8C5BC16A8231E00770E44 /* MVImageButton.m */,
+				8EF846FB16B01AFD0080DCC2 /* MVPopoverBackground.h */,
+				8EF846FC16B01AFD0080DCC2 /* MVPopoverBackground.m */,
 			);
 			name = "UI Components";
 			sourceTree = "<group>";
@@ -472,6 +483,9 @@
 			children = (
 				73AA528A16AEFC1800FD15AC /* Backgrounds */,
 				73068FBE16AEA2D900CE4F6E /* axis-box@2x.png */,
+				8EF846F716B0168B0080DCC2 /* camera-btn@2x.png */,
+				8EF846F916B017320080DCC2 /* camera-btn-sel@2x.png */,
+				8EF846FE16B028990080DCC2 /* done-btn-bg@2x.png */,
 				8EC543CB16A9B95A0055308D /* edit-btn-bg@2x.png */,
 				8E88039A16A99DFE00DFE2DE /* list-item-bg-sel@2x.png */,
 				8E88039B16A99DFE00DFE2DE /* list-item-bg@2x.png */,
@@ -576,6 +590,9 @@
 				8EF846F116B00A320080DCC2 /* Snowy White@2x.png in Resources */,
 				8EF846F216B00A320080DCC2 /* Stellar Sky-thumb@2x.png in Resources */,
 				8EF846F316B00A320080DCC2 /* Stellar Sky@2x.png in Resources */,
+				8EF846F816B0168B0080DCC2 /* camera-btn@2x.png in Resources */,
+				8EF846FA16B017320080DCC2 /* camera-btn-sel@2x.png in Resources */,
+				8EF846FF16B028990080DCC2 /* done-btn-bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +653,7 @@
 				73AA528516AEF3B600FD15AC /* MVSlidingMenuViewController.m in Sources */,
 				73AA528916AEF59D00FD15AC /* MVBackgroundsMenuViewController.mm in Sources */,
 				8EF846F616B00B5C0080DCC2 /* MVBackgroundMenuCell.m in Sources */,
+				8EF846FD16B01AFD0080DCC2 /* MVPopoverBackground.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

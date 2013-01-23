@@ -122,8 +122,40 @@ const CGFloat ROTATION_ANGLE = -M_PI_2;
     [self rotateByAngle:ROTATION_ANGLE animated:animated];
 }
 
+- (void)showSubmenuAnimated:(BOOL)animated {
+    if (animated) {
+        [CATransaction begin];
+        [CATransaction setValue:[NSNumber numberWithFloat:0.4f] forKey:kCATransactionAnimationDuration];
+        
+        [self.segments enumerateObjectsUsingBlock:^(MVMenuSegment *segment, NSUInteger i, BOOL *stop) {
+            if (!segment.selected) {
+                CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+                animation.fromValue = @1.0;
+                animation.toValue = @0.1f;
+                animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+                [segment.layer addAnimation:animation forKey:@"opacity"];
+            }
+        }];
+        [CATransaction setCompletionBlock:^{
+            [self.segments enumerateObjectsUsingBlock:^(MVMenuSegment *segment, NSUInteger i, BOOL *stop) {
+                if (!segment.selected)
+                    segment.layer.opacity = 0.1f;
+            }];
+        }];
+        [CATransaction commit];
+    }
+}
+
+- (void)hideSubmenuAnimated:(BOOL)animated {
+    
+}
+
 - (void)didSelectSegment:(UIButton *)sender {
     NSInteger index = sender.tag;
+    for (MVMenuSegment *segment in self.segments)
+        segment.selected = NO;
+    MVMenuSegment *segment = self.segments[index];
+    segment.selected = YES;
     [self.delegate radialMenuView:self didSelectIndex:index];
 }
 

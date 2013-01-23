@@ -47,15 +47,18 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
     UIColor *lightGrayColor = [UIColor colorWithRed:222.0f / 255.0f green:222.0f / 255.0f blue:222.0f / 255.0f alpha:1.0f];
     
     UIButton *editButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [editButton setTitleColor:lightGrayColor forState:UIControlStateNormal];
     editButton.titleLabel.font =  buttonFont;
     UIImage *buttonImage = [[UIImage imageNamed:@"edit-btn-bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(6.0f, 5.0f, 6.0f, 5.0f)];
     [editButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    UIImage *buttonImageSelected = [[UIImage imageNamed:@"done-btn-bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(6.0f, 38.0f, 6.0f, 39.0f)];
+    [editButton setBackgroundImage:buttonImageSelected forState:UIControlStateSelected];
     [editButton setTitle:@"edit" forState:UIControlStateNormal];
     [editButton setTitle:@"done" forState:UIControlStateSelected];
+    [editButton setTitleColor:lightGrayColor forState:UIControlStateNormal];
+    [editButton setTitleColor:[UIColor colorWithRed:246.0f / 255.0f green:139.0f / 255.0f blue:26.0f / 255.0f alpha:1.0f] forState:UIControlStateSelected];
     [editButton addTarget:self action:@selector(editButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    editButton.frame = CGRectMake(CGRectGetHeight(self.view.bounds) - 140.0f, 26.0f, 120.0f, 46.0f);
+    editButton.frame = CGRectMake(CGRectGetHeight(self.view.bounds) - 140.0f, 26.0f, 120.0f, 43.0f);
     [self.view addSubview:editButton];
 
     self.titleLabel.text = @"FAVORITES";

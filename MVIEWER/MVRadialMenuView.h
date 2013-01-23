@@ -28,6 +28,9 @@ typedef enum {
 - (void)showAnimated:(BOOL)animated;
 - (void)hideAnimated:(BOOL)animated;
 
+- (void)showSubmenuAnimated:(BOOL)animated;
+- (void)hideSubmenuAnimated:(BOOL)animated;
+
 @end
 
 

@@ -13,15 +13,11 @@
 
 - (id)initWithIndex:(NSInteger)index count:(NSInteger)count title:(NSString *)title {
     if (self = [super initWithFrame:CGRectZero]) {
-//        if (index == 3) {
-//            UIImage *image = [self highlightedImageForIndex:index count:count title:title];
-//            [self setImage:image forState:UIControlStateNormal];
-//        } else {
-            UIImage *image = [self imageForIndex:index count:count title:title];
-            [self setImage:image forState:UIControlStateNormal];
-            UIImage *highlightedImage = [self highlightedImageForIndex:index count:count title:title];
-            [self setImage:highlightedImage forState:UIControlStateHighlighted];
-//        }
+        UIImage *image = [self imageForIndex:index count:count title:title];
+        [self setImage:image forState:UIControlStateNormal];
+        UIImage *highlightedImage = [self highlightedImageForIndex:index count:count title:title];
+        [self setImage:highlightedImage forState:UIControlStateHighlighted];
+        [self setImage:highlightedImage forState:UIControlStateSelected];
     }
     return self;
 }
