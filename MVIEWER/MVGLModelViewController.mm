@@ -88,6 +88,7 @@
     [self glkViewControllerUpdate:self];
     if (!model.thumbnail) {
         UIImage *image = [(GLKView *)self.view snapshot];
+        image = [UIImage imageWithCGImage:image.CGImage scale:0.20f orientation:image.imageOrientation];
         model.thumbnail = image;
     }
 }

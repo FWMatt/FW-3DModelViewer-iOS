@@ -89,38 +89,10 @@
     }
     {
         MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
-        m.modelName = @"Cube";
-        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"007_cube"];
-        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"cube.obj"];
-        m.index = 6;
-    }
-    {
-        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
         m.modelName = @"Sofa";
-        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"008_sofa"];
+        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"007_sofa"];
         m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"sofa_OBJ.obj"];
-        m.index = 7;
-    }
-    {
-        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
-        m.modelName = @"Soho Centro";
-        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"009_soho_centro"];
-        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"Soho Centro.obj"];
-        m.index = 8;
-    }
-    {
-        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
-        m.modelName = @"Yasmin Solo";
-        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"010_yasmin_solo"];
-        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"Yasmin Solo.obj"];
-        m.index = 9;
-    }
-    {
-        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
-        m.modelName = @"Yasmin Tranquillo";
-        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"011_yasmin_tranquillo"];
-        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"Yasmin Tranquillo.obj"];
-        m.index = 10;
+        m.index = 6;
     }
     
     [context save:NULL];

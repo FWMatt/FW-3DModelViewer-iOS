@@ -115,6 +115,8 @@ const CGFloat ROTATION_ANGLE = -M_PI_2;
 }
 
 - (void)hideAnimated:(BOOL)animated {
+    for (MVMenuSegment *segment in self.segments)
+        segment.selected = NO;
     [self.delegate radialMenuViewWillHide:self];
     if (!self.visible)
         return;
