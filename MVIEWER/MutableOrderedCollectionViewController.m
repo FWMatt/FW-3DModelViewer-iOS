@@ -355,7 +355,7 @@ UIImage* (^MMImageFromLayerBlock)(CALayer *, BOOL, CGFloat) = ^(CALayer *layer, 
         }
         
         CGFloat (^autoscrollDistanceForProximityToEdge)(CGFloat) = ^(CGFloat proximity) {
-            return ceilf((_autoscrollThreshold - proximity) / 5.0);
+            return (CGFloat)ceilf((_autoscrollThreshold - proximity) / 5.0);
         };
         
         if (distanceFromTopEdge < _autoscrollThreshold && needsToAutoscroll)

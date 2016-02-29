@@ -6,8 +6,7 @@
 //  Copyright (c) 2012 Magical Panda Software LLC. All rights reserved.
 //
 
-#import <MagicalRecord/MagicalRecordInternal.h>
-#import <MagicalRecord/MagicalRecordXcode7CompatibilityMacros.h>
+#import "MagicalRecord.h"
 
 @interface MagicalRecord (Setup)
 
@@ -15,11 +14,8 @@
 + (void) setupCoreDataStackWithInMemoryStore;
 + (void) setupAutoMigratingCoreDataStack;
 
-+ (void) setupCoreDataStackWithStoreNamed:(MR_nonnull NSString *)storeName;
-+ (void) setupCoreDataStackWithAutoMigratingSqliteStoreNamed:(MR_nonnull NSString *)storeName;
-
-+ (void) setupCoreDataStackWithStoreAtURL:(MR_nonnull NSURL *)storeURL;
-+ (void) setupCoreDataStackWithAutoMigratingSqliteStoreAtURL:(MR_nonnull NSURL *)storeURL;
++ (void) setupCoreDataStackWithStoreNamed:(NSString *)storeName;
++ (void) setupCoreDataStackWithAutoMigratingSqliteStoreNamed:(NSString *)storeName;
 
 
 @end

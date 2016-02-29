@@ -10,8 +10,7 @@
 
 @interface MVAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) MVRootViewController *viewController;
-@property (nonatomic, strong) RKManagedObjectStore *store;
+@property (nonatomic) UIWindow *window;
+@property (nonatomic) MVRootViewController *viewController;
 
 @end

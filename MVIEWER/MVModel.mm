@@ -202,7 +202,7 @@ using namespace std;
     
     CGFloat xd = ext[0] - ext[3], yd = ext[1] - ext[4], zd = ext[2] - ext[5];
     
-    CGFloat scale = 1.0f / MAX(MAX(fabsf(xd), fabsf(yd)), fabsf(zd));
+    CGFloat scale = 1.0f / MAX(MAX(abs(xd), abs(yd)), abs(zd));
     self.scale = GLKVector3Make(scale, scale, scale);
     self.translation = GLKVector3Make(xd / 2.0f - ext[0], yd / 2.0f - ext[1], zd / 2.0f - ext[2]);
     

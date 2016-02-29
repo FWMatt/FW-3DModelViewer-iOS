@@ -10,13 +10,12 @@
 
 @protocol MVRadialMenuViewDelegate;
 
-
-typedef enum {
+typedef NS_ENUM(NSInteger, MVMenuSegmentIndex) {
     MVMenuSegmentIndexFavorites = 0,
     MVMenuSegmentIndexDownload = 1,
     MVMenuSegmentIndexBackgrounds = 2,
     MVMenuSegmentIndexShare = 3
-} MVMenuSegmentIndex;
+};
 
 @interface MVRadialMenuView : UIView
 

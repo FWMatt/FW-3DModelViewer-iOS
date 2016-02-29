@@ -1,15 +1,15 @@
 PODS:
-  - MagicalRecord (2.3.2):
-    - MagicalRecord/Core (= 2.3.2)
-  - MagicalRecord/Core (2.3.2)
-  - objective-zip (1.0.2)
+  - MagicalRecord (2.2):
+    - MagicalRecord/Core (= 2.2)
+  - MagicalRecord/Core (2.2)
+  - objective-zip (0.8.3)
 
 DEPENDENCIES:
-  - MagicalRecord (~> 2.3.2)
-  - objective-zip
+  - MagicalRecord (~> 2.2)
+  - objective-zip (~> 0.8.3)
 
 SPEC CHECKSUMS:
-  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
-  objective-zip: b78d235d234546105e118d35ae24a69feba08d44
+  MagicalRecord: 2dc87179ae7c1f2a274442624ec65a07d4357a6f
+  objective-zip: a27d4b3c060eead4325159e49178e7f0ad5ee808
 
 COCOAPODS: 0.39.0

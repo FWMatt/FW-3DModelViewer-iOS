@@ -2,7 +2,6 @@
 //  MVAppDelegate.m
 //  3D Model Viewer
 //
-//  Created by Tim Chilvers on 22/11/2012.
 //  Copyright (c) 2012 Future Workshops. All rights reserved.
 //
 
@@ -16,13 +15,8 @@
 @implementation MVAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    NSManagedObjectModel *mom = [NSManagedObjectModel mergedModelFromBundles:@[[NSBundle mainBundle]]];
     NSString *storeFileName = @"MVIEWER.sqlite";
-        
-    RKObjectManager *objectManager = [[RKObjectManager alloc] init];
-    objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:storeFileName usingSeedDatabaseName:nil managedObjectModel:mom delegate:nil];
-    self.store = objectManager.objectStore;
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:storeFileName];
     
     [self seedDatabase];
     
@@ -41,10 +35,8 @@
     if ([[defaults valueForKey:seededKey] boolValue])
         return;
     
-    NSManagedObjectContext *context = self.store.managedObjectContextForCurrentThread;
+    NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
     NSString *modelDir = [[self documentsDirectory] stringByAppendingPathComponent:@"Models"];
-    
-    
     {
         MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
         m.modelName = @"Chair";
