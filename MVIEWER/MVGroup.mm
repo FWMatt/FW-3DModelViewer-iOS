@@ -41,7 +41,7 @@ using namespace std;
 
         [self.effect prepareToDraw];
         
-        GLuint indexCount = 3 * faces.size();
+        GLuint indexCount = (GLuint)(3 * faces.size());
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexesVBO);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexCount * sizeof(GLuint), indexes, GL_DYNAMIC_DRAW);
         

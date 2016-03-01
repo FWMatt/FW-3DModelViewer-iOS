@@ -14,7 +14,8 @@
 
 @interface MVModel : NSManagedObject<MVESObject> {
     std::vector<MVGroup *> groups;
-    GLuint geometryVBO, vertexCount;
+    GLuint geometryVBO;
+    size_t vertexCount;
     struct VertexGeometry *vertexGeometry;
 }
 

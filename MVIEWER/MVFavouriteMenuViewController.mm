@@ -28,12 +28,7 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
 
 - (id)init {
     if (self = [super init]) {
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"MVModel"];
-        fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES]];
-        RKManagedObjectStore *store = [(MVAppDelegate *)[UIApplication sharedApplication].delegate store];
-        self.context = store.managedObjectContextForCurrentThread;
-        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];
-        self.fetchedResultsController.delegate = self;
+        self.fetchedResultsController = [MVModel MR_fetchAllSortedBy:@"index" ascending:YES withPredicate:nil groupBy:nil delegate:self];
     }
     return self;
 }
@@ -129,6 +124,8 @@ static NSString * const cellIdentifier = @"MVFavoriteCell";
     switch(type) {
         case NSFetchedResultsChangeDelete:
             [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+            break;
+        default:
             break;
     }
 }
