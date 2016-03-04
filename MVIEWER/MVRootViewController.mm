@@ -50,7 +50,6 @@
     CGRect menuFrame = CGRectMake(0.0f, CGRectGetMaxY(self.view.bounds) - menuSize.height + 1.0f, menuSize.width, menuSize.height);
     MVRadialMenuView *menuView = [[MVRadialMenuView alloc] initWithFrame:menuFrame segments:@[@"Favorites", @"Download", @"Backgrounds", @"Share"]];
     menuView.delegate = self;
-    menuView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
     self.menuView = menuView;
     [self.view addSubview:self.menuView];
     

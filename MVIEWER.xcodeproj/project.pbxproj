@@ -29,6 +29,8 @@
 		2269CA48166650EE00681650 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2269CA47166650EE00681650 /* libz.1.2.5.dylib */; };
 		73068FBF16AEA2D900CE4F6E /* axis-box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73068FBE16AEA2D900CE4F6E /* axis-box@2x.png */; };
 		73068FC316AEA3A500CE4F6E /* MVAxisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73068FC216AEA3A500CE4F6E /* MVAxisViewController.m */; };
+		7326D9291C891E38003D621C /* 1.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 7326D9271C891E38003D621C /* 1.mtl */; };
+		7326D92A1C891E38003D621C /* 1.obj in Resources */ = {isa = PBXBuildFile; fileRef = 7326D9281C891E38003D621C /* 1.obj */; };
 		73AA528516AEF3B600FD15AC /* MVSlidingMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73AA528416AEF3B600FD15AC /* MVSlidingMenuViewController.m */; };
 		73AA528916AEF59D00FD15AC /* MVBackgroundsMenuViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 73AA528816AEF59D00FD15AC /* MVBackgroundsMenuViewController.mm */; };
 		8E4294331684815A006E7829 /* MVMenuSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4294321684815A006E7829 /* MVMenuSegment.m */; };
@@ -117,6 +119,8 @@
 		73068FBE16AEA2D900CE4F6E /* axis-box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "axis-box@2x.png"; sourceTree = "<group>"; };
 		73068FC116AEA3A500CE4F6E /* MVAxisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVAxisViewController.h; sourceTree = "<group>"; };
 		73068FC216AEA3A500CE4F6E /* MVAxisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVAxisViewController.m; sourceTree = "<group>"; };
+		7326D9271C891E38003D621C /* 1.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 1.mtl; path = ../../../Desktop/1.mtl; sourceTree = "<group>"; };
+		7326D9281C891E38003D621C /* 1.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 1.obj; path = ../../../Desktop/1.obj; sourceTree = "<group>"; };
 		73AA528316AEF3B500FD15AC /* MVSlidingMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVSlidingMenuViewController.h; sourceTree = "<group>"; };
 		73AA528416AEF3B600FD15AC /* MVSlidingMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVSlidingMenuViewController.m; sourceTree = "<group>"; };
 		73AA528716AEF59D00FD15AC /* MVBackgroundsMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVBackgroundsMenuViewController.h; sourceTree = "<group>"; };
@@ -274,6 +278,7 @@
 		22600047165E960700F960C4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7326D9261C891E2D003D621C /* Models */,
 				8E43E6111678BB9200A95424 /* MVIEWER.xcdatamodeld */,
 				8EF84150167A206800B6C83B /* Images */,
 				8EA97D751684C384008D4AB7 /* Fonts */,
@@ -342,6 +347,15 @@
 				DDA600C2DC61F8F6EBEB3BB3 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		7326D9261C891E2D003D621C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7326D9271C891E38003D621C /* 1.mtl */,
+				7326D9281C891E38003D621C /* 1.obj */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		8E1D750F167F323800108FC1 /* 3D Model */ = {
@@ -469,6 +483,11 @@
 				CLASSPREFIX = FWMV;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Future Workshops";
+				TargetAttributes = {
+					22600037165E960700F960C4 = {
+						DevelopmentTeam = 9A897PRHD8;
+					};
+				};
 			};
 			buildConfigurationList = 22600032165E960700F960C4 /* Build configuration list for PBXProject "MVIEWER" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -501,6 +520,7 @@
 				8EB8C5A316A6E6D700770E44 /* menu-btn-image@2x.png in Resources */,
 				8EB8C5A516A6EB0700770E44 /* menu-btn-sel@2x.png in Resources */,
 				8EB8C5AA16A6FC1A00770E44 /* Avenir.ttc in Resources */,
+				7326D92A1C891E38003D621C /* 1.obj in Resources */,
 				8EB8C5C516A84D6300770E44 /* Icon-72@2x.png in Resources */,
 				8E88039716A9903800DFE2DE /* Default-Landscape@2x~ipad.png in Resources */,
 				8E88039916A9904300DFE2DE /* Default-Portrait@2x~ipad.png in Resources */,
@@ -527,6 +547,7 @@
 				8E72664616B18FF400F3CAD0 /* Sky Blue-thumb@2x.png in Resources */,
 				8E72664716B18FF400F3CAD0 /* Sky Blue@2x.png in Resources */,
 				8E72664816B18FF400F3CAD0 /* Skyscraper-thumb@2x.png in Resources */,
+				7326D9291C891E38003D621C /* 1.mtl in Resources */,
 				8E72664916B18FF400F3CAD0 /* Skyscraper@2x.png in Resources */,
 				8E72664A16B18FF400F3CAD0 /* Snowy White-thumb@2x.png in Resources */,
 				8E72664B16B18FF400F3CAD0 /* Snowy White@2x.png in Resources */,
@@ -678,15 +699,16 @@
 			baseConfigurationReference = ACD597D57B33888C01A552DE /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kamil Kocemba (DQAA8WLDXJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MVIEWER/MVIEWER-Prefix.pch";
 				INFOPLIST_FILE = "MVIEWER/MVIEWER-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.futureworkshops.mviewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.mviewer;
 				PRODUCT_NAME = MVIEWER;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0CE63E37-5E8A-4AC7-AADD-EC9283311F52";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
@@ -699,11 +721,12 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MVIEWER/MVIEWER-Prefix.pch";
 				INFOPLIST_FILE = "MVIEWER/MVIEWER-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.futureworkshops.mviewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.mviewer;
 				PRODUCT_NAME = MVIEWER;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;

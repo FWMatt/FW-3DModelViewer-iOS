@@ -32,11 +32,12 @@
 - (void)seedDatabase {
     NSString *seededKey = @"MVStoreSeeded";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([[defaults valueForKey:seededKey] boolValue])
-        return;
+//    if ([[defaults valueForKey:seededKey] boolValue])
+//        return;
     
     NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
     NSString *modelDir = [[self documentsDirectory] stringByAppendingPathComponent:@"Models"];
+    [MVModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithValue:YES]];
     {
         MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
         m.modelName = @"Chair";
@@ -86,8 +87,39 @@
         m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"sofa_OBJ.obj"];
         m.index = 6;
     }
+
+
+// Some more furniture goes here
     
-    [context save:NULL];
+//    {
+//        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
+//        m.modelName = @"Stand";
+//        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"008_stand"];
+//        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"1.obj"];
+//        m.index = 0;
+//    }
+//    {
+//        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
+//        m.modelName = @"Stand";
+//        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"9"];
+//        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"HSM0018.obj"];
+//        m.index = 0;
+//    }
+//    {
+//        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
+//        m.modelName = @"Stand";
+//        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"10"];
+//        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"10259_Wingback_Chair_v2_max2011_it1_v4.obj"];
+//        m.index = 0;
+//    }
+//    {
+//        MVModel *m = [NSEntityDescription insertNewObjectForEntityForName:@"MVModel" inManagedObjectContext:context];
+//        m.modelName = @"Stand";
+//        m.modelDirectory = [modelDir stringByAppendingPathComponent:@"11"];
+//        m.objPath = [m.modelDirectory stringByAppendingPathComponent:@"5354967.obj"];
+//        m.index = 0;
+//    }
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
     [defaults setBool:YES forKey:seededKey];
     [defaults synchronize];    
 }
